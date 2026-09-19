@@ -1,0 +1,13 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "$description": "Tiers de coins arrondis.",
+  "radius": {
+    "xs":   { "$value": "4px",   "$type": "dimension", "$description": "Petits contrôles" },
+    "sm":   { "$value": "6px",   "$type": "dimension" },
+    "md":   { "$value": "10px",  "$type": "dimension", "$description": "Inputs, boutons" },
+    "lg":   { "$value": "14px",  "$type": "dimension", "$description": "Boutons large" },
+    "xl":   { "$value": "20px",  "$type": "dimension", "$description": "Cards" },
+    "2xl":  { "$value": "28px",  "$type": "dimension", "$description": "Cards éditoriales" },
+    "full": { "$value": "9999px", "$type": "dimension", "$description": "Pills, avatars" }
+  }
+}

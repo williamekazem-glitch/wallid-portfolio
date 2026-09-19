@@ -1,0 +1,15 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "$description": "Breakpoints responsives. Alignés sur les défauts Tailwind pour cohérence.",
+  "breakpoint": {
+    "sm":   { "$value": "640px",  "$type": "dimension", "$description": "Petit tablette / phablet" },
+    "md":   { "$value": "768px",  "$type": "dimension", "$description": "Tablette" },
+    "lg":   { "$value": "1024px", "$type": "dimension", "$description": "Desktop — Nav complète apparaît, panneau INDEX visible" },
+    "xl":   { "$value": "1280px", "$type": "dimension", "$description": "Desktop large" },
+    "2xl":  { "$value": "1536px", "$type": "dimension", "$description": "Écrans très larges" },
+    "container": {
+      "tight": { "$value": "64rem",  "$type": "dimension", "$description": "1024px — contenu focalisé, essais, articles" },
+      "wide":  { "$value": "80rem",  "$type": "dimension", "$description": "1280px — contenu principal, grilles" }
+    }
+  }
+}

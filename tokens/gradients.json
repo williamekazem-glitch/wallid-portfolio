@@ -1,0 +1,26 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "$description": "Gradients utilisés dans le Hero (halo ambré) et les fades. Références semantic uniquement.",
+  "gradient": {
+    "hero-halo": {
+      "$value": "radial-gradient(circle at center, {semantic.light.accent.soft} 0%, transparent 70%)",
+      "$type": "gradient",
+      "$description": "Halo ambré doux derrière le Hero (light) — flou à appliquer via blur.3xl"
+    },
+    "hero-halo-dark": {
+      "$value": "radial-gradient(circle at center, {semantic.dark.accent.soft} 0%, transparent 70%)",
+      "$type": "gradient",
+      "$description": "Version sombre du halo hero"
+    },
+    "fade-to-bg": {
+      "$value": "linear-gradient(to top, {semantic.light.surface.page} 0%, transparent 100%)",
+      "$type": "gradient",
+      "$description": "Fondu vers le bas du Hero — masque le halo en bas"
+    },
+    "img-caption-overlay": {
+      "$value": "linear-gradient(to top, rgb(0 0 0 / 0.6) 0%, rgb(0 0 0 / 0.2) 40%, transparent 100%)",
+      "$type": "gradient",
+      "$description": "Overlay sombre sous les captions de la Galerie pour rendre le texte lisible"
+    }
+  }
+}

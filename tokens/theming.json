@@ -1,0 +1,27 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "$description": "Métadonnées des thèmes disponibles. Support multi-thème préparé (light/dark aujourd'hui, extensible).",
+  "theme": {
+    "$description": "Chaque thème hérite des primitives et override le semantic layer.",
+    "light": {
+      "name":     { "$value": "Editorial Light",         "$type": "string" },
+      "surface":  { "$value": "{color.neutral.50}",       "$type": "color", "$description": "Fond global qui définit le thème" },
+      "ink":      { "$value": "{color.neutral.900}",      "$type": "color" },
+      "accent":   { "$value": "{color.amber.600}",        "$type": "color" },
+      "isDefault": { "$value": "true",                    "$type": "string", "$description": "Thème par défaut si aucune préférence système" }
+    },
+    "dark": {
+      "name":     { "$value": "Editorial Dark",           "$type": "string" },
+      "surface":  { "$value": "{color.neutral.950}",      "$type": "color" },
+      "ink":      { "$value": "{color.neutral.50}",       "$type": "color" },
+      "accent":   { "$value": "{color.amber.400}",        "$type": "color", "$description": "Ambre plus lumineux pour ressortir sur obsidien" },
+      "isDefault": { "$value": "false",                   "$type": "string" }
+    }
+  },
+  "activation": {
+    "$description": "Comment les thèmes s'activent dans l'app.",
+    "selector-attribute": { "$value": "data-theme",       "$type": "string" },
+    "persistence":        { "$value": "localStorage.theme","$type": "string" },
+    "system-preference":  { "$value": "prefers-color-scheme", "$type": "string", "$description": "Fallback si aucune valeur stockée" }
+  }
+}

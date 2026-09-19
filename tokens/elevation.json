@@ -1,0 +1,12 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "$description": "Ombres — approche warm-ambient, borders > shadows (style Linear/Apple).",
+  "shadow": {
+    "xs": { "$value": "0 1px 2px 0 rgb(23 20 18 / 0.04)", "$type": "shadow" },
+    "sm": { "$value": "0 1px 3px 0 rgb(23 20 18 / 0.06), 0 1px 2px -1px rgb(23 20 18 / 0.06)", "$type": "shadow" },
+    "md": { "$value": "0 4px 12px -2px rgb(23 20 18 / 0.08), 0 2px 6px -2px rgb(23 20 18 / 0.05)", "$type": "shadow" },
+    "lg": { "$value": "0 12px 32px -8px rgb(23 20 18 / 0.12), 0 6px 12px -6px rgb(23 20 18 / 0.06)", "$type": "shadow" },
+    "xl": { "$value": "0 24px 48px -12px rgb(23 20 18 / 0.18)", "$type": "shadow" },
+    "inset-highlight": { "$value": "inset 0 1px 0 0 rgb(255 255 255 / 0.12), 0 1px 2px 0 rgb(0 0 0 / 0.08)", "$type": "shadow", "$description": "Signature Linear — highlight interne sur boutons obsidiens" }
+  }
+}

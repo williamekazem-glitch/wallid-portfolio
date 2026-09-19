@@ -1,0 +1,18 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "$description": "Épaisseurs et styles de bordure. Les couleurs sont dans color.semantic.json (border.*).",
+  "border": {
+    "width": {
+      "none":   { "$value": "0",   "$type": "dimension" },
+      "hairline": { "$value": "1px", "$type": "dimension", "$description": "Défaut — séparateurs, cards" },
+      "thin":   { "$value": "1.5px","$type": "dimension" },
+      "regular":{ "$value": "2px", "$type": "dimension", "$description": "Focus rings, éléments accentués" },
+      "thick":  { "$value": "3px", "$type": "dimension", "$description": "Rare — indicateurs forts" }
+    },
+    "style": {
+      "solid":  { "$value": "solid",  "$type": "strokeStyle" },
+      "dashed": { "$value": "dashed", "$type": "strokeStyle", "$description": "États vides ('à remplir')" },
+      "dotted": { "$value": "dotted", "$type": "strokeStyle" }
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "$description": "Couche sémantique — rôles applicatifs pointant vers les primitives. Direction 'Nuit tropicale + Soleil ambre'.",
+  "semantic": {
+    "light": {
+      "$description": "Thème clair — sections About / Contact / Réalisations. Ivory chaud + ambre profond.",
+      "surface": {
+        "page":  { "$value": "{color.neutral.50}",  "$type": "color", "$description": "Ivory chaud d'Abidjan" },
+        "elev":  { "$value": "{color.neutral.0}",   "$type": "color" },
+        "muted": { "$value": "{color.neutral.100}", "$type": "color" },
+        "hover": { "$value": "{color.neutral.200}", "$type": "color" }
+      },
+      "text": {
+        "primary":   { "$value": "{color.neutral.900}", "$type": "color" },
+        "secondary": { "$value": "{color.neutral.700}", "$type": "color" },
+        "subtle":    { "$value": "{color.neutral.600}", "$type": "color" }
+      },
+      "border": {
+        "default": { "$value": "{color.neutral.200}", "$type": "color" },
+        "strong":  { "$value": "{color.neutral.400}", "$type": "color" }
+      },
+      "action": {
+        "primary":       { "$value": "{color.ink.900}",   "$type": "color", "$description": "Bouton principal — bleu nuit sur ivoire" },
+        "primary-hover": { "$value": "{color.ink.800}",   "$type": "color" },
+        "primary-fg":    { "$value": "{color.neutral.50}","$type": "color" },
+        "destructive":   { "$value": "{color.danger.600}","$type": "color" }
+      },
+      "accent": {
+        "default": { "$value": "{color.amber.700}", "$type": "color", "$description": "Ambre profond — AA sur ivoire" },
+        "hover":   { "$value": "{color.amber.800}", "$type": "color" },
+        "soft":    { "$value": "{color.amber.100}", "$type": "color" },
+        "fg":      { "$value": "{color.neutral.50}","$type": "color" }
+      },
+      "feedback": {
+        "success":      { "$value": "{color.wa.600}",     "$type": "color", "$description": "Vert WhatsApp foncé — AA sur ivoire" },
+        "success-soft": { "$value": "{color.wa.100}",     "$type": "color" },
+        "danger":       { "$value": "{color.danger.600}", "$type": "color" },
+        "warning":      { "$value": "{color.amber.600}",  "$type": "color" }
+      },
+      "focus-ring": { "$value": "{color.amber.700}", "$type": "color" }
+    },
+    "dark": {
+      "$description": "Thème sombre — Hero + Services + Pourquoi + CTA final. Bleu nuit + ambre lumineux.",
+      "surface": {
+        "page":  { "$value": "{color.ink.900}", "$type": "color", "$description": "Bleu nuit — fond principal" },
+        "elev":  { "$value": "{color.ink.800}", "$type": "color", "$description": "Cards raised" },
+        "muted": { "$value": "{color.ink.950}", "$type": "color", "$description": "Sections deeper (CTA final)" },
+        "hover": { "$value": "{color.ink.700}", "$type": "color" }
+      },
+      "text": {
+        "primary":   { "$value": "{color.neutral.50}",  "$type": "color", "$description": "Ivory chaud sur nuit" },
+        "secondary": { "$value": "{color.neutral.200}", "$type": "color" },
+        "subtle":    { "$value": "{color.neutral.400}", "$type": "color" }
+      },
+      "border": {
+        "default": { "$value": "{color.ink.700}", "$type": "color" },
+        "strong":  { "$value": "{color.ink.600}", "$type": "color" }
+      },
+      "action": {
+        "primary":       { "$value": "{color.amber.500}", "$type": "color", "$description": "Bouton ambre saturé sur nuit" },
+        "primary-hover": { "$value": "{color.amber.400}", "$type": "color" },
+        "primary-fg":    { "$value": "{color.ink.950}",   "$type": "color" },
+        "destructive":   { "$value": "{color.danger.400}","$type": "color" }
+      },
+      "accent": {
+        "default": { "$value": "{color.amber.400}", "$type": "color", "$description": "Ambre lumineux — AAA sur bleu nuit" },
+        "hover":   { "$value": "{color.amber.300}", "$type": "color" },
+        "soft":    { "$value": "{color.amber.900}", "$type": "color" },
+        "fg":      { "$value": "{color.ink.950}",   "$type": "color" }
+      },
+      "feedback": {
+        "success":      { "$value": "{color.wa.500}",     "$type": "color", "$description": "Vert WhatsApp brand — AA sur bleu nuit" },
+        "success-soft": { "$value": "{color.wa.900}",     "$type": "color" },
+        "danger":       { "$value": "{color.danger.400}", "$type": "color" },
+        "warning":      { "$value": "{color.amber.400}",  "$type": "color" }
+      },
+      "focus-ring": { "$value": "{color.amber.400}", "$type": "color" }
+    }
+  }
+}

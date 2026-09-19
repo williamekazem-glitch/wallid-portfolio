@@ -1,0 +1,47 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "$description": "Tokens d'états interactifs — les 8 états normalisés du design system.",
+  "state": {
+    "default": {
+      "opacity": { "$value": "{opacity.100}", "$type": "number" },
+      "scale":   { "$value": "1",             "$type": "number" }
+    },
+    "hover": {
+      "$description": "Survol souris ou clavier — subtle lift + border strengthen sur cards, opacity/color shift sur boutons.",
+      "opacity":         { "$value": "{opacity.90}",  "$type": "number", "$description": "Boutons obsidiens (hover:bg-foreground/90)" },
+      "translate-y":     { "$value": "-2px",          "$type": "dimension", "$description": "Cards (hover:-translate-y-0.5)" },
+      "shadow":          { "$value": "{shadow.md}",   "$type": "shadow", "$description": "Cards au hover" }
+    },
+    "focus-visible": {
+      "$description": "Focus clavier — anneau ambré 2px + offset 2px pour distinction. WCAG 2.4.7.",
+      "ring-width":  { "$value": "{border.width.regular}", "$type": "dimension" },
+      "ring-offset": { "$value": "2px",                    "$type": "dimension" },
+      "ring-color":  { "$value": "{semantic.light.focus-ring}", "$type": "color" }
+    },
+    "active": {
+      "$description": "Press souris/tactile — micro-scale down pour feedback tactile.",
+      "scale": { "$value": "0.98", "$type": "number" }
+    },
+    "disabled": {
+      "$description": "Éléments non-interactifs — opacité réduite + pointer-events none.",
+      "opacity":       { "$value": "{opacity.50}", "$type": "number" },
+      "cursor":        { "$value": "not-allowed",  "$type": "string" },
+      "pointer-events":{ "$value": "none",         "$type": "string" }
+    },
+    "loading": {
+      "$description": "En cours de traitement — spinner + aria-busy.",
+      "opacity": { "$value": "{opacity.100}", "$type": "number" },
+      "cursor":  { "$value": "wait",          "$type": "string" }
+    },
+    "error": {
+      "$description": "Champ ou action en erreur — border danger + message.",
+      "border": { "$value": "{semantic.light.feedback.danger}", "$type": "color" }
+    },
+    "selected": {
+      "$description": "État sélectionné (nav item actif, tab courant, filtre appliqué).",
+      "text":   { "$value": "{semantic.light.text.primary}", "$type": "color" },
+      "border": { "$value": "{semantic.light.text.primary}", "$type": "color" },
+      "weight": { "$value": "{font.weight.medium}",          "$type": "fontWeight" }
+    }
+  }
+}

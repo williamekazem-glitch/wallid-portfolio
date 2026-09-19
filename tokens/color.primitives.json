@@ -1,0 +1,77 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "$description": "Rampes couleur primitives — OKLCH 11 nuances. Direction 'Nuit tropicale + Soleil ambre'. Ne référencer que via la couche semantic.",
+  "color": {
+    "neutral": {
+      "$description": "Warm ivory → deep espresso. Chroma quasi-nulle. Surfaces claires + texte sur fond clair.",
+      "0":   { "$value": "oklch(1 0 0)",         "$type": "color", "$description": "Pure white" },
+      "50":  { "$value": "oklch(0.98 0.008 78)", "$type": "color", "$description": "Ivory chaud — surface.page (light)" },
+      "100": { "$value": "oklch(0.96 0.012 75)", "$type": "color" },
+      "200": { "$value": "oklch(0.92 0.015 72)", "$type": "color" },
+      "300": { "$value": "oklch(0.86 0.015 68)", "$type": "color" },
+      "400": { "$value": "oklch(0.72 0.012 60)", "$type": "color" },
+      "500": { "$value": "oklch(0.58 0.010 50)", "$type": "color" },
+      "600": { "$value": "oklch(0.45 0.010 45)", "$type": "color" },
+      "700": { "$value": "oklch(0.35 0.012 42)", "$type": "color" },
+      "800": { "$value": "oklch(0.24 0.012 40)", "$type": "color" },
+      "900": { "$value": "oklch(0.17 0.010 40)", "$type": "color" },
+      "950": { "$value": "oklch(0.10 0.008 40)", "$type": "color" }
+    },
+    "ink": {
+      "$description": "Bleu nuit d'Abidjan. Teinte 245° (navy profond). Surfaces sombres du portfolio.",
+      "50":  { "$value": "oklch(0.98 0.008 245)", "$type": "color" },
+      "100": { "$value": "oklch(0.94 0.018 245)", "$type": "color" },
+      "200": { "$value": "oklch(0.86 0.035 245)", "$type": "color" },
+      "300": { "$value": "oklch(0.75 0.055 245)", "$type": "color" },
+      "400": { "$value": "oklch(0.62 0.075 245)", "$type": "color" },
+      "500": { "$value": "oklch(0.48 0.090 245)", "$type": "color" },
+      "600": { "$value": "oklch(0.38 0.088 245)", "$type": "color" },
+      "700": { "$value": "oklch(0.32 0.080 245)", "$type": "color", "$description": "Hover states, borders forts" },
+      "800": { "$value": "oklch(0.26 0.075 245)", "$type": "color", "$description": "Cards surélevées (surface.elev dark) — cible #122352" },
+      "900": { "$value": "oklch(0.22 0.070 245)", "$type": "color", "$description": "Fond hero — cible #0B1B3A" },
+      "950": { "$value": "oklch(0.15 0.055 245)", "$type": "color", "$description": "Fond deepest, cible #060E24" }
+    },
+    "amber": {
+      "$description": "Soleil ambre saturé. Teinte 65-75° (or chaud lumineux). Accent principal, CTAs, focus rings.",
+      "50":  { "$value": "oklch(0.98 0.020 80)", "$type": "color" },
+      "100": { "$value": "oklch(0.95 0.045 78)", "$type": "color" },
+      "200": { "$value": "oklch(0.90 0.080 75)", "$type": "color" },
+      "300": { "$value": "oklch(0.87 0.130 78)", "$type": "color", "$description": "Cible #FCD34D" },
+      "400": { "$value": "oklch(0.83 0.155 72)", "$type": "color", "$description": "Cible #FBBF24 — accent dark theme" },
+      "500": { "$value": "oklch(0.76 0.170 65)", "$type": "color", "$description": "Cible #F59E0B — action.primary dark" },
+      "600": { "$value": "oklch(0.68 0.170 55)", "$type": "color", "$description": "Cible #D97706 — focus-ring, warning" },
+      "700": { "$value": "oklch(0.53 0.145 50)", "$type": "color", "$description": "Cible #B45309 — accent light theme (AA ≥ 4.5:1 sur ivory)" },
+      "800": { "$value": "oklch(0.48 0.130 48)", "$type": "color" },
+      "900": { "$value": "oklch(0.38 0.100 45)", "$type": "color" },
+      "950": { "$value": "oklch(0.27 0.075 42)", "$type": "color" }
+    },
+    "wa": {
+      "$description": "WhatsApp brand green. Teinte 145°. Utilisé pour conversion / disponibilité.",
+      "50":  { "$value": "oklch(0.98 0.020 150)", "$type": "color" },
+      "100": { "$value": "oklch(0.94 0.045 148)", "$type": "color" },
+      "200": { "$value": "oklch(0.88 0.085 146)", "$type": "color" },
+      "300": { "$value": "oklch(0.83 0.135 145)", "$type": "color" },
+      "400": { "$value": "oklch(0.80 0.175 145)", "$type": "color" },
+      "500": { "$value": "oklch(0.76 0.175 145)", "$type": "color", "$description": "Cible #25D366 — WhatsApp brand" },
+      "600": { "$value": "oklch(0.62 0.150 148)", "$type": "color", "$description": "Cible #128C7E — dark WhatsApp (AA sur ivory)" },
+      "700": { "$value": "oklch(0.50 0.125 150)", "$type": "color" },
+      "800": { "$value": "oklch(0.40 0.100 152)", "$type": "color" },
+      "900": { "$value": "oklch(0.30 0.075 155)", "$type": "color" },
+      "950": { "$value": "oklch(0.20 0.055 155)", "$type": "color" }
+    },
+    "danger": {
+      "$description": "Destructif / error. Teinte 25° (rouge chaud aligné avec la palette warm).",
+      "50":  { "$value": "oklch(0.97 0.015 25)", "$type": "color" },
+      "100": { "$value": "oklch(0.94 0.030 25)", "$type": "color" },
+      "200": { "$value": "oklch(0.88 0.060 25)", "$type": "color" },
+      "300": { "$value": "oklch(0.80 0.100 25)", "$type": "color" },
+      "400": { "$value": "oklch(0.68 0.150 25)", "$type": "color" },
+      "500": { "$value": "oklch(0.58 0.170 25)", "$type": "color" },
+      "600": { "$value": "oklch(0.50 0.160 25)", "$type": "color" },
+      "700": { "$value": "oklch(0.42 0.140 25)", "$type": "color" },
+      "800": { "$value": "oklch(0.34 0.110 25)", "$type": "color" },
+      "900": { "$value": "oklch(0.26 0.080 25)", "$type": "color" },
+      "950": { "$value": "oklch(0.18 0.055 25)", "$type": "color" }
+    }
+  }
+}

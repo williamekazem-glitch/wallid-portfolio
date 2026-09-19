@@ -1,0 +1,24 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "$description": "Tailles standardisées pour icônes, avatars, contrôles, hauteurs minimales.",
+  "size": {
+    "icon": {
+      "xs":   { "$value": "12px", "$type": "dimension", "$description": "Meta labels" },
+      "sm":   { "$value": "14px", "$type": "dimension", "$description": "In-text icons" },
+      "md":   { "$value": "16px", "$type": "dimension", "$description": "Défaut boutons, inputs" },
+      "lg":   { "$value": "20px", "$type": "dimension", "$description": "Card headers" },
+      "xl":   { "$value": "24px", "$type": "dimension", "$description": "Section leads, WhatsApp FAB" }
+    },
+    "control": {
+      "sm":   { "$value": "36px", "$type": "dimension", "$description": "Btn sm, chip" },
+      "md":   { "$value": "44px", "$type": "dimension", "$description": "Btn md — target size WCAG 2.5.5 minimum" },
+      "lg":   { "$value": "52px", "$type": "dimension", "$description": "Btn lg, hero CTA" },
+      "xl":   { "$value": "56px", "$type": "dimension", "$description": "FAB WhatsApp mobile" },
+      "2xl":  { "$value": "64px", "$type": "dimension", "$description": "FAB WhatsApp desktop, nav height" }
+    },
+    "touch-target": {
+      "minimum": { "$value": "24px", "$type": "dimension", "$description": "WCAG 2.5.8 minimum absolu" },
+      "comfortable": { "$value": "44px", "$type": "dimension", "$description": "WCAG 2.5.5 recommandé" }
+    }
+  }
+}

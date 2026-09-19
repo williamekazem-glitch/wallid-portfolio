@@ -1,0 +1,13 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "$description": "Échelle de flou — pour backdrop-filter et halos d'arrière-plan.",
+  "blur": {
+    "none": { "$value": "0",     "$type": "dimension" },
+    "sm":   { "$value": "4px",   "$type": "dimension" },
+    "md":   { "$value": "8px",   "$type": "dimension" },
+    "lg":   { "$value": "16px",  "$type": "dimension", "$description": "Backdrop de nav sticky (frosted glass)" },
+    "xl":   { "$value": "24px",  "$type": "dimension" },
+    "2xl":  { "$value": "40px",  "$type": "dimension" },
+    "3xl":  { "$value": "64px",  "$type": "dimension", "$description": "Halo ambré derrière le Hero" }
+  }
+}

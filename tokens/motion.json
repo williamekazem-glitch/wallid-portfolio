@@ -1,0 +1,17 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "$description": "Durées et easings — direction ease-out-expo pour l'école Linear.",
+  "duration": {
+    "instant": { "$value": "0ms",   "$type": "duration" },
+    "fast":    { "$value": "120ms", "$type": "duration", "$description": "Micro-transitions (colors, opacity)" },
+    "base":    { "$value": "200ms", "$type": "duration", "$description": "Défaut (transforms, borders)" },
+    "slow":    { "$value": "400ms", "$type": "duration", "$description": "Reveals, page transitions" },
+    "reveal":  { "$value": "600ms", "$type": "duration", "$description": "Fade-up on scroll" }
+  },
+  "easing": {
+    "linear":     { "$value": "linear", "$type": "cubicBezier" },
+    "out":        { "$value": "cubic-bezier(0, 0, 0.2, 1)",    "$type": "cubicBezier" },
+    "out-expo":   { "$value": "cubic-bezier(0.16, 1, 0.3, 1)", "$type": "cubicBezier", "$description": "Signature Linear — ease-out prononcé" },
+    "in-out-expo":{ "$value": "cubic-bezier(0.87, 0, 0.13, 1)","$type": "cubicBezier" }
+  }
+}

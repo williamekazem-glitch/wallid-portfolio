@@ -1,0 +1,107 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "$description": "Tokens du tier component — mapping explicite de chaque composant vers la couche sémantique. Utile pour audit et migrations.",
+  "component": {
+    "button": {
+      "$description": "Composants Button + ButtonLink (components/ui/).",
+      "primary": {
+        "bg":     { "$value": "{semantic.light.action.primary}",    "$type": "color" },
+        "bg-hover": { "$value": "{semantic.light.action.primary-hover}", "$type": "color" },
+        "fg":     { "$value": "{semantic.light.action.primary-fg}", "$type": "color" },
+        "shadow": { "$value": "{shadow.inset-highlight}",            "$type": "shadow", "$description": "Signature Linear — highlight interne" }
+      },
+      "secondary": {
+        "bg":       { "$value": "{semantic.light.surface.muted}",   "$type": "color" },
+        "bg-hover": { "$value": "{semantic.light.surface.hover}",   "$type": "color" },
+        "border":   { "$value": "{semantic.light.border.default}",  "$type": "color" },
+        "border-hover": { "$value": "{semantic.light.border.strong}","$type": "color" },
+        "fg":       { "$value": "{semantic.light.text.primary}",    "$type": "color" }
+      },
+      "accent": {
+        "bg":       { "$value": "{semantic.light.accent.default}",  "$type": "color" },
+        "bg-hover": { "$value": "{semantic.light.accent.hover}",    "$type": "color" },
+        "fg":       { "$value": "{semantic.light.accent.fg}",       "$type": "color" }
+      },
+      "ghost": {
+        "bg-hover": { "$value": "{semantic.light.surface.muted}",   "$type": "color" },
+        "fg":       { "$value": "{semantic.light.text.primary}",    "$type": "color" }
+      },
+      "outline": {
+        "border":   { "$value": "{semantic.light.border.strong}",   "$type": "color" },
+        "bg-hover": { "$value": "{semantic.light.surface.muted}",   "$type": "color" },
+        "fg":       { "$value": "{semantic.light.text.primary}",    "$type": "color" }
+      },
+      "sizes": {
+        "sm": { "$value": "{size.control.sm}", "$type": "dimension" },
+        "md": { "$value": "{size.control.md}", "$type": "dimension" },
+        "lg": { "$value": "{size.control.lg}", "$type": "dimension" }
+      },
+      "radius": { "$value": "{radius.lg}", "$type": "dimension" }
+    },
+    "card": {
+      "$description": "Composant Card (components/ui/Card.tsx).",
+      "bg":         { "$value": "{semantic.light.surface.elev}",  "$type": "color" },
+      "border":     { "$value": "{semantic.light.border.default}","$type": "color" },
+      "border-hover": { "$value": "{semantic.light.border.strong}","$type": "color" },
+      "radius":     { "$value": "{radius.2xl}",                    "$type": "dimension" },
+      "padding":    { "$value": "{space.6}",                       "$type": "dimension" },
+      "shadow-rest": { "$value": "{shadow.xs}",                    "$type": "shadow" },
+      "shadow-hover":{ "$value": "{shadow.md}",                    "$type": "shadow" }
+    },
+    "badge": {
+      "$description": "Composant Badge (components/ui/Badge.tsx).",
+      "radius":  { "$value": "{radius.full}",     "$type": "dimension" },
+      "padding-x": { "$value": "{space.2}",       "$type": "dimension" },
+      "padding-y": { "$value": "{space.1}",       "$type": "dimension" },
+      "font-size": { "$value": "{font.size.xs}",  "$type": "dimension" },
+      "font-weight": { "$value": "{font.weight.medium}", "$type": "fontWeight" }
+    },
+    "input": {
+      "$description": "Composants Input, Textarea, Select (components/ui/).",
+      "bg":     { "$value": "{semantic.light.surface.elev}",   "$type": "color" },
+      "border": { "$value": "{semantic.light.border.default}", "$type": "color" },
+      "border-focus": { "$value": "{semantic.light.accent.default}", "$type": "color" },
+      "border-error": { "$value": "{semantic.light.feedback.danger}", "$type": "color" },
+      "fg":     { "$value": "{semantic.light.text.primary}",   "$type": "color" },
+      "placeholder": { "$value": "{semantic.light.text.subtle}", "$type": "color" },
+      "height": { "$value": "{size.control.md}",               "$type": "dimension" },
+      "radius": { "$value": "{radius.lg}",                     "$type": "dimension" },
+      "padding-x": { "$value": "{space.3}",                    "$type": "dimension" }
+    },
+    "nav": {
+      "$description": "Composant Nav (components/layout/Nav.tsx).",
+      "bg-scrolled": { "$value": "{semantic.light.surface.page}", "$type": "color", "$description": "Applique opacity.80 + blur.lg pour effet frosted" },
+      "height":      { "$value": "{size.control.2xl}",          "$type": "dimension", "$description": "64px" },
+      "link-fg":     { "$value": "{semantic.light.text.secondary}", "$type": "color" },
+      "link-fg-hover": { "$value": "{semantic.light.text.primary}", "$type": "color" }
+    },
+    "section": {
+      "$description": "Composant Section (components/ui/Section.tsx) — l'unité éditoriale.",
+      "padding-y-sm":  { "$value": "{space.16}", "$type": "dimension", "$description": "Mobile — 64px" },
+      "padding-y-md":  { "$value": "{space.20}", "$type": "dimension", "$description": "Tablette — 80px" },
+      "padding-y-lg":  { "$value": "{space.24}", "$type": "dimension", "$description": "Desktop — 96px" },
+      "header-margin": { "$value": "{space.12}", "$type": "dimension", "$description": "Espace sous le header de section" }
+    },
+    "eyebrow": {
+      "$description": "Motif éditorial 'eyebrow' — préfixe des sections.",
+      "font-size":   { "$value": "{font.size.xs}",      "$type": "dimension" },
+      "tracking":    { "$value": "{font.tracking.eyebrow}", "$type": "dimension" },
+      "weight":      { "$value": "{font.weight.medium}", "$type": "fontWeight" },
+      "text-transform": { "$value": "uppercase",         "$type": "string" },
+      "fg":          { "$value": "{semantic.light.text.secondary}", "$type": "color" }
+    },
+    "fab": {
+      "$description": "Floating Action Button — WhatsApp flottant en bas à droite.",
+      "size-mobile":  { "$value": "{size.control.xl}",  "$type": "dimension", "$description": "56px sur mobile" },
+      "size-desktop": { "$value": "{size.control.2xl}", "$type": "dimension", "$description": "64px sur desktop" },
+      "bg":     { "$value": "{semantic.light.action.primary}",    "$type": "color" },
+      "fg":     { "$value": "{semantic.light.action.primary-fg}", "$type": "color" },
+      "shadow": { "$value": "{shadow.lg}",                         "$type": "shadow" },
+      "radius": { "$value": "{radius.full}",                       "$type": "dimension" },
+      "position": {
+        "bottom-mobile":  { "$value": "{space.5}", "$type": "dimension", "$description": "20px" },
+        "bottom-desktop": { "$value": "{space.6}", "$type": "dimension", "$description": "24px" }
+      }
+    }
+  }
+}
