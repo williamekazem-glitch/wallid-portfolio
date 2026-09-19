@@ -18,18 +18,18 @@
       "950": { "$value": "oklch(0.10 0.008 40)", "$type": "color" }
     },
     "ink": {
-      "$description": "Bleu nuit d'Abidjan. Teinte 245° (navy profond). Surfaces sombres du portfolio.",
-      "50":  { "$value": "oklch(0.98 0.008 245)", "$type": "color" },
-      "100": { "$value": "oklch(0.94 0.018 245)", "$type": "color" },
-      "200": { "$value": "oklch(0.86 0.035 245)", "$type": "color" },
-      "300": { "$value": "oklch(0.75 0.055 245)", "$type": "color" },
-      "400": { "$value": "oklch(0.62 0.075 245)", "$type": "color" },
-      "500": { "$value": "oklch(0.48 0.090 245)", "$type": "color" },
-      "600": { "$value": "oklch(0.38 0.088 245)", "$type": "color" },
-      "700": { "$value": "oklch(0.32 0.080 245)", "$type": "color", "$description": "Hover states, borders forts" },
-      "800": { "$value": "oklch(0.26 0.075 245)", "$type": "color", "$description": "Cards surélevées (surface.elev dark) — cible #122352" },
-      "900": { "$value": "oklch(0.22 0.070 245)", "$type": "color", "$description": "Fond hero — cible #0B1B3A" },
-      "950": { "$value": "oklch(0.15 0.055 245)", "$type": "color", "$description": "Fond deepest, cible #060E24" }
+      "$description": "Charbon obsidien. Teinte 280° (indigo micro-tint pour eviter le flat black). Chroma quasi-nulle. Surfaces sombres du portfolio, palette validee prototype V19.",
+      "50":  { "$value": "oklch(0.98 0.003 280)", "$type": "color" },
+      "100": { "$value": "oklch(0.94 0.005 280)", "$type": "color" },
+      "200": { "$value": "oklch(0.86 0.007 280)", "$type": "color" },
+      "300": { "$value": "oklch(0.75 0.009 280)", "$type": "color" },
+      "400": { "$value": "oklch(0.62 0.010 280)", "$type": "color" },
+      "500": { "$value": "oklch(0.48 0.011 280)", "$type": "color" },
+      "600": { "$value": "oklch(0.38 0.012 280)", "$type": "color" },
+      "700": { "$value": "oklch(0.25 0.012 280)", "$type": "color", "$description": "Hover states, borders forts — cible #22222E" },
+      "800": { "$value": "oklch(0.18 0.010 280)", "$type": "color", "$description": "Cards surelevees (surface.elev dark) — cible #15151C" },
+      "900": { "$value": "oklch(0.11 0.008 280)", "$type": "color", "$description": "Fond hero signature — cible #0B0B10" },
+      "950": { "$value": "oklch(0.06 0.005 280)", "$type": "color", "$description": "Fond deepest, CTA final — cible #060608" }
     },
     "amber": {
       "$description": "Soleil ambre saturé. Teinte 65-75° (or chaud lumineux). Accent principal, CTAs, focus rings.",

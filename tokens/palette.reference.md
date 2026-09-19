@@ -72,8 +72,8 @@ Colors are OKLCH-defined but converted to hex for tools that don't support OKLCH
 | `text.subtle` | `{color.neutral.600}` | `#5A5451` |
 | `border.default` | `{color.neutral.200}` | `#EBE3DA` |
 | `border.strong` | `{color.neutral.400}` | `#AAA39D` |
-| `action.primary` | `{color.ink.900}` | `#001C38` |
-| `action.primary-hover` | `{color.ink.800}` | `#002645` |
+| `action.primary` | `{color.ink.900}` | `#040407` |
+| `action.primary-hover` | `{color.ink.800}` | `#111116` |
 | `action.primary-fg` | `{color.neutral.50}` | `#FBF8F3` |
 | `action.destructive` | `{color.danger.600}` | `#AC3031` |
 | `accent.default` | `{color.amber.700}` | `#AB4C00` |
@@ -90,23 +90,23 @@ Colors are OKLCH-defined but converted to hex for tools that don't support OKLCH
 
 | Role | Points to | Hex |
 |---|---|---|
-| `surface.page` | `{color.ink.900}` | `#001C38` |
-| `surface.elev` | `{color.ink.800}` | `#002645` |
-| `surface.muted` | `{color.ink.950}` | `#000C20` |
-| `surface.hover` | `{color.ink.700}` | `#013658` |
+| `surface.page` | `{color.ink.900}` | `#040407` |
+| `surface.elev` | `{color.ink.800}` | `#111116` |
+| `surface.muted` | `{color.ink.950}` | `#010101` |
+| `surface.hover` | `{color.ink.700}` | `#202127` |
 | `text.primary` | `{color.neutral.50}` | `#FBF8F3` |
 | `text.secondary` | `{color.neutral.200}` | `#EBE3DA` |
 | `text.subtle` | `{color.neutral.400}` | `#AAA39D` |
-| `border.default` | `{color.ink.700}` | `#013658` |
-| `border.strong` | `{color.ink.600}` | `#0C466E` |
+| `border.default` | `{color.ink.700}` | `#202127` |
+| `border.strong` | `{color.ink.600}` | `#414249` |
 | `action.primary` | `{color.amber.500}` | `#F99603` |
 | `action.primary-hover` | `{color.amber.400}` | `#FFB541` |
-| `action.primary-fg` | `{color.ink.950}` | `#000C20` |
+| `action.primary-fg` | `{color.ink.950}` | `#010101` |
 | `action.destructive` | `{color.danger.400}` | `#E66E68` |
 | `accent.default` | `{color.amber.400}` | `#FFB541` |
 | `accent.hover` | `{color.amber.300}` | `#FFC96A` |
 | `accent.soft` | `{color.amber.900}` | `#6C2D0A` |
-| `accent.fg` | `{color.ink.950}` | `#000C20` |
+| `accent.fg` | `{color.ink.950}` | `#010101` |
 | `feedback.success` | `{color.wa.500}` | `#5ECD66` |
 | `feedback.success-soft` | `{color.wa.900}` | `#00381C` |
 | `feedback.danger` | `{color.danger.400}` | `#E66E68` |

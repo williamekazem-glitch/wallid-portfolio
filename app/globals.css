@@ -58,12 +58,12 @@
 
   :root[data-theme="dark"],
   .dark {
-    --bg: 30 8% 6%;
-    --bg-elev: 30 6% 9%;
-    --surface: 30 6% 11%;
-    --surface-hover: 30 6% 14%;
-    --border: 30 5% 18%;
-    --border-strong: 30 5% 28%;
+    --bg: 240 19% 5%;
+    --bg-elev: 240 15% 10%;
+    --surface: 240 15% 16%;
+    --surface-hover: 240 12% 20%;
+    --border: 240 8% 20%;
+    --border-strong: 240 8% 30%;
     --fg: 40 20% 96%;
     --fg-muted: 30 6% 68%;
     --fg-subtle: 30 4% 48%;
@@ -88,12 +88,12 @@
 
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --bg: 30 8% 6%;
-      --bg-elev: 30 6% 9%;
-      --surface: 30 6% 11%;
-      --surface-hover: 30 6% 14%;
-      --border: 30 5% 18%;
-      --border-strong: 30 5% 28%;
+      --bg: 240 19% 5%;
+      --bg-elev: 240 15% 10%;
+      --surface: 240 15% 16%;
+      --surface-hover: 240 12% 20%;
+      --border: 240 8% 20%;
+      --border-strong: 240 8% 30%;
       --fg: 40 20% 96%;
       --fg-muted: 30 6% 68%;
       --fg-subtle: 30 4% 48%;

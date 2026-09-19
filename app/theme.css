@@ -17,17 +17,17 @@
   --color-neutral-800: oklch(0.24 0.012 40);
   --color-neutral-900: oklch(0.17 0.010 40);
   --color-neutral-950: oklch(0.10 0.008 40);
-  --color-ink-50: oklch(0.98 0.008 245);
-  --color-ink-100: oklch(0.94 0.018 245);
-  --color-ink-200: oklch(0.86 0.035 245);
-  --color-ink-300: oklch(0.75 0.055 245);
-  --color-ink-400: oklch(0.62 0.075 245);
-  --color-ink-500: oklch(0.48 0.090 245);
-  --color-ink-600: oklch(0.38 0.088 245);
-  --color-ink-700: oklch(0.32 0.080 245);
-  --color-ink-800: oklch(0.26 0.075 245);
-  --color-ink-900: oklch(0.22 0.070 245);
-  --color-ink-950: oklch(0.15 0.055 245);
+  --color-ink-50: oklch(0.98 0.003 280);
+  --color-ink-100: oklch(0.94 0.005 280);
+  --color-ink-200: oklch(0.86 0.007 280);
+  --color-ink-300: oklch(0.75 0.009 280);
+  --color-ink-400: oklch(0.62 0.010 280);
+  --color-ink-500: oklch(0.48 0.011 280);
+  --color-ink-600: oklch(0.38 0.012 280);
+  --color-ink-700: oklch(0.25 0.012 280);
+  --color-ink-800: oklch(0.18 0.010 280);
+  --color-ink-900: oklch(0.11 0.008 280);
+  --color-ink-950: oklch(0.06 0.005 280);
   --color-amber-50: oklch(0.98 0.020 80);
   --color-amber-100: oklch(0.95 0.045 78);
   --color-amber-200: oklch(0.90 0.080 75);
@@ -74,8 +74,8 @@
   --text-subtle: oklch(0.45 0.010 45);
   --border-default: oklch(0.92 0.015 72);
   --border-strong: oklch(0.72 0.012 60);
-  --action-primary: oklch(0.22 0.070 245);
-  --action-primary-hover: oklch(0.26 0.075 245);
+  --action-primary: oklch(0.11 0.008 280);
+  --action-primary-hover: oklch(0.18 0.010 280);
   --action-primary-fg: oklch(0.98 0.008 78);
   --action-destructive: oklch(0.50 0.160 25);
   --accent-default: oklch(0.53 0.145 50);
@@ -158,23 +158,23 @@
 
 :root[data-theme="dark"] {
   /* Semantic — dark (designed, not inverted) */
-  --surface-page: oklch(0.22 0.070 245);
-  --surface-elev: oklch(0.26 0.075 245);
-  --surface-muted: oklch(0.15 0.055 245);
-  --surface-hover: oklch(0.32 0.080 245);
+  --surface-page: oklch(0.11 0.008 280);
+  --surface-elev: oklch(0.18 0.010 280);
+  --surface-muted: oklch(0.06 0.005 280);
+  --surface-hover: oklch(0.25 0.012 280);
   --text-primary: oklch(0.98 0.008 78);
   --text-secondary: oklch(0.92 0.015 72);
   --text-subtle: oklch(0.72 0.012 60);
-  --border-default: oklch(0.32 0.080 245);
-  --border-strong: oklch(0.38 0.088 245);
+  --border-default: oklch(0.25 0.012 280);
+  --border-strong: oklch(0.38 0.012 280);
   --action-primary: oklch(0.76 0.170 65);
   --action-primary-hover: oklch(0.83 0.155 72);
-  --action-primary-fg: oklch(0.15 0.055 245);
+  --action-primary-fg: oklch(0.06 0.005 280);
   --action-destructive: oklch(0.68 0.150 25);
   --accent-default: oklch(0.83 0.155 72);
   --accent-hover: oklch(0.87 0.130 78);
   --accent-soft: oklch(0.38 0.100 45);
-  --accent-fg: oklch(0.15 0.055 245);
+  --accent-fg: oklch(0.06 0.005 280);
   --feedback-success: oklch(0.76 0.175 145);
   --feedback-success-soft: oklch(0.30 0.075 155);
   --feedback-danger: oklch(0.68 0.150 25);
@@ -184,23 +184,23 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --surface-page: oklch(0.22 0.070 245);
-    --surface-elev: oklch(0.26 0.075 245);
-    --surface-muted: oklch(0.15 0.055 245);
-    --surface-hover: oklch(0.32 0.080 245);
+    --surface-page: oklch(0.11 0.008 280);
+    --surface-elev: oklch(0.18 0.010 280);
+    --surface-muted: oklch(0.06 0.005 280);
+    --surface-hover: oklch(0.25 0.012 280);
     --text-primary: oklch(0.98 0.008 78);
     --text-secondary: oklch(0.92 0.015 72);
     --text-subtle: oklch(0.72 0.012 60);
-    --border-default: oklch(0.32 0.080 245);
-    --border-strong: oklch(0.38 0.088 245);
+    --border-default: oklch(0.25 0.012 280);
+    --border-strong: oklch(0.38 0.012 280);
     --action-primary: oklch(0.76 0.170 65);
     --action-primary-hover: oklch(0.83 0.155 72);
-    --action-primary-fg: oklch(0.15 0.055 245);
+    --action-primary-fg: oklch(0.06 0.005 280);
     --action-destructive: oklch(0.68 0.150 25);
     --accent-default: oklch(0.83 0.155 72);
     --accent-hover: oklch(0.87 0.130 78);
     --accent-soft: oklch(0.38 0.100 45);
-    --accent-fg: oklch(0.15 0.055 245);
+    --accent-fg: oklch(0.06 0.005 280);
     --feedback-success: oklch(0.76 0.175 145);
     --feedback-success-soft: oklch(0.30 0.075 155);
     --feedback-danger: oklch(0.68 0.150 25);

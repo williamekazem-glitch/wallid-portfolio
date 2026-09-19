@@ -1,4 +1,4 @@
-# Cahier des charges — Portfolio Kazem Williame Wallid
+﻿# Cahier des charges — Portfolio Kazem Williame Wallid
 
 **Version** : v2.0 — 2026-09-19
 **Auteur** : Kazem Williame Wallid
@@ -20,8 +20,8 @@
 | Canal | Valeur |
 |---|---|
 | Email | williame.kazem@gmail.com |
-| Téléphone | **+225 01 51 63 63 63** |
-| WhatsApp | Même numéro (format international : `2250151636363`) |
+| Téléphone | **+225 07 10 11 11 18** |
+| WhatsApp | Même numéro (format international : `2250710111118`) |
 | LinkedIn | https://www.linkedin.com/in/williame-wallid-kazem-02a724122/ |
 | Facebook | https://www.facebook.com/williamewallid.kazem.1 |
 | TikTok | https://www.tiktok.com/@wallidkazem |
@@ -263,7 +263,7 @@ Une fois le prototype figé à 100% :
 
 ### Phase 2 — Data layer
 1. Enrichir `lib/data.ts` : 6 questions FAQ, 3 étapes Process, messages WhatsApp pré-remplis par service (listes de sous-titres)
-2. Mettre à jour `lib/site-config.ts` : numéro téléphone à jour (`+225 01 51 63 63 63`)
+2. Mettre à jour `lib/site-config.ts` : numéro téléphone à jour (`+225 07 10 11 11 18`)
 
 ### Phase 3 — Composants Next.js à créer
 - `<Nav>` avec toggle light/dark + status live + morph sur scroll
