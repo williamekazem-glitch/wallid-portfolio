@@ -877,6 +877,17 @@ export function PortfolioV19() {
               </a>
             </div>
             <div className="reviews-hint reveal reveal-delay-2">Les premiers témoignages arrivent bientôt</div>
+            <div style={{ marginTop: 20, textAlign: "center" }} className="reveal reveal-delay-3">
+              <a href="/avis" style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                fontFamily: "var(--font-display-pv)", fontWeight: 700,
+                fontSize: 12, letterSpacing: "0.18em", textTransform: "uppercase",
+                color: "var(--sun-700)", padding: "10px 18px",
+                borderBottom: "1px solid var(--sun-700)",
+              }}>
+                Voir la page dédiée aux avis →
+              </a>
+            </div>
           </div>
         </section>
 
@@ -1020,6 +1031,7 @@ export function PortfolioV19() {
     </div>
   );
 }
+
 
 
 

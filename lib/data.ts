@@ -292,7 +292,30 @@ export function buildQuickWhatsAppHref(text?: string): string {
   return `https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(message)}`;
 }
 
-// ─── Reviews stars (empty until real testimonials arrive) ────────
+// ─── Reviews (empty until real testimonials arrive) ────────
 export const starIcon = Star;
 export const reviewsHint = "Les premiers témoignages arrivent bientôt.";
+
+// Vrai témoignage — à ajouter seulement avec l'accord du client.
+// Règle éditoriale non négociable : ZÉRO faux avis, ZÉRO exagération.
+export type Review = {
+  quote: string; // citation textuelle du client, courte
+  author: string; // "Prénom N." (respect vie privée, initiale du nom)
+  role: string; // profession / contexte
+  service: Category | "Autre";
+  date: string; // format "Mois AAAA" — ex: "Sept 2026"
+};
+
+export const reviews: Review[] = [
+  // À alimenter au fil des vrais avis reçus sur WhatsApp.
+  // Exemple de format à respecter (à décommenter avec un vrai avis) :
+  // {
+  //   quote: "Wallid a livré à l'heure, prix tenu. Je recommande.",
+  //   author: "Aïssatou D.",
+  //   role: "Restauratrice, Cocody",
+  //   service: "Aviculture",
+  //   date: "Oct 2026",
+  // },
+];
+
 
