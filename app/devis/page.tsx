@@ -1,94 +1,61 @@
-import { QuoteForm } from "@/components/sections/QuoteForm";
-import Link from "next/link";
-import { ArrowLeft, ShieldCheck, Clock, MessageCircle } from "lucide-react";
-import { services } from "@/lib/data";
+﻿import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
-import { ButtonLink } from "@/components/ui/ButtonLink";
-
-// Strip icons before crossing the Server → Client boundary
-const quoteFormServices = services.map((s) => ({ slug: s.slug, title: s.title }));
 
 export const metadata = {
   title: "Demander un devis",
-  description:
-    "Formulaire de demande de devis — décrivez votre besoin, recevez une réponse chiffrée sous 24h.",
+  description: "Écrivez-moi directement sur WhatsApp pour obtenir un devis rapide.",
 };
 
-export default function DevisPage({
-  searchParams,
-}: {
-  searchParams?: { service?: string };
-}) {
-  const preSelected = searchParams?.service;
-
+// Placeholder page — le formulaire structuré est prévu en v2.
+// V1 canalise tout via WhatsApp direct (cf. cahier des charges).
+export default function DevisPage() {
+  const waHref = `https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(
+    "Bonjour Wallid, je souhaite un devis pour :"
+  )}`;
   return (
-    <div className="pt-32 sm:pt-40 pb-20 lg:pb-32">
-      <div className="container-tight">
-        <Link
-          href="/"
-          className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-md"
-        >
-          <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-          Retour à l'accueil
-        </Link>
-
-        <div className="mt-8">
-          <span className="eyebrow">Demande de devis</span>
-          <h1 className="mt-6 font-serif text-display-xl text-balance text-foreground">
-            Décrivez votre projet.<br />
-            <span className="italic text-muted">Je reviens vers vous sous 24h.</span>
+    <div className="pv19">
+      <main
+        id="main"
+        style={{
+          minHeight: "100vh",
+          display: "grid",
+          placeItems: "center",
+          padding: "80px 24px",
+          background: "var(--ink-900)",
+          color: "#fff",
+          textAlign: "center",
+        }}
+      >
+        <div style={{ maxWidth: 520 }}>
+          <div className="section-eyebrow" style={{ justifyContent: "center", marginBottom: 20 }}>
+            Demander un devis
+          </div>
+          <h1
+            style={{
+              fontFamily: "var(--font-display-pv)",
+              fontWeight: 700,
+              fontSize: "clamp(2rem, 5vw, 3rem)",
+              letterSpacing: "-0.03em",
+              lineHeight: 1.05,
+              marginBottom: 20,
+            }}
+          >
+            Le plus rapide, <span style={{ fontFamily: "var(--font-serif-pv)", fontStyle: "italic", color: "var(--sun-400)" }}>c&apos;est</span> WhatsApp.
           </h1>
-          <p className="mt-6 max-w-2xl text-lg text-muted leading-relaxed">
-            Prenez 2 minutes. Plus vous êtes précis, plus mon devis sera juste.
-            Devis gratuit, sans engagement.
+          <p style={{ color: "rgba(255,255,255,0.7)", marginBottom: 32 }}>
+            Décrivez-moi votre besoin en quelques mots — je vous réponds sous 4h avec un devis clair
+            sous 24h. Gratuit, sans engagement.
           </p>
+          <a href={waHref} className="btn btn-wa" style={{ minHeight: 56 }}>
+            Écrire sur WhatsApp
+          </a>
+          <div style={{ marginTop: 24 }}>
+            <Link href="/" style={{ color: "var(--sun-400)", fontSize: 14 }}>
+              ← Retour à l&apos;accueil
+            </Link>
+          </div>
         </div>
-
-        <ul className="mt-10 flex flex-wrap gap-6 text-sm">
-          <li className="inline-flex items-center gap-2 text-muted">
-            <ShieldCheck className="h-4 w-4 text-success" aria-hidden="true" />
-            Devis gratuit
-          </li>
-          <li className="inline-flex items-center gap-2 text-muted">
-            <Clock className="h-4 w-4 text-success" aria-hidden="true" />
-            Réponse sous 24h
-          </li>
-          <li className="inline-flex items-center gap-2 text-muted">
-            <MessageCircle className="h-4 w-4 text-success" aria-hidden="true" />
-            Sans engagement
-          </li>
-        </ul>
-
-        <div className="mt-14 grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
-          <QuoteForm services={quoteFormServices} preSelected={preSelected} />
-
-          <aside className="lg:sticky lg:top-28 lg:self-start">
-            <div className="rounded-2xl border border-border bg-background-elev p-6">
-              <h2 className="font-serif text-xl text-foreground">Vous préférez parler ?</h2>
-              <p className="mt-2 text-sm text-muted leading-relaxed">
-                Certains projets méritent une conversation directe. Je suis joignable :
-              </p>
-              <div className="mt-6 flex flex-col gap-3">
-                <ButtonLink
-                  href={`https://wa.me/${siteConfig.whatsapp}?text=Bonjour%20Wallid%2C%20je%20souhaite%20un%20devis`}
-                  variant="primary"
-                  size="md"
-                >
-                  <MessageCircle className="h-4 w-4" aria-hidden="true" />
-                  WhatsApp direct
-                </ButtonLink>
-                <ButtonLink href={`tel:${siteConfig.phone.replace(/\s/g, "")}`} variant="outline" size="md">
-                  Appeler {siteConfig.phone}
-                </ButtonLink>
-              </div>
-              <p className="mt-6 text-xs text-subtle leading-relaxed">
-                En envoyant le formulaire, vous acceptez d'être recontacté par téléphone,
-                email ou WhatsApp au sujet de votre demande.
-              </p>
-            </div>
-          </aside>
-        </div>
-      </div>
+      </main>
     </div>
   );
 }

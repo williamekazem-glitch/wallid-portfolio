@@ -34,16 +34,16 @@ export const metadata: Metadata = {
     template: "%s - " + siteConfig.name,
   },
   description:
-    "Portfolio de Kazem Williame Wallid - entrepreneur multi-services a Abidjan. Aviculture, transport, services techniques, digital, gestion de stock. Un seul contact.",
+    "Portfolio de Kazem Williame Wallid - entrepreneur multi-services à Abidjan. Aviculture, transport, services techniques, digital, gestion de stock. Un seul contact.",
   keywords: [
     "portfolio",
     "Abidjan",
-    "Cote d'Ivoire",
+    "Côte d'Ivoire",
     "aviculture",
     "gestion de stock",
     "services techniques",
-    "chauffeur prive",
-    "videosurveillance",
+    "chauffeur privé",
+    "vidéosurveillance",
     "sites internet",
     "no-code",
     "packaging sur mesure",
@@ -89,3 +89,4 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
+

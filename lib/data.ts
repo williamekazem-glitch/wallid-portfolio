@@ -1,4 +1,4 @@
-import {
+﻿import {
   Egg,
   Truck,
   Wrench,
@@ -29,7 +29,7 @@ export const categoryOrder: Category[] = [
 ];
 
 export type ServiceDef = {
-  id: string;
+  slug: string;
   index: string;
   category: Category;
   title: string;
@@ -43,7 +43,7 @@ export type ServiceDef = {
 
 export const services: ServiceDef[] = [
   {
-    id: "aviculture",
+    slug: "aviculture",
     index: "01",
     category: "Aviculture",
     title: "Aviculture",
@@ -60,7 +60,7 @@ export const services: ServiceDef[] = [
     ctaLabel: "Demander un devis",
   },
   {
-    id: "transport",
+    slug: "transport",
     index: "02",
     category: "Transport",
     title: "Transport",
@@ -81,7 +81,7 @@ export const services: ServiceDef[] = [
     },
   },
   {
-    id: "technique",
+    slug: "technique",
     index: "03",
     category: "Services techniques",
     title: "Services techniques",
@@ -99,7 +99,7 @@ export const services: ServiceDef[] = [
     ctaLabel: "Demander un devis",
   },
   {
-    id: "digital",
+    slug: "digital",
     index: "04",
     category: "Digital",
     title: "Digital",
@@ -116,7 +116,7 @@ export const services: ServiceDef[] = [
     ctaLabel: "Parler d'un projet",
   },
   {
-    id: "gestion",
+    slug: "gestion",
     index: "05",
     category: "Gestion de stock",
     title: "Gestion de stock",
@@ -295,3 +295,4 @@ export function buildQuickWhatsAppHref(text?: string): string {
 // ─── Reviews stars (empty until real testimonials arrive) ────────
 export const starIcon = Star;
 export const reviewsHint = "Les premiers témoignages arrivent bientôt.";
+

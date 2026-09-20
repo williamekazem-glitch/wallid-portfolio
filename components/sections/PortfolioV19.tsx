@@ -446,8 +446,8 @@ export function PortfolioV19() {
     }
   };
 
-  const toggleExpand = (id: string) => {
-    setExpanded((s) => ({ ...s, [id]: !s[id] }));
+  const toggleExpand = (slug: string) => {
+    setExpanded((s) => ({ ...s, [slug]: !s[slug] }));
   };
 
   const trajetsSeq = [...trajets, ...trajets];
@@ -516,7 +516,7 @@ export function PortfolioV19() {
             <div className="hero-main">
               <div className="hero-content">
                 <span className="hero-badge reveal">Disponible pour vos projets</span>
-                <div className="hero-eyebrow reveal reveal-delay-1">Entrepreneur multi-services - Abidjan</div>
+                <div className="hero-eyebrow reveal reveal-delay-1">Entrepreneur multi-services · Abidjan</div>
                 <h1 className="reveal reveal-delay-1">
                   <span aria-hidden="true">
                     {scrambleHead} <span className="accent">polyvalent</span>{scrambleTail}
@@ -524,7 +524,7 @@ export function PortfolioV19() {
                   <span className="pv19-sr-only">Un profil polyvalent, des solutions concrètes.</span>
                 </h1>
                 <p className="hero-lede reveal reveal-delay-2">
-                  Cinq domaines, un seul interlocuteur. De l&apos;aviculture au digital, en passant par le transport et le batiment. J&apos;accompagne particuliers et entreprises a Abidjan avec un WhatsApp direct.
+                  Cinq domaines, un seul interlocuteur. De l&apos;aviculture au digital, en passant par le transport et le bâtiment — j&apos;accompagne particuliers et entreprises à Abidjan avec un WhatsApp direct.
                 </p>
                 <div className="hero-ctas reveal reveal-delay-3">
                   <a href={"https://wa.me/" + WA} className="btn btn-wa magnetic">
@@ -597,10 +597,10 @@ export function PortfolioV19() {
             </div>
             <div className="services-grid">
               {services.map((svc, i) => {
-                const isOpen = !!expanded[svc.id];
+                const isOpen = !!expanded[svc.slug];
                 return (
                   <article
-                    key={svc.id}
+                    key={svc.slug}
                     className={"service reveal reveal-delay-" + i + (isOpen ? " is-open" : "")}
                     role="button"
                     tabIndex={0}
@@ -609,12 +609,12 @@ export function PortfolioV19() {
                     onClick={(e) => {
                       const t = e.target as HTMLElement;
                       if (t.closest(".service-cta")) return;
-                      toggleExpand(svc.id);
+                      toggleExpand(svc.slug);
                     }}
                     onKeyDown={(e) => {
                       if (e.key === "Enter" || e.key === " ") {
                         e.preventDefault();
-                        toggleExpand(svc.id);
+                        toggleExpand(svc.slug);
                       }
                     }}
                   >
@@ -628,11 +628,11 @@ export function PortfolioV19() {
                         <path d="m12 5 7 7-7 7" />
                       </svg>
                     </div>
-                    <div className="service-illu" aria-hidden="true">{ServiceIllus[svc.id]}</div>
+                    <div className="service-illu" aria-hidden="true">{ServiceIllus[svc.slug]}</div>
                     <div className="service-idx">
                       <span>{svc.index} - {svc.title.split(" ")[0]}</span>
                     </div>
-                    <div className="service-icon">{ServiceIcons[svc.id]}</div>
+                    <div className="service-icon">{ServiceIcons[svc.slug]}</div>
                     <h3>{svc.title}</h3>
                     <p>{svc.short}</p>
                     <div className="service-hint">Cliquez pour voir plus</div>
@@ -985,5 +985,7 @@ export function PortfolioV19() {
     </div>
   );
 }
+
+
 
 
