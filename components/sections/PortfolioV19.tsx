@@ -468,7 +468,6 @@ export function PortfolioV19() {
         </div>
       )}
 
-      <div className="scroll-progress" aria-hidden="true" style={{ width: scrollPct + "%" }} />
 
       <nav className={"nav" + (scrolled ? " compact" : "")} aria-label="Navigation principale">
         <a href="#" className="brand">
@@ -927,8 +926,6 @@ export function PortfolioV19() {
         </svg>
       </button>
 
-      <div className="cursor-halo" aria-hidden="true" ref={cursorHaloRef} />
-      <div className="cursor-dot" aria-hidden="true" ref={cursorDotRef} />
 
       <div className={"mobile-bar" + (pastHeroFar ? " visible" : "")} role="navigation" aria-label="Actions rapides">
         <a href={"https://wa.me/" + WA} className="mobile-bar-btn mobile-bar-btn--wa">
@@ -953,12 +950,11 @@ export function PortfolioV19() {
         Email copié ✓
       </div>
 
-      <a href={"https://wa.me/" + WA} className="fab" aria-label="Contacter Wallid sur WhatsApp">
-        <WhatsAppIcon size={28} />
-      </a>
+
     </div>
   );
 }
+
 
 
 
