@@ -2259,3 +2259,10 @@ body.pv19-body.keyboard-user .pv19 .cursor-dot { display: none !important; }
   .pv19 .reveal { opacity: 1; transform: none; }
 }
 
+
+/* ============ SERVICE PAGE — hero grid stack on mobile ============ */
+@media (max-width: 900px) {
+  .pv19 .service-hero-grid {
+    grid-template-columns: 1fr !important;
+  }
+}

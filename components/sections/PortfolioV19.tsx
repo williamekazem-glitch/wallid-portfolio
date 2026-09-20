@@ -476,9 +476,10 @@ export function PortfolioV19() {
         </a>
         <div className="nav-links">
           <a href="#services">Services</a>
-          <a href="#apropos">À propos</a>
+          <a href="/a-propos">À propos</a>
           <a href="#pourquoi">Pourquoi moi</a>
-          <a href="#contact">Contact</a>
+          <a href="/avis">Avis</a>
+          <a href="/contact">Contact</a>
         </div>
         <span className="nav-status" aria-label="Disponibilité">
           <span className="nav-status-dot" aria-hidden="true" />
@@ -634,6 +635,17 @@ export function PortfolioV19() {
                   Ma spécialité professionnelle est la <strong>gestion de stock</strong> — pour commerces, restaurants, entrepôts, partout où il y a de la marchandise à suivre. À côté, j&apos;exploite quatre autres domaines que je maîtrise : aviculture, transport, services techniques et digital. Peu importe la demande, je m&apos;engage sur ce que je peux tenir, et je le tiens.
                 </p>
                 <blockquote className="about-quote">Un profil polyvalent, des solutions concrètes.</blockquote>
+                <div style={{ marginTop: 32 }}>
+                  <a href="/a-propos" style={{
+                    display: "inline-flex", alignItems: "center", gap: 10,
+                    padding: "14px 22px", borderRadius: 14,
+                    background: "var(--deep-900)", color: "var(--ivory-50)",
+                    fontFamily: "var(--font-display-pv)", fontWeight: 700, fontSize: 15,
+                    boxShadow: "0 8px 20px -6px rgba(26,20,8,0.4)",
+                  }}>
+                    Voir mon parcours complet →
+                  </a>
+                </div>
               </div>
               <div className="about-stage reveal reveal-delay-2" aria-label="Carte de visite qui se retourne">
                 <div className="about-stage-label">
@@ -954,6 +966,7 @@ export function PortfolioV19() {
     </div>
   );
 }
+
 
 
 

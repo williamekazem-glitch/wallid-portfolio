@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
 import { buildServiceWhatsAppHref, type ServiceDef } from "@/lib/data";
 
@@ -64,134 +64,170 @@ export function ServicePageContent({ service, related }: { service: ServiceDef; 
           <div className="hero-bg" aria-hidden="true" />
           <div className="blob blob-1" aria-hidden="true" />
           <div className="wrap" style={{ position: "relative", zIndex: 1 }}>
-            <div className="section-eyebrow" style={{ marginBottom: 20 }}>
-              Pôle {service.index}
-            </div>
-            <h1
+            <div
               style={{
-                fontFamily: "var(--font-display-pv)",
-                fontWeight: 700,
-                fontSize: "clamp(2.5rem, 6vw, 4.5rem)",
-                lineHeight: 1.05,
-                letterSpacing: "-0.03em",
-                marginBottom: 24,
-                maxWidth: "18ch",
-              }}
-            >
-              {service.title}
-            </h1>
-            <p
-              style={{
-                fontSize: "clamp(1.05rem, 1.8vw, 1.25rem)",
-                color: "rgba(248,250,252,0.72)",
-                maxWidth: "60ch",
-                marginBottom: 40,
-                lineHeight: 1.5,
-              }}
-            >
-              {service.description}
-            </p>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 14 }}>
-              <a
-                href={waHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-wa magnetic"
-                style={{ minHeight: 56, fontSize: 16 }}
-              >
-                <WhatsAppIcon size={20} />
-                {service.ctaLabel}
-              </a>
-              <a href={`tel:+${WA}`} className="btn btn-ghost" style={{ minHeight: 56 }}>
-                Appeler {siteConfig.phone}
-              </a>
-            </div>
-          </div>
-        </section>
-
-        <section style={{ padding: "var(--section) var(--gutter)", background: "var(--ink-950)" }}>
-          <div className="wrap">
-            <div className="section-eyebrow">Ce que je propose</div>
-            <h2 className="section-title" style={{ marginBottom: 48 }}>
-              {service.highlights.length} prestations{" "}
-              <span className="serif">disponibles</span>.
-            </h2>
-            <ul
-              style={{
-                listStyle: "none",
-                padding: 0,
                 display: "grid",
-                gap: 16,
-                gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+                gridTemplateColumns: "minmax(0, 1.35fr) minmax(0, 1fr)",
+                gap: "clamp(32px, 5vw, 64px)",
+                alignItems: "start",
               }}
+              className="service-hero-grid"
             >
-              {service.highlights.map((h) => (
-                <li
-                  key={h}
-                  style={{
-                    padding: "24px 28px",
-                    borderRadius: "var(--radius)",
-                    background:
-                      "linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015))",
-                    border: "1px solid var(--ink-border)",
-                    display: "flex",
-                    alignItems: "flex-start",
-                    gap: 14,
-                  }}
-                >
-                  <span
-                    style={{
-                      color: "var(--sun-500)",
-                      fontSize: 20,
-                      lineHeight: 1,
-                      marginTop: 2,
-                      flexShrink: 0,
-                    }}
-                    aria-hidden="true"
-                  >
-                    ✓
-                  </span>
-                  <span
-                    style={{
-                      fontSize: "1rem",
-                      color: "rgba(248,250,252,0.85)",
-                      fontWeight: 500,
-                      lineHeight: 1.4,
-                    }}
-                  >
-                    {h}
-                  </span>
-                </li>
-              ))}
-            </ul>
-
-            {service.extras && (
-              <div
-                style={{
-                  marginTop: 40,
-                  padding: "28px 32px",
-                  borderRadius: "var(--radius)",
-                  border: "1px solid rgba(251,191,36,0.25)",
-                  background:
-                    "linear-gradient(180deg, rgba(251,191,36,0.08), rgba(251,191,36,0.02))",
-                }}
-              >
-                <div className="section-eyebrow" style={{ marginBottom: 8 }}>
-                  {service.extras.label}
+              <div>
+                <div className="section-eyebrow" style={{ marginBottom: 20 }}>
+                  Pôle {service.index}
                 </div>
-                <p
+                <h1
                   style={{
                     fontFamily: "var(--font-display-pv)",
-                    fontSize: "1.25rem",
                     fontWeight: 700,
-                    color: "#fff",
-                    letterSpacing: "-0.01em",
+                    fontSize: "clamp(2.5rem, 6vw, 4.5rem)",
+                    lineHeight: 1.05,
+                    letterSpacing: "-0.03em",
+                    marginBottom: 24,
+                    maxWidth: "14ch",
                   }}
                 >
-                  {service.extras.content}
+                  {service.title}
+                </h1>
+                <p
+                  style={{
+                    fontSize: "clamp(1.05rem, 1.8vw, 1.25rem)",
+                    color: "rgba(248,250,252,0.72)",
+                    maxWidth: "45ch",
+                    marginBottom: 32,
+                    lineHeight: 1.5,
+                  }}
+                >
+                  {service.description}
                 </p>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 14 }}>
+                  <a
+                    href={waHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-wa magnetic"
+                    style={{ minHeight: 56, fontSize: 16 }}
+                  >
+                    <WhatsAppIcon size={20} />
+                    {service.ctaLabel}
+                  </a>
+                  <a href={`tel:+${WA}`} className="btn btn-ghost" style={{ minHeight: 56 }}>
+                    Appeler {siteConfig.phone}
+                  </a>
+                </div>
               </div>
-            )}
+
+              <aside
+                aria-label="Prestations incluses"
+                style={{
+                  padding: "28px 26px",
+                  borderRadius: "var(--radius)",
+                  background:
+                    "linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02))",
+                  border: "1px solid var(--ink-border)",
+                  backdropFilter: "blur(8px)",
+                }}
+              >
+                <div
+                  className="section-eyebrow"
+                  style={{
+                    marginBottom: 20,
+                    fontSize: 11,
+                    letterSpacing: "0.24em",
+                  }}
+                >
+                  {service.highlights.length} prestations
+                </div>
+                <ul style={{ listStyle: "none", padding: 0, display: "grid", gap: 12 }}>
+                  {service.highlights.map((h) => (
+                    <li
+                      key={h}
+                      style={{
+                        display: "flex",
+                        alignItems: "flex-start",
+                        gap: 12,
+                        padding: "10px 14px",
+                        borderRadius: 10,
+                        background: "rgba(255,255,255,0.03)",
+                        border: "1px solid rgba(255,255,255,0.05)",
+                        transition: "background 0.2s var(--ease), border-color 0.2s var(--ease)",
+                      }}
+                    >
+                      <span
+                        style={{
+                          display: "inline-flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          width: 22,
+                          height: 22,
+                          borderRadius: 6,
+                          background: "rgba(251,191,36,0.15)",
+                          border: "1px solid rgba(251,191,36,0.3)",
+                          color: "var(--sun-400)",
+                          fontSize: 12,
+                          fontWeight: 700,
+                          flexShrink: 0,
+                          marginTop: 1,
+                        }}
+                        aria-hidden="true"
+                      >
+                        ✓
+                      </span>
+                      <span
+                        style={{
+                          fontSize: 14,
+                          color: "rgba(248,250,252,0.9)",
+                          fontWeight: 500,
+                          lineHeight: 1.4,
+                        }}
+                      >
+                        {h}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+
+                {service.extras && (
+                  <div
+                    style={{
+                      marginTop: 20,
+                      padding: "16px 18px",
+                      borderRadius: 10,
+                      border: "1px solid rgba(251,191,36,0.3)",
+                      background:
+                        "linear-gradient(180deg, rgba(251,191,36,0.1), rgba(251,191,36,0.03))",
+                    }}
+                  >
+                    <div
+                      style={{
+                        fontFamily: "var(--font-display-pv)",
+                        fontWeight: 700,
+                        fontSize: 10,
+                        letterSpacing: "0.22em",
+                        textTransform: "uppercase",
+                        color: "var(--sun-400)",
+                        marginBottom: 6,
+                      }}
+                    >
+                      {service.extras.label}
+                    </div>
+                    <p
+                      style={{
+                        fontFamily: "var(--font-display-pv)",
+                        fontWeight: 700,
+                        fontSize: 14,
+                        color: "#fff",
+                        letterSpacing: "-0.01em",
+                        lineHeight: 1.35,
+                      }}
+                    >
+                      {service.extras.content}
+                    </p>
+                  </div>
+                )}
+              </aside>
+            </div>
           </div>
         </section>
 
@@ -314,3 +350,4 @@ export function ServicePageContent({ service, related }: { service: ServiceDef; 
     </div>
   );
 }
+
