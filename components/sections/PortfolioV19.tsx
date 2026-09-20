@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 import { siteConfig } from "@/lib/site-config";
@@ -124,7 +125,6 @@ export function PortfolioV19() {
   const reduceMotion = usePrefersReducedMotion();
 
   const [theme, setTheme] = useState<"dark" | "light">("dark");
-  const [expanded, setExpanded] = useState<Record<string, boolean>>({});
   const [scrolled, setScrolled] = useState(false);
   const [pastHero, setPastHero] = useState(false);
   const [pastHeroFar, setPastHeroFar] = useState(false);
@@ -139,14 +139,6 @@ export function PortfolioV19() {
   const heroPhotoRef = useRef<HTMLElement | null>(null);
   const cursorHaloRef = useRef<HTMLDivElement | null>(null);
   const cursorDotRef = useRef<HTMLDivElement | null>(null);
-  const closeTimersRef = useRef<Record<string, number>>({});
-
-  useEffect(() => {
-    const timers = closeTimersRef.current;
-    return () => {
-      Object.values(timers).forEach((id) => window.clearTimeout(id));
-    };
-  }, []);
 
   useEffect(() => {
     try {
@@ -454,23 +446,6 @@ export function PortfolioV19() {
     }
   };
 
-  const toggleExpand = (slug: string) => {
-    setExpanded((s) => {
-      const wasOpen = !!s[slug];
-      const existing = closeTimersRef.current[slug];
-      if (existing) {
-        window.clearTimeout(existing);
-        delete closeTimersRef.current[slug];
-      }
-      if (!wasOpen) {
-        closeTimersRef.current[slug] = window.setTimeout(() => {
-          setExpanded((prev) => ({ ...prev, [slug]: false }));
-          delete closeTimersRef.current[slug];
-        }, 10000);
-      }
-      return { ...s, [slug]: !wasOpen };
-    });
-  };
 
   const trajetsSeq = [...trajets, ...trajets];
   const skillsSeq = [...skillsMarquee, ...skillsMarquee];
@@ -618,76 +593,29 @@ export function PortfolioV19() {
               <div className="services-count" aria-hidden="true">05</div>
             </div>
             <div className="services-grid">
-              {services.map((svc, i) => {
-                const isOpen = !!expanded[svc.slug];
-                return (
-                  <article
-                    key={svc.slug}
-                    className={"service reveal reveal-delay-" + i + (isOpen ? " is-open in" : "")}
-                    role="button"
-                    tabIndex={0}
-                    aria-expanded={isOpen}
-                    aria-label={svc.title + " — cliquez pour voir les détails"}
-                    onClick={(e) => {
-                      const t = e.target as HTMLElement;
-                      if (t.closest(".service-cta")) return;
-                      toggleExpand(svc.slug);
-                    }}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" || e.key === " ") {
-                        e.preventDefault();
-                        toggleExpand(svc.slug);
-                      }
-                    }}
-                  >
-                    <div className="service-toggle" aria-hidden="true">
-                      <svg className="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M12 5v14" />
-                        <path d="M5 12h14" />
-                      </svg>
-                      <svg className="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M5 12h14" />
-                        <path d="m12 5 7 7-7 7" />
-                      </svg>
-                    </div>
-                    <div className="service-illu" aria-hidden="true">{ServiceIllus[svc.slug]}</div>
-                    <div className="service-idx">
-                      <span>{svc.index} - {svc.title.split(" ")[0]}</span>
-                    </div>
-                    <div className="service-icon">{ServiceIcons[svc.slug]}</div>
-                    <h3>{svc.title}</h3>
-                    <p>{svc.short}</p>
-                    <div className="service-hint">Cliquez pour voir plus</div>
-                    <div className="service-details">
-                      <div className="service-details-inner">
-                        <ul>
-                          {svc.highlights.map((h) => <li key={h}>{h}</li>)}
-                        </ul>
-                        <a href={buildServiceWhatsAppHref(svc)} className="service-cta" target="_blank" rel="noopener noreferrer">
-                          {svc.ctaLabel}
-                          <ArrowRight size={16} />
-                        </a>
-                        <a
-                          href={"/services/" + svc.slug}
-                          className="service-cta"
-                          style={{
-                            background: "transparent",
-                            color: "rgba(248,250,252,0.62)",
-                            padding: "8px 4px",
-                            fontSize: 11,
-                            letterSpacing: "0.14em",
-                            textTransform: "uppercase",
-                            fontWeight: 600,
-                          }}
-                        >
-                          Voir la page dédiée
-                          <ArrowRight size={12} />
-                        </a>
-                      </div>
-                    </div>
-                  </article>
-                );
-              })}
+              {services.map((svc, i) => (
+                <Link
+                  key={svc.slug}
+                  href={"/services/" + svc.slug}
+                  className={"service reveal reveal-delay-" + i}
+                  aria-label={svc.title + " — voir la page dédiée"}
+                >
+                  <div className="service-toggle" aria-hidden="true">
+                    <svg className="icon-arrow-static" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M5 12h14" />
+                      <path d="m12 5 7 7-7 7" />
+                    </svg>
+                  </div>
+                  <div className="service-illu" aria-hidden="true">{ServiceIllus[svc.slug]}</div>
+                  <div className="service-idx">
+                    <span>{svc.index} - {svc.title.split(" ")[0]}</span>
+                  </div>
+                  <div className="service-icon">{ServiceIcons[svc.slug]}</div>
+                  <h3>{svc.title}</h3>
+                  <p>{svc.short}</p>
+                  <div className="service-hint">Voir la page →</div>
+                </Link>
+              ))}
             </div>
           </div>
         </section>
@@ -1031,6 +959,8 @@ export function PortfolioV19() {
     </div>
   );
 }
+
+
 
 
 
