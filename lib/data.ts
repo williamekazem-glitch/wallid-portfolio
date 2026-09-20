@@ -1,25 +1,18 @@
-﻿import {
+import {
   Egg,
-  Package,
-  Building2,
-  Hammer,
-  Cog,
-  Wrench,
-  Camera,
   Truck,
+  Wrench,
   Code2,
-  Megaphone,
-  Briefcase,
-  Award,
-  Calendar,
-  MapPin,
-  Users,
-  CheckCircle2,
+  Package,
+  MessageCircle,
+  Phone,
+  Copy,
+  Star,
   type LucideIcon,
 } from "lucide-react";
 
-// Ordre pensé pour un client qui découvre depuis une carte de visite :
-// services vendables d'abord, compétence professionnelle à la fin.
+import { siteConfig } from "./site-config";
+
 export type Category =
   | "Aviculture"
   | "Transport"
@@ -35,364 +28,270 @@ export const categoryOrder: Category[] = [
   "Gestion de stock",
 ];
 
-// Meta par catégorie — palette warm-side, chromas plus profondes qu'un pastel.
-// Toute la carte baigne dans la teinte, y compris chips et extras (pas de paper qui perce).
-export const categoryMeta: Record<
-  Category,
-  { icon: LucideIcon; short: string; tint: string; icon_bg: string; icon_fg: string }
-> = {
-  Aviculture: {
-    icon: Egg,
-    short: "Élevage",
-    tint:    "oklch(0.90 0.08 150)",   // sage franc — nature, calme
-    icon_bg: "oklch(0.80 0.13 150)",
-    icon_fg: "oklch(0.35 0.11 150)",
-  },
-  Transport: {
-    icon: Truck,
-    short: "Déplacement",
-    tint:    "oklch(0.90 0.07 240)",   // dusty blue franc — route, mouvement
-    icon_bg: "oklch(0.80 0.11 240)",
-    icon_fg: "oklch(0.38 0.11 240)",
-  },
-  "Services techniques": {
-    icon: Wrench,
-    short: "Travaux",
-    tint:    "oklch(0.89 0.08 30)",    // terracotta franc — briques, bâtiment
-    icon_bg: "oklch(0.78 0.13 30)",
-    icon_fg: "oklch(0.38 0.13 30)",
-  },
-  Digital: {
-    icon: Code2,
-    short: "Digital",
-    tint:    "oklch(0.90 0.07 320)",   // plum warm franc — tech soignée
-    icon_bg: "oklch(0.80 0.11 320)",
-    icon_fg: "oklch(0.35 0.11 320)",
-  },
-  "Gestion de stock": {
-    icon: Package,
-    short: "Inventaire",
-    tint:    "oklch(0.90 0.10 90)",    // mustard/olive franc — pratique, terre
-    icon_bg: "oklch(0.80 0.15 90)",
-    icon_fg: "oklch(0.38 0.13 90)",
-  },
-};
-
-// Contenu éditorial de chaque catégorie — bullets, CTA verbe-adapté,
-// et bloc "extra" optionnel (ex: destinations régulières pour Transport).
-export type CategoryContent = {
-  tagline: string; // 1 ligne sous le titre — accroche courte
-  items: string[];
+export type ServiceDef = {
+  id: string;
+  index: string;
+  category: Category;
+  title: string;
+  short: string;
+  description: string;
+  icon: LucideIcon;
+  highlights: string[];
   ctaLabel: string;
-  ctaHref: string;
-  extra?: { label: string; content: string };
+  extras?: { label: string; content: string };
 };
 
-export const categoryContent: Record<Category, CategoryContent> = {
-  Aviculture: {
-    tagline: "Élevage professionnel, œufs frais, formation.",
-    items: [
-      "Élevage de poulets",
-      "Poulets frais",
-      "Poussins",
+export const services: ServiceDef[] = [
+  {
+    id: "aviculture",
+    index: "01",
+    category: "Aviculture",
+    title: "Aviculture",
+    short: "Élevage, produits frais et formation",
+    description:
+      "Poulets frais & poussins, œufs frais, poussins pour élevage (1j/1sem/2sem/1mois — chauffés + vaccinés), formation, conseil pour installation.",
+    icon: Egg,
+    highlights: [
+      "Poulets frais & poussins",
       "Œufs frais",
       "Formation en aviculture",
       "Conseil pour installation",
     ],
     ctaLabel: "Demander un devis",
-    ctaHref: "/devis?service=aviculture",
   },
-  Transport: {
-    tagline: "Chauffeur privé, livraisons, trajets réguliers.",
-    items: [
+  {
+    id: "transport",
+    index: "02",
+    category: "Transport",
+    title: "Transport",
+    short: "Chauffeur privé, courses et longues distances",
+    description:
+      "Chauffeur privé, courses courtes, longues distances, déplacements professionnels, livraisons.",
+    icon: Truck,
+    highlights: [
       "Chauffeur privé",
-      "Courses courtes",
-      "Longues distances",
+      "Courses courtes & longues distances",
       "Déplacements professionnels",
       "Livraisons",
     ],
     ctaLabel: "Réserver un trajet",
-    ctaHref: "/devis?service=transport-chauffeur",
-    extra: {
+    extras: {
       label: "Trajets réguliers",
       content: "Assinie · Grand-Bassam · Yamoussoukro · Bouaké",
     },
   },
-  "Services techniques": {
-    tagline: "Bâtiment, artisanat et sécurité — de A à Z.",
-    items: [
+  {
+    id: "technique",
+    index: "03",
+    category: "Services techniques",
+    title: "Services techniques",
+    short: "Construction, artisanat, sécurité et packaging",
+    description:
+      "Construction & rénovation, menuiserie, ferronnerie, plomberie, vidéosurveillance + alarmes + appareils connectés (domotique), décoration intérieure, confection sacs & packaging sur mesure.",
+    icon: Wrench,
+    highlights: [
       "Construction & rénovation",
-      "Menuiserie",
-      "Ferronnerie",
-      "Plomberie",
-      "Vidéosurveillance",
+      "Menuiserie, ferronnerie, plomberie",
+      "Vidéosurveillance, alarmes & appareils connectés",
       "Décoration intérieure",
+      "Confection sacs & packaging sur mesure",
     ],
     ctaLabel: "Demander un devis",
-    ctaHref: "/devis?service=construction-renovation",
   },
-  Digital: {
-    tagline: "Sites, apps No-Code, marketing en ligne.",
-    items: [
-      "Sites internet",
-      "Applications No-Code",
-      "Solutions digitales sur mesure",
+  {
+    id: "digital",
+    index: "04",
+    category: "Digital",
+    title: "Digital",
+    short: "Sites, applications et présence en ligne",
+    description:
+      "Sites internet sur mesure, applications No-Code (Bubble, Glide, Softr), marketing & réseaux sociaux, conseil digital.",
+    icon: Code2,
+    highlights: [
+      "Sites internet sur mesure",
+      "Applications No-Code (Bubble, Glide, Softr)",
       "Marketing & réseaux sociaux",
       "Conseil digital",
     ],
     ctaLabel: "Parler d'un projet",
-    ctaHref: "/devis?service=developpement-web",
   },
-  "Gestion de stock": {
-    tagline: "Inventaire, suivi, organisation d'entrepôt.",
-    items: [
-      "Gestion de stock",
-      "Inventaire",
+  {
+    id: "gestion",
+    index: "05",
+    category: "Gestion de stock",
+    title: "Gestion de stock",
+    short:
+      "Commerces, restos, entrepôts — partout où il y a de la marchandise",
+    description:
+      "Ma spécialité professionnelle. Inventaires physiques & contrôle, suivi des entrées/sorties, organisation d'espace de stockage, mise en place de procédures.",
+    icon: Package,
+    highlights: [
+      "Inventaires physiques & contrôle",
       "Suivi des entrées et sorties",
-      "Organisation d'entrepôt",
+      "Organisation d'espace de stockage",
+      "Mise en place de procédures",
     ],
     ctaLabel: "Me contacter",
-    ctaHref: "/devis?service=gestion-de-stock",
   },
+];
+
+// ─── Trajets marquee (right → left visual, sens ambré) ─────────────
+export const trajets: string[] = [
+  "Assinie",
+  "Grand-Bassam",
+  "Yamoussoukro",
+  "Bouaké",
+];
+
+// ─── Skills marquee (12 items, inverse direction) ─────────────────
+export const skillsMarquee: string[] = [
+  "Élevage de poulets",
+  "Chauffeur privé",
+  "Construction & rénovation",
+  "Vidéosurveillance",
+  "Sites internet",
+  "Gestion de stock",
+  "Applications No-Code",
+  "Décoration intérieure",
+  "Menuiserie & ferronnerie",
+  "Livraisons",
+  "Formation aviculture",
+  "Packaging sur mesure",
+];
+
+// ─── « Comment je travaille » — 3 étapes ─────────────────────────
+export type ProcessStep = {
+  index: string;
+  title: string;
+  detail: string;
 };
 
-export type Service = {
-  slug: string;
+export const processSteps: ProcessStep[] = [
+  { index: "01", title: "Vous m'écrivez", detail: "Réponse sous 4h" },
+  { index: "02", title: "Devis clair", detail: "Sous 24h" },
+  { index: "03", title: "Livraison", detail: "Engagement tenu" },
+];
+
+// ─── Pourquoi moi — 4 arguments ───────────────────────────────────
+export type WhyMeArg = {
   title: string;
-  short: string;
-  description: string;
+  body: string;
+};
+
+export const whyMe: WhyMeArg[] = [
+  {
+    title: "Un seul contact",
+    body: "Pour cinq domaines. Un interlocuteur unique qui coordonne tout — moins de friction, plus de résultat.",
+  },
+  {
+    title: "Multi-services",
+    body: "Aviculture, transport, technique, digital, gestion de stock. Une seule main pour vos besoins variés.",
+  },
+  {
+    title: "Ancré à Abidjan",
+    body: "Je connais le terrain, les prestataires, les zones. Je livre à Abidjan et sur les grands axes.",
+  },
+  {
+    title: "Devis rapide",
+    body: "Une réponse sous 4h, un devis clair sous 24h. Pas de délai flou, pas de surprise.",
+  },
+];
+
+// ─── FAQ — 6 questions honnêtes ────────────────────────────────────
+export type FaqItem = {
+  question: string;
+  answer: string;
+};
+
+export const faq: FaqItem[] = [
+  {
+    question: "Combien coûte un devis ?",
+    answer:
+      "Le devis est toujours gratuit. Vous m'écrivez sur WhatsApp avec votre besoin, je vous réponds sous 4h, et je vous envoie un devis clair sous 24h. Pas d'engagement.",
+  },
+  {
+    question: "Vous livrez où en Côte d'Ivoire ?",
+    answer:
+      "Basé à Abidjan, j'interviens toute la ville et les grands axes. Trajets réguliers Assinie · Grand-Bassam · Yamoussoukro · Bouaké. Pour d'autres zones, on discute.",
+  },
+  {
+    question: "Comment se passe le premier contact ?",
+    answer:
+      "Vous m'écrivez directement sur WhatsApp (le bouton flottant vert). Précisez votre besoin en quelques mots — je vous rappelle ou vous réponds selon ce qui vous arrange.",
+  },
+  {
+    question: "Est-ce que je peux vous faire confiance sur plusieurs domaines à la fois ?",
+    answer:
+      "Oui — c'est justement mon métier depuis des années. Ma spécialité pro reste la gestion de stock. Sur les autres domaines, je coordonne avec les bons artisans/prestataires quand c'est nécessaire, en gardant la main sur la qualité et le délai.",
+  },
+  {
+    question: "Comment se déroule le paiement ?",
+    answer:
+      "Selon le service : acompte à la commande + solde à la livraison pour les gros chantiers. Paiement à la course pour le transport. On cadre au moment du devis, sans surprise.",
+  },
+  {
+    question: "Vous avez des projets à me montrer ?",
+    answer:
+      "Les photos et références arrivent bientôt sur cette page. Pour l'instant, écrivez-moi sur WhatsApp — je peux vous envoyer directement des exemples de mes réalisations correspondant à votre besoin.",
+  },
+];
+
+// ─── Contact links ─────────────────────────────────────────────────
+export type ContactLink = {
+  id: string;
+  label: string;
+  value: string;
+  href: string;
   icon: LucideIcon;
-  category: Category;
-  highlights: string[];
+  action?: "copy" | "link";
 };
 
-export const services: Service[] = [
-  // 1. Aviculture
+export const contactLinks: ContactLink[] = [
   {
-    slug: "aviculture",
-    title: "Aviculture",
-    short: "Élevage de volailles, œufs, conseil.",
-    description:
-      "Production avicole : élevage de poulets de chair, pondeuses, fourniture d'œufs frais. Conseil pour la mise en place de votre propre installation.",
-    icon: Egg,
-    category: "Aviculture",
-    highlights: ["Œufs frais", "Poulets fermiers", "Conseil élevage"],
-  },
-
-  // 2. Gestion
-  {
-    slug: "gestion-de-stock",
-    title: "Gestion de stock",
-    short: "Inventaire, logistique, organisation.",
-    description:
-      "Mise en place de systèmes d'inventaire, suivi des flux entrants/sortants, optimisation d'entrepôt. Pour boutiques, PME et projets logistiques.",
-    icon: Package,
-    category: "Gestion de stock",
-    highlights: ["Inventaire", "Suivi digital", "Optimisation"],
-  },
-
-  // 3. Services techniques
-  {
-    slug: "construction-renovation",
-    title: "Construction & rénovation",
-    short: "Gros œuvre, second œuvre, finitions.",
-    description:
-      "De la fondation aux finitions : maçonnerie, rénovation complète, aménagement intérieur. Chantiers menés avec rigueur, dans les délais et le budget convenus.",
-    icon: Building2,
-    category: "Services techniques",
-    highlights: ["Gros œuvre", "Rénovation", "Finitions"],
+    id: "wa",
+    label: "WhatsApp — le plus rapide",
+    value: siteConfig.phone,
+    href: `https://wa.me/${siteConfig.whatsapp}`,
+    icon: MessageCircle,
   },
   {
-    slug: "menuiserie",
-    title: "Menuiserie",
-    short: "Bois sur mesure, mobilier, agencement.",
-    description:
-      "Portes, fenêtres, dressings, cuisines, mobilier sur mesure. Travail du bois précis, finitions soignées, essences adaptées.",
-    icon: Hammer,
-    category: "Services techniques",
-    highlights: ["Sur mesure", "Bois massif", "Pose incluse"],
+    id: "phone",
+    label: "Appeler",
+    value: siteConfig.phone,
+    href: `tel:+${siteConfig.whatsapp}`,
+    icon: Phone,
   },
   {
-    slug: "ferronnerie",
-    title: "Ferronnerie",
-    short: "Fer forgé, portails, garde-corps, grilles.",
-    description:
-      "Ouvrages métalliques sur mesure : portails, grilles, escaliers, garde-corps, structures. Soudure, mise en forme, traitement anti-corrosion.",
-    icon: Cog,
-    category: "Services techniques",
-    highlights: ["Portails & grilles", "Sécurité", "Design"],
-  },
-  {
-    slug: "plomberie",
-    title: "Plomberie",
-    short: "Installation, dépannage, sanitaires.",
-    description:
-      "Installation neuve, rénovation salle de bain, dépannage fuites, réseau eau et évacuation. Intervention rapide.",
-    icon: Wrench,
-    category: "Services techniques",
-    highlights: ["Dépannage", "Salle de bain", "Réseau eau"],
-  },
-  {
-    slug: "videosurveillance",
-    title: "Vidéosurveillance",
-    short: "Caméras, alarmes, contrôle d'accès.",
-    description:
-      "Étude, installation et maintenance de systèmes de sécurité : caméras IP, enregistreurs, applications mobiles, alarmes.",
-    icon: Camera,
-    category: "Services techniques",
-    highlights: ["Caméras HD/IP", "Accès mobile", "Maintenance"],
-  },
-
-  // 4. Transport
-  {
-    slug: "transport-chauffeur",
-    title: "Transport & chauffeur",
-    short: "VTC, livraison, transport de marchandises.",
-    description:
-      "Chauffeur privé pour vos déplacements, livraisons de colis, transport de marchandises. Ponctuel, discret, véhicule entretenu.",
-    icon: Truck,
-    category: "Transport",
-    highlights: ["Ponctualité", "Courts & longs trajets", "Devis clair"],
-  },
-
-  // 5. Digital
-  {
-    slug: "developpement-web",
-    title: "Développement web & apps",
-    short: "Sites, e-commerce, applications sur mesure.",
-    description:
-      "Sites vitrines, boutiques en ligne, applications mobiles et outils métier. Développement moderne, rapide, orienté conversion.",
-    icon: Code2,
-    category: "Digital",
-    highlights: ["Sites & apps", "E-commerce", "Sur mesure"],
-  },
-  {
-    slug: "marketing-social-media",
-    title: "Marketing & social media",
-    short: "Publicité, contenu, présence en ligne.",
-    description:
-      "Gestion de vos réseaux sociaux, campagnes publicitaires ciblées, création de contenu. Objectif : visibilité et clients qualifiés.",
-    icon: Megaphone,
-    category: "Digital",
-    highlights: ["Réseaux sociaux", "Publicité", "Contenu"],
-  },
-  {
-    slug: "consulting",
-    title: "Consulting & services divers",
-    short: "Conseil business, formation, missions spéciales.",
-    description:
-      "Accompagnement d'entrepreneurs, formations pratiques, missions ponctuelles selon vos besoins.",
-    icon: Briefcase,
-    category: "Digital",
-    highlights: ["Accompagnement", "Formation", "Sur devis"],
+    id: "email",
+    label: "Email",
+    value: siteConfig.email,
+    href: `mailto:${siteConfig.email}`,
+    icon: Copy,
+    action: "copy",
   },
 ];
 
-// —— PROJETS : vide par défaut. À remplir avec tes vraies réalisations.
-export type Project = {
-  title: string;
-  service: string;
-  year: string;
-  location: string;
-  description: string;
-  outcome: string;
-};
+// ─── WhatsApp message pré-rempli par service ──────────────────────
+// Chaque CTA de service envoie sur WhatsApp un message listant les sous-titres
+// concernés — pattern demandé et validé par le user.
+export function buildServiceWhatsAppHref(service: ServiceDef): string {
+  const bullets = service.highlights.map((h) => `• ${h}`).join("\n");
+  const message = `Bonjour Wallid, je souhaite plus d'infos sur votre pôle ${service.title}.\n\nVoici ce qui m'intéresse :\n${bullets}\n\nPouvez-vous me donner plus de détails ?`;
+  return `https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(message)}`;
+}
 
-export const projects: Project[] = [
-  // Exemple de structure — à décommenter et remplir avec tes vrais projets :
-  // {
-  //   title: "Titre du projet",
-  //   service: "Service concerné",
-  //   year: "2024",
-  //   location: "Ville",
-  //   description: "Ce qui a été fait, en 1 ou 2 phrases.",
-  //   outcome: "Résultat concret et mesurable.",
-  // },
-];
+export function buildReviewWhatsAppHref(): string {
+  const message = `Bonjour Wallid, je souhaite laisser un avis sur votre travail :\n\n« »\n\n(nom / prestation / date)`;
+  return `https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(message)}`;
+}
 
-// —— TÉMOIGNAGES : vide par défaut. Ajoute-les au fur et à mesure.
-export type Testimonial = {
-  quote: string;
-  author: string;
-  role: string;
-};
+export function buildQuickWhatsAppHref(text?: string): string {
+  const message =
+    text ??
+    `Bonjour Wallid, je souhaite échanger sur un projet. Merci !`;
+  return `https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(message)}`;
+}
 
-export const testimonials: Testimonial[] = [
-  // Exemple :
-  // {
-  //   quote: "Ce que le client a dit, sans le retoucher.",
-  //   author: "Prénom N.",
-  //   role: "Fonction ou métier",
-  // },
-];
-
-// —— CERTIFICATIONS : garde uniquement celles que tu as vraiment.
-export type Certification = {
-  title: string;
-  issuer: string;
-  year: string;
-};
-
-export const certifications: Certification[] = [
-  // À remplir avec tes vraies formations. Exemple :
-  // { title: "Nom de la formation", issuer: "Organisme", year: "2020" },
-];
-
-// —— COMPÉTENCES : ajuste selon ton niveau réel.
-export type Skill = { name: string; level: number };
-
-export const skills: Skill[] = [
-  { name: "Aviculture & élevage", level: 0 },
-  { name: "Gestion & inventaire", level: 0 },
-  { name: "Chantier & second œuvre", level: 0 },
-  { name: "Menuiserie & ferronnerie", level: 0 },
-  { name: "Plomberie & sanitaires", level: 0 },
-  { name: "Vidéosurveillance", level: 0 },
-  { name: "Développement web", level: 0 },
-  { name: "Marketing digital", level: 0 },
-];
-
-// —— EXPÉRIENCES : ton parcours réel.
-export const experiences = [
-  // {
-  //   year: "2020 → aujourd'hui",
-  //   title: "Titre du poste / activité",
-  //   description: "Ce que tu y as fait de significatif.",
-  // },
-];
-
-// —— ZONES : à remplir avec tes vraies zones d'intervention.
-export const zones: string[] = [
-  // "Ville / quartier / région où tu interviens",
-];
-
-// —— STATS : chiffres clés en 4 cartes éditoriales.
-// La section se masque automatiquement tant que ce tableau est vide.
-// Ajoute uniquement des chiffres VRAIS et vérifiables.
-export type Stat = {
-  value: string;    // "15+", "5", "3+", "10 000" — la valeur affichée
-  label: string;    // "Projets livrés", "Années d'expérience"
-  hint?: string;    // optionnel — contexte court sous le label
-  icon: LucideIcon; // icône lucide (Briefcase, Calendar, Award, MapPin, Users, CheckCircle2...)
-};
-
-export const stats: Stat[] = [
-  // À REMPLIR — décommente les lignes ci-dessous après avoir vérifié les chiffres.
-  // Icônes disponibles : Calendar, Briefcase, MapPin, Award, Users, CheckCircle2
-  // La section se masque automatiquement tant que ce tableau est vide.
-  //
-  // { value: "10+", label: "Années d'entrepreneuriat", icon: Calendar },
-  // { value: "50+", label: "Projets menés", hint: "Chantiers, sites, missions", icon: Briefcase },
-  // { value: "5",   label: "Zones desservies", icon: MapPin },
-  // { value: "3",   label: "Certifications", icon: Award },
-];
-
-// —— GALERIE : catégories des photos que tu ajouteras dans public/gallery/
-export const gallery = [
-  { alt: "Poulailler professionnel", category: "Aviculture" },
-  { alt: "Gestion d'inventaire", category: "Gestion de stock" },
-  { alt: "Chantier de rénovation", category: "Technique" },
-  { alt: "Portail en fer forgé", category: "Technique" },
-  { alt: "Installation caméra", category: "Technique" },
-  { alt: "Réalisation digitale", category: "Digital" },
-];
+// ─── Reviews stars (empty until real testimonials arrive) ────────
+export const starIcon = Star;
+export const reviewsHint = "Les premiers témoignages arrivent bientôt.";
