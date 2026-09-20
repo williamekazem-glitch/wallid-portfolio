@@ -694,13 +694,10 @@ export function PortfolioV19() {
                   </div>
                   <div className="bcard-face bcard-face--back">
                     <div className="bv-brand">Portfolio Wallid</div>
-                    <div className="bv-qr" role="img" aria-label="QR code — scannez pour ouvrir le portfolio">
-                      <svg viewBox="0 0 33 33" xmlns="http://www.w3.org/2000/svg" shapeRendering="crispEdges" aria-hidden="true">
-                        <rect width="33" height="33" fill="#fff" />
-                        <path fill="#000" d="M0 0h7v7H0zM1 1v5h5V1H1zM2 2h3v3H2z" />
-                        <path fill="#000" d="M26 0h7v7h-7zM27 1v5h5V1h-5zM28 2h3v3h-3z" />
-                        <path fill="#000" d="M0 26h7v7H0zM1 27v5h5v-5H1zM2 28h3v3H2z" />
-                        <path fill="#000" d="M22 22h5v5h-5zM23 23v3h3v-3h-3zM24 24h1v1h-1z" />
+                    <div className="bv-qr" role="img" aria-label="QR code — scannez pour ouvrir wallid-portfolio.vercel.app">
+                      <svg viewBox="0 0 37 37" xmlns="http://www.w3.org/2000/svg" shapeRendering="crispEdges" aria-hidden="true">
+                        <path fill="#fff" d="M0 0h37v37H0z" />
+                        <path stroke="#000" d="M4 4.5h7m2 0h1m1 0h2m2 0h6m1 0h7M4 5.5h1m5 0h1m2 0h1m2 0h1m5 0h1m3 0h1m5 0h1M4 6.5h1m1 0h3m1 0h1m1 0h1m3 0h1m1 0h1m1 0h1m3 0h1m1 0h1m1 0h3m1 0h1M4 7.5h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h1m4 0h1m1 0h1m2 0h1m1 0h3m1 0h1M4 8.5h1m1 0h3m1 0h1m1 0h2m2 0h4m1 0h4m1 0h1m1 0h3m1 0h1M4 9.5h1m5 0h1m1 0h1m1 0h1m1 0h4m1 0h1m2 0h1m1 0h1m5 0h1M4 10.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M12 11.5h2m1 0h1m1 0h1m1 0h1m3 0h2M4 12.5h1m1 0h5m2 0h1m1 0h1m2 0h6m2 0h5M4 13.5h2m2 0h2m1 0h2m1 0h1m5 0h9m3 0h1M5 14.5h1m4 0h1m1 0h1m3 0h1m2 0h1m1 0h1m3 0h2m1 0h1M6 15.5h3m2 0h5m2 0h2m2 0h3m2 0h1m1 0h1m1 0h1M4 16.5h1m1 0h1m2 0h3m1 0h1m1 0h1m3 0h3m7 0h2M5 17.5h1m2 0h2m3 0h6m1 0h1m2 0h6m3 0h1M4 18.5h4m1 0h2m1 0h1m1 0h1m1 0h6m6 0h3M4 19.5h2m3 0h1m1 0h3m2 0h2m1 0h1m2 0h1m1 0h2m1 0h1m3 0h1M4 20.5h2m2 0h1m1 0h3m1 0h1m3 0h2m1 0h1m2 0h2m3 0h2M4 21.5h1m4 0h1m1 0h1m1 0h1m1 0h1m4 0h1m1 0h7m1 0h1m1 0h1M4 22.5h1m2 0h4m2 0h1m2 0h1m2 0h1m6 0h3m1 0h1M4 23.5h1m3 0h1m2 0h2m5 0h1m1 0h1m2 0h1m4 0h1m2 0h1M4 24.5h1m5 0h1m2 0h4m4 0h1m2 0h5m1 0h3M12 25.5h2m2 0h3m4 0h2m3 0h5M4 26.5h7m2 0h1m1 0h5m1 0h4m1 0h1m1 0h3M4 27.5h1m5 0h1m1 0h1m3 0h2m1 0h2m1 0h3m3 0h1m3 0h1M4 28.5h1m1 0h3m1 0h1m1 0h1m5 0h1m2 0h1m2 0h5m1 0h2M4 29.5h1m1 0h3m1 0h1m1 0h1m2 0h2m3 0h1m1 0h3m4 0h4M4 30.5h1m1 0h3m1 0h1m1 0h1m3 0h2m1 0h6m1 0h6M4 31.5h1m5 0h1m3 0h4m1 0h2m3 0h2m1 0h1m1 0h1m1 0h1M4 32.5h7m1 0h2m1 0h1m3 0h1m1 0h1m1 0h1m1 0h1m1 0h4" />
                       </svg>
                       <div className="bv-qr-label">Scannez ce code</div>
                     </div>
