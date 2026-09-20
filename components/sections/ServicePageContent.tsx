@@ -231,6 +231,73 @@ export function ServicePageContent({ service, related }: { service: ServiceDef; 
           </div>
         </section>
 
+        {service.process && service.process.length > 0 && (
+          <section style={{ padding: "var(--section) var(--gutter)", background: "var(--ink-950)" }}>
+            <div className="wrap" style={{ maxWidth: 900 }}>
+              <div className="section-eyebrow">Comment ça se passe</div>
+              <h2 className="section-title" style={{ marginBottom: 48 }}>
+                {service.process.length} étapes, <span className="serif">un</span> engagement clair.
+              </h2>
+              <ol style={{ listStyle: "none", padding: 0, display: "grid", gap: 20 }}>
+                {service.process.map((step) => (
+                  <li
+                    key={step.step}
+                    style={{
+                      padding: "28px 32px",
+                      borderRadius: "var(--radius)",
+                      background:
+                        "linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015))",
+                      border: "1px solid var(--ink-border)",
+                      display: "grid",
+                      gridTemplateColumns: "auto 1fr",
+                      gap: 24,
+                      alignItems: "flex-start",
+                    }}
+                  >
+                    <div
+                      style={{
+                        fontFamily: "var(--font-display-pv)",
+                        fontWeight: 700,
+                        fontSize: 44,
+                        lineHeight: 1,
+                        color: "transparent",
+                        WebkitTextStroke: "1.5px var(--sun-500)",
+                        flexShrink: 0,
+                      }}
+                      aria-hidden="true"
+                    >
+                      {step.step}
+                    </div>
+                    <div>
+                      <h3
+                        style={{
+                          fontFamily: "var(--font-display-pv)",
+                          fontWeight: 700,
+                          fontSize: "1.25rem",
+                          letterSpacing: "-0.02em",
+                          color: "#fff",
+                          marginBottom: 8,
+                        }}
+                      >
+                        {step.title}
+                      </h3>
+                      <p
+                        style={{
+                          color: "rgba(248,250,252,0.72)",
+                          fontSize: 15,
+                          lineHeight: 1.6,
+                        }}
+                      >
+                        {step.body}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </section>
+        )}
+
         <section className="final" aria-labelledby="final-title">
           <div className="wrap">
             <h2 id="final-title">
@@ -350,4 +417,5 @@ export function ServicePageContent({ service, related }: { service: ServiceDef; 
     </div>
   );
 }
+
 

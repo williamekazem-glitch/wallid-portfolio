@@ -82,6 +82,16 @@ const ServiceIllus: Record<string, JSX.Element> = {
       <path d="M12 40l4 2M52 40l-4 2M22 22l4 2M46 22l4 2" opacity="0.6" />
     </svg>
   ),
+  sourcing: (
+    <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M6 44h52l-3 8H9z" />
+      <rect x="10" y="24" width="44" height="20" rx="1" />
+      <path d="M10 30h44M10 36h44" opacity="0.5" />
+      <path d="M22 12l6 8h8l6-8" opacity="0.7" />
+      <circle cx="14" cy="52" r="3" fill="currentColor" fillOpacity="0.3" />
+      <circle cx="50" cy="52" r="3" fill="currentColor" fillOpacity="0.3" />
+    </svg>
+  ),
 };
 
 const ServiceIcons: Record<string, JSX.Element> = {
@@ -116,6 +126,14 @@ const ServiceIcons: Record<string, JSX.Element> = {
       <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
       <polyline points="3.29 7 12 12 20.71 7" />
       <line x1="12" y1="22" x2="12" y2="12" />
+    </svg>
+  ),
+  sourcing: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M22 7.7v8.6a2 2 0 0 1-1 1.73l-7 4a2 2 0 0 1-2 0l-7-4a2 2 0 0 1-1-1.73V7.7a2 2 0 0 1 1-1.73l7-4a2 2 0 0 1 2 0l7 4a2 2 0 0 1 1 1.73z" />
+      <path d="M12 22V12" />
+      <path d="m3.3 7 8.7 5 8.7-5" />
+      <path d="M7.5 4.27 16.5 9.5" opacity="0.4" />
     </svg>
   ),
 };
@@ -521,7 +539,7 @@ export function PortfolioV19() {
                   <span className="pv19-sr-only">Un profil polyvalent, des solutions concrètes.</span>
                 </h1>
                 <p className="hero-lede reveal reveal-delay-2">
-                  Cinq domaines, un seul interlocuteur. De l&apos;aviculture au digital, en passant par le transport et le bâtiment — j&apos;accompagne particuliers et entreprises à Abidjan avec un WhatsApp direct.
+                  Six domaines, un seul interlocuteur. De l&apos;aviculture au digital, en passant par le transport et le bâtiment — j&apos;accompagne particuliers et entreprises à Abidjan avec un WhatsApp direct.
                 </p>
                 <div className="hero-ctas reveal reveal-delay-3">
                   <a href={"https://wa.me/" + WA} className="btn btn-wa magnetic">
@@ -583,14 +601,14 @@ export function PortfolioV19() {
               <div>
                 <div className="section-eyebrow">Ce que je fais</div>
                 <h2 className="section-title" id="services-title">
-                  Cinq domaines,<br />
+                  Six domaines,<br />
                   <span className="serif">un seul</span> interlocuteur.
                 </h2>
                 <p className="section-lede">
                   Chaque domaine est une compétence réelle, exercée avec un point de contact unique : moi, sur WhatsApp.
                 </p>
               </div>
-              <div className="services-count" aria-hidden="true">05</div>
+              <div className="services-count" aria-hidden="true">06</div>
             </div>
             <div className="services-grid">
               {services.map((svc, i) => (
@@ -966,6 +984,7 @@ export function PortfolioV19() {
     </div>
   );
 }
+
 
 
 

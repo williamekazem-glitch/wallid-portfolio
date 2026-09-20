@@ -766,7 +766,7 @@ body.pv19-body::before {
 }
 @media (min-width: 640px) { .pv19 .services-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 900px) { .pv19 .services-grid { grid-template-columns: repeat(3, 1fr); } }
-@media (min-width: 1180px) { .pv19 .services-grid { grid-template-columns: repeat(5, 1fr); } }
+/* 6 pôles : on garde 3-col sur wide (2 rows de 3) au lieu de 5-col */
 
 .pv19 .service {
   position: relative;
@@ -2266,3 +2266,4 @@ body.pv19-body.keyboard-user .pv19 .cursor-dot { display: none !important; }
     grid-template-columns: 1fr !important;
   }
 }
+

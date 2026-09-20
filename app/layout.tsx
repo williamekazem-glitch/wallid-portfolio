@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     template: "%s - " + siteConfig.name,
   },
   description:
-    "Portfolio de Kazem Williame Wallid - entrepreneur multi-services à Abidjan. Aviculture, transport, services techniques, digital, gestion de stock. Un seul contact.",
+    "Portfolio de Kazem Williame Wallid - entrepreneur multi-services à Abidjan. Aviculture, transport, services techniques, digital, gestion de stock, sourcing Chine. Un seul contact.",
   keywords: [
     "portfolio",
     "Abidjan",
@@ -48,13 +48,16 @@ export const metadata: Metadata = {
     "sites internet",
     "no-code",
     "packaging sur mesure",
+    "sourcing Chine",
+    "import Chine",
+    "achats Chine Abidjan",
   ],
   authors: [{ name: siteConfig.name }],
   openGraph: {
     type: "website",
     locale: "fr_FR",
     title: siteConfig.name + " - " + siteConfig.tagline,
-    description: "Cinq domaines, un contact. Aviculture, transport, technique, digital, gestion de stock.",
+    description: "Six domaines, un contact. Aviculture, transport, technique, digital, gestion de stock, sourcing Chine.",
     siteName: siteConfig.name,
   },
 };
@@ -91,5 +94,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
+
 
 

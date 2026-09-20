@@ -4,6 +4,7 @@
   Wrench,
   Code2,
   Package,
+  Container,
   MessageCircle,
   Phone,
   Copy,
@@ -18,7 +19,8 @@ export type Category =
   | "Transport"
   | "Services techniques"
   | "Digital"
-  | "Gestion de stock";
+  | "Gestion de stock"
+  | "Sourcing Chine";
 
 export const categoryOrder: Category[] = [
   "Aviculture",
@@ -26,7 +28,10 @@ export const categoryOrder: Category[] = [
   "Services techniques",
   "Digital",
   "Gestion de stock",
+  "Sourcing Chine",
 ];
+
+export type ProcessStepInline = { step: string; title: string; body: string };
 
 export type ServiceDef = {
   slug: string;
@@ -39,6 +44,7 @@ export type ServiceDef = {
   highlights: string[];
   ctaLabel: string;
   extras?: { label: string; content: string };
+  process?: ProcessStepInline[];
 };
 
 export const services: ServiceDef[] = [
@@ -134,6 +140,61 @@ export const services: ServiceDef[] = [
       "Mise en place de procédures",
     ],
     ctaLabel: "Me contacter",
+  },
+  {
+    slug: "sourcing",
+    index: "06",
+    category: "Sourcing Chine",
+    title: "Sourcing Chine",
+    short: "Import de matériel depuis la Chine, clé en main",
+    description:
+      "Je trouve le bon fournisseur en Chine, je négocie pour vous, je gère l'expédition par bateau ou avion, et vous récupérez votre commande à Abidjan. Vous payez 75% à la commande, 25% à la réception. Pour particuliers et commerçants.",
+    icon: Container,
+    highlights: [
+      "Recherche du bon fournisseur en Chine",
+      "Négociation prix et conditions",
+      "Cotation transparente : matériel + transport + commission",
+      "Paiement du fournisseur en votre nom",
+      "Expédition par bateau ou avion selon délai",
+      "Livraison à Abidjan et suivi jusqu'à réception",
+    ],
+    ctaLabel: "Demander une cotation",
+    extras: {
+      label: "Modalité de paiement",
+      content: "75% à la commande · 25% à la réception",
+    },
+    process: [
+      {
+        step: "01",
+        title: "Vous m'expliquez ce qu'il vous faut",
+        body: "Photo du produit, spécifications, quantité approximative, budget si vous en avez un. Je vous pose les bonnes questions pour cadrer.",
+      },
+      {
+        step: "02",
+        title: "Je cherche et je négocie",
+        body: "Je contacte plusieurs fournisseurs en Chine, je compare les offres, je négocie prix et conditions pour vous.",
+      },
+      {
+        step: "03",
+        title: "Je vous envoie une cotation",
+        body: "Cotation transparente et détaillée : prix du matériel + coût transport (bateau ou avion selon délai) + ma commission. Aucun frais caché.",
+      },
+      {
+        step: "04",
+        title: "Vous validez et payez l'acompte",
+        body: "Une fois la cotation acceptée, vous réglez 75% d'acompte. Ça déclenche la commande chez le fournisseur.",
+      },
+      {
+        step: "05",
+        title: "Je paie et j'expédie",
+        body: "Je règle le fournisseur en votre nom. Expédition par bateau (plus économique, délai plus long) ou avion (plus rapide, délai court). Suivi tout au long.",
+      },
+      {
+        step: "06",
+        title: "Livraison Abidjan, vous soldez",
+        body: "À réception du colis à Abidjan, vous vérifiez la marchandise et versez les 25% restants. Terminé.",
+      },
+    ],
   },
 ];
 
@@ -319,6 +380,8 @@ export const reviews: Review[] = [
   //   date: "Oct 2026",
   // },
 ];
+
+
 
 
 
