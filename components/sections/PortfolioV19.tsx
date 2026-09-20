@@ -601,7 +601,7 @@ export function PortfolioV19() {
                 return (
                   <article
                     key={svc.slug}
-                    className={"service reveal reveal-delay-" + i + (isOpen ? " is-open" : "")}
+                    className={"service reveal reveal-delay-" + i + (isOpen ? " is-open in" : "")}
                     role="button"
                     tabIndex={0}
                     aria-expanded={isOpen}
