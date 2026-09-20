@@ -1,4 +1,4 @@
-/* =========================================================================
+﻿/* =========================================================================
    Portfolio V19 — CSS scoped copié du prototype charbon obsidien + ambre.
    Chargé après globals.css → gagne en cascade.
    Fonts consommées via CSS vars exposées par next/font/google (layout.tsx).
@@ -322,7 +322,8 @@ body.pv19-body::before {
 }
 .pv19 .nav-links a {
   position: relative;
-  padding: 4px 0;
+  padding: 8px 4px;
+  min-height: 32px;
   line-height: 1;
   display: inline-flex;
   align-items: center;
@@ -839,7 +840,7 @@ body.pv19-body::before {
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(248, 250, 252, 0.45);
+  color: rgba(248, 250, 252, 0.62);
   padding-right: 48px;
   position: relative;
   z-index: 2;
@@ -982,7 +983,7 @@ body.pv19-body::before {
   font-size: 11px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(248, 250, 252, 0.35);
+  color: rgba(248, 250, 252, 0.62);
   transition: opacity 0.3s var(--ease);
   margin-top: 4px;
 }
@@ -1908,7 +1909,7 @@ body.pv19-body::before {
   padding-top: 20px;
   border-top: 1px solid var(--ink-border);
   font-size: 12px;
-  color: rgba(248, 250, 252, 0.35);
+  color: rgba(248, 250, 252, 0.62);
   text-align: center;
 }
 
@@ -2257,3 +2258,4 @@ body.pv19-body.keyboard-user .pv19 .cursor-dot { display: none !important; }
   .pv19 .service:hover::after, .pv19 .service.is-open::after { animation: none; }
   .pv19 .reveal { opacity: 1; transform: none; }
 }
+
