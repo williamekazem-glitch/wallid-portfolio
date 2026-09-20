@@ -139,6 +139,14 @@ export function PortfolioV19() {
   const heroPhotoRef = useRef<HTMLElement | null>(null);
   const cursorHaloRef = useRef<HTMLDivElement | null>(null);
   const cursorDotRef = useRef<HTMLDivElement | null>(null);
+  const closeTimersRef = useRef<Record<string, number>>({});
+
+  useEffect(() => {
+    const timers = closeTimersRef.current;
+    return () => {
+      Object.values(timers).forEach((id) => window.clearTimeout(id));
+    };
+  }, []);
 
   useEffect(() => {
     try {
@@ -447,7 +455,21 @@ export function PortfolioV19() {
   };
 
   const toggleExpand = (slug: string) => {
-    setExpanded((s) => ({ ...s, [slug]: !s[slug] }));
+    setExpanded((s) => {
+      const wasOpen = !!s[slug];
+      const existing = closeTimersRef.current[slug];
+      if (existing) {
+        window.clearTimeout(existing);
+        delete closeTimersRef.current[slug];
+      }
+      if (!wasOpen) {
+        closeTimersRef.current[slug] = window.setTimeout(() => {
+          setExpanded((prev) => ({ ...prev, [slug]: false }));
+          delete closeTimersRef.current[slug];
+        }, 10000);
+      }
+      return { ...s, [slug]: !wasOpen };
+    });
   };
 
   const trajetsSeq = [...trajets, ...trajets];
@@ -644,6 +666,22 @@ export function PortfolioV19() {
                         <a href={buildServiceWhatsAppHref(svc)} className="service-cta" target="_blank" rel="noopener noreferrer">
                           {svc.ctaLabel}
                           <ArrowRight size={16} />
+                        </a>
+                        <a
+                          href={"/services/" + svc.slug}
+                          className="service-cta"
+                          style={{
+                            background: "transparent",
+                            color: "rgba(248,250,252,0.62)",
+                            padding: "8px 4px",
+                            fontSize: 11,
+                            letterSpacing: "0.14em",
+                            textTransform: "uppercase",
+                            fontWeight: 600,
+                          }}
+                        >
+                          Voir la page dédiée
+                          <ArrowRight size={12} />
                         </a>
                       </div>
                     </div>
@@ -982,6 +1020,7 @@ export function PortfolioV19() {
     </div>
   );
 }
+
 
 
 
