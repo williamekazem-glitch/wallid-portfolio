@@ -55,6 +55,8 @@ export const services: ServiceDef[] = [
       "Poulets frais & poussins",
       "Œufs frais",
       "Formation en aviculture",
+      "Formation en confection de couveuse automatique",
+      "Formation en confection de cage de chauffage automatique",
       "Conseil pour installation",
     ],
     ctaLabel: "Demander un devis",
@@ -317,5 +319,6 @@ export const reviews: Review[] = [
   //   date: "Oct 2026",
   // },
 ];
+
 
 
