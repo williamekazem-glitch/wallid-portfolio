@@ -53,6 +53,15 @@ export const metadata: Metadata = {
     "achats Chine Abidjan",
   ],
   authors: [{ name: siteConfig.name }],
+  applicationName: "Wallid — Portfolio",
+  appleWebApp: {
+    capable: true,
+    title: "Wallid",
+    statusBarStyle: "black-translucent",
+  },
+  formatDetection: {
+    telephone: false,
+  },
   openGraph: {
     type: "website",
     locale: "fr_FR",
@@ -94,6 +103,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
+
 
 
 
