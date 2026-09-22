@@ -49,3 +49,6 @@ next-env.d.ts
 # IDE
 .vscode
 .idea
+
+# print / social assets générés (reproductibles via scripts/generate-print-assets.mjs)
+/print-assets/
