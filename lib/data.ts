@@ -32,6 +32,7 @@ export const categoryOrder: Category[] = [
 ];
 
 export type ProcessStepInline = { step: string; title: string; body: string };
+export type ProductPrice = { name: string; price: string; unit: string };
 
 export type ServiceDef = {
   slug: string;
@@ -45,6 +46,7 @@ export type ServiceDef = {
   ctaLabel: string;
   extras?: { label: string; content: string };
   process?: ProcessStepInline[];
+  products?: ProductPrice[];
 };
 
 export const services: ServiceDef[] = [
@@ -55,17 +57,33 @@ export const services: ServiceDef[] = [
     title: "Aviculture",
     short: "Élevage, produits frais et formation",
     description:
-      "Poulets frais & poussins, œufs frais, poussins pour élevage (1j/1sem/2sem/1mois — chauffés + vaccinés), formation, conseil pour installation.",
+      "Poulet de chair, pintade, coquelet, poule pondeuse, poussins de race Kuroiler et Goliath, œufs de table et œufs à couver. Vente au détail dès 1 tête, ou en gros à partir de 500 têtes toutes les quinzaines. Formation et conseil pour installation.",
     icon: Egg,
     highlights: [
-      "Poulets frais & poussins",
-      "Œufs frais",
+      "Poulet de chair, pintade & coquelet",
+      "Poule pondeuse",
+      "Poussins de race Kuroiler & Goliath",
+      "Œufs de table & œufs à couver",
+      "Poussins pour élevage (1j/1sem/2sem/1mois — chauffés + vaccinés)",
       "Formation en aviculture",
       "Formation en confection de couveuse automatique",
       "Formation en confection de cage de chauffage automatique",
       "Conseil pour installation",
     ],
     ctaLabel: "Demander un devis",
+    extras: {
+      label: "Vente en gros",
+      content: "Détail dès 1 tête · Gros à partir de 500 têtes toutes les 2 semaines",
+    },
+    products: [
+      { name: "Poule pondeuse", price: "4 500", unit: "FCFA / tête" },
+      { name: "Poulet de chair", price: "3 000", unit: "FCFA / tête" },
+      { name: "Pintade", price: "6 500", unit: "FCFA / tête" },
+      { name: "Coquelet", price: "6 500", unit: "FCFA / tête" },
+      { name: "Poussin Kuroiler / Goliath", price: "40 000", unit: "FCFA / carton" },
+      { name: "Œuf de table", price: "2 700", unit: "FCFA / plaquette" },
+      { name: "Œuf à couver", price: "8 500", unit: "FCFA / plaquette" },
+    ],
   },
   {
     slug: "transport",

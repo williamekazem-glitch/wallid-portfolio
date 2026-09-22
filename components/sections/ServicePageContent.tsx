@@ -231,6 +231,92 @@ export function ServicePageContent({ service, related }: { service: ServiceDef; 
           </div>
         </section>
 
+        {service.products && service.products.length > 0 && (
+          <section style={{ padding: "var(--section) var(--gutter)", background: "var(--ink-900)" }}>
+            <div className="wrap">
+              <div className="section-eyebrow">Tarifs</div>
+              <h2 className="section-title" style={{ marginBottom: 12 }}>
+                Nos <span className="serif">produits</span> disponibles.
+              </h2>
+              <p
+                style={{
+                  color: "rgba(248,250,252,0.62)",
+                  fontSize: 15,
+                  marginBottom: 40,
+                  maxWidth: "60ch",
+                }}
+              >
+                Prix indicatifs, à confirmer selon quantité et disponibilité du moment.
+              </p>
+              <div
+                style={{
+                  display: "grid",
+                  gap: 14,
+                  gridTemplateColumns: "repeat(auto-fit, minmax(230px, 1fr))",
+                }}
+              >
+                {service.products.map((p) => (
+                  <div
+                    key={p.name}
+                    style={{
+                      padding: "22px 24px",
+                      borderRadius: "var(--radius)",
+                      background:
+                        "linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015))",
+                      border: "1px solid var(--ink-border)",
+                    }}
+                  >
+                    <div
+                      style={{
+                        fontFamily: "var(--font-display-pv)",
+                        fontWeight: 700,
+                        fontSize: "1.05rem",
+                        color: "#fff",
+                        letterSpacing: "-0.01em",
+                        marginBottom: 12,
+                      }}
+                    >
+                      {p.name}
+                    </div>
+                    <div
+                      style={{
+                        fontSize: 11,
+                        color: "rgba(248,250,252,0.5)",
+                        fontWeight: 500,
+                        marginBottom: 4,
+                        textTransform: "uppercase",
+                        letterSpacing: "0.08em",
+                      }}
+                    >
+                      À partir de
+                    </div>
+                    <div
+                      style={{
+                        fontFamily: "var(--font-display-pv)",
+                        fontWeight: 700,
+                        fontSize: "1.65rem",
+                        color: "var(--sun-400)",
+                        letterSpacing: "-0.02em",
+                      }}
+                    >
+                      {p.price}{" "}
+                      <span
+                        style={{
+                          fontSize: "0.8rem",
+                          fontWeight: 500,
+                          color: "rgba(248,250,252,0.6)",
+                        }}
+                      >
+                        {p.unit}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
         {service.process && service.process.length > 0 && (
           <section style={{ padding: "var(--section) var(--gutter)", background: "var(--ink-950)" }}>
             <div className="wrap" style={{ maxWidth: 900 }}>
