@@ -29,7 +29,7 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://kazem-williame-wallid.example"),
+  metadataBase: new URL("https://wallid-portfolio.vercel.app"),
   title: {
     default: siteConfig.name + " - " + siteConfig.tagline,
     template: "%s - " + siteConfig.name,
