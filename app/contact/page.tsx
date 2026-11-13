@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PageShell } from "@/components/sections/PageShell";
 import { siteConfig } from "@/lib/site-config";
 import { buildQuickWhatsAppHref } from "@/lib/data";
+import { SOCIALS, SocialIcon } from "@/components/ui/SocialLinks";
 
 const WA = siteConfig.whatsapp;
 
@@ -58,11 +59,6 @@ const ZONES = [
   "Autres zones sur demande",
 ];
 
-const SOCIAL = [
-  { label: "LinkedIn", href: siteConfig.social.linkedin },
-  { label: "Facebook", href: siteConfig.social.facebook },
-  { label: "TikTok", href: siteConfig.social.tiktok },
-];
 
 export default function ContactPage() {
   const waHref = buildQuickWhatsAppHref();
@@ -164,16 +160,16 @@ export default function ContactPage() {
 
               <div className="section-eyebrow" style={{ marginTop: 32, marginBottom: 16 }}>Réseaux sociaux</div>
               <ul style={{ listStyle: "none", padding: 0, display: "flex", flexWrap: "wrap", gap: 12 }}>
-                {SOCIAL.map((s) => (
-                  <li key={s.label}>
+                {SOCIALS.map((s) => (
+                  <li key={s.key}>
                     <a href={s.href} target="_blank" rel="noopener noreferrer" style={{
-                      padding: "8px 16px", borderRadius: 999,
+                      padding: "10px 18px", borderRadius: 999, minHeight: 44,
                       background: "rgba(255,255,255,0.06)",
                       border: "1px solid var(--ink-border)",
-                      color: "rgba(248,250,252,0.85)",
-                      fontFamily: "var(--font-display-pv)", fontWeight: 600, fontSize: 13,
-                      display: "inline-block",
-                    }}>{s.label}</a>
+                      color: "rgba(248,250,252,0.9)",
+                      fontFamily: "var(--font-display-pv)", fontWeight: 600, fontSize: 14,
+                      display: "inline-flex", alignItems: "center", gap: 10,
+                    }}><SocialIcon name={s.key} size={16} />{s.label}</a>
                   </li>
                 ))}
               </ul>
