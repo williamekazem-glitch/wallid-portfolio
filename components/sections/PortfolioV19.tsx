@@ -40,7 +40,7 @@ const ArrowRight = ({ size = 14 }: { size?: number }) => (
 // Pastilles du premier écran : libellés courts, orientés besoin du visiteur.
 const HERO_CHIPS: { slug: string; label: string }[] = [
   { slug: "aviculture", label: "Poulets & œufs" },
-  { slug: "transport", label: "Transport" },
+  { slug: "transport", label: "Voyages & déplacements" },
   { slug: "technique", label: "Travaux & sécurité" },
   { slug: "gestion", label: "Gestion de stock" },
   { slug: "digital", label: "Site & réseaux" },

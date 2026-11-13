@@ -2510,3 +2510,13 @@ body.pv19-body.keyboard-user .pv19 .cursor-dot { display: none !important; }
 @media (max-width: 720px) {
   body:has(.mobile-bar) .pv19 .fab { display: none; }
 }
+/* Très petits écrans : icône au-dessus du libellé pour que les mots longs tiennent */
+@media (max-width: 359px) {
+  .pv19 .hero-chip { flex-direction: column; align-items: flex-start; gap: 6px; padding: 10px; }
+}
+.pv19 .hero-chip { overflow-wrap: anywhere; }
+@media (min-width: 360px) and (max-width: 419px) {
+  .pv19 .hero-chip { gap: 8px; padding: 10px; font-size: 13.5px; }
+  .pv19 .hero-chip-icon { width: 28px; height: 28px; }
+  .pv19 .hero-chip-icon svg { width: 16px; height: 16px; }
+}
