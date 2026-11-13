@@ -34,66 +34,6 @@ const ArrowRight = ({ size = 14 }: { size?: number }) => (
   </svg>
 );
 
-const ServiceIllus: Record<string, JSX.Element> = {
-  aviculture: (
-    <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M18 44c0-10 6-16 14-16s14 6 14 16" />
-      <ellipse cx="32" cy="44" rx="16" ry="8" />
-      <path d="M32 28c0-6 3-10 8-10s8 4 8 8-3 6-5 6" />
-      <circle cx="42" cy="20" r="1.5" fill="currentColor" />
-      <path d="M48 22l3-1M48 24l4 1" />
-      <path d="M20 52l-2 4M28 54v4M36 54v4M44 52l2 4" />
-    </svg>
-  ),
-  transport: (
-    <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M8 50h48M14 50v-8c0-3 2-5 5-5h26c3 0 5 2 5 5v8" />
-      <rect x="20" y="30" width="24" height="12" rx="3" />
-      <circle cx="22" cy="50" r="4" fill="currentColor" fillOpacity="0.3" />
-      <circle cx="42" cy="50" r="4" fill="currentColor" fillOpacity="0.3" />
-      <path d="M6 58h6M18 58h8M32 58h8M46 58h12" />
-    </svg>
-  ),
-  technique: (
-    <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 52L28 36" />
-      <rect x="26" y="14" width="14" height="14" rx="2" transform="rotate(45 33 21)" />
-      <path d="M40 40c4 4 8 4 12 0s4-8 0-12l-8 8-4-4z" />
-      <path d="M52 20l-6 6" />
-      <path d="M8 56l4-4M56 8l-4 4" opacity="0.5" />
-    </svg>
-  ),
-  digital: (
-    <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="10" y="14" width="44" height="30" rx="2" />
-      <path d="M6 50h52l-3-4H9z" />
-      <path d="M18 24h20M18 30h14M18 36h8" opacity="0.7" />
-      <circle cx="46" cy="24" r="3" fill="currentColor" fillOpacity="0.3" />
-      <path d="M40 36l4-4 6 6" opacity="0.6" />
-    </svg>
-  ),
-  gestion: (
-    <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="8" y="36" width="20" height="18" rx="1" />
-      <rect x="30" y="36" width="20" height="18" rx="1" />
-      <rect x="18" y="18" width="20" height="18" rx="1" />
-      <rect x="40" y="18" width="16" height="18" rx="1" />
-      <path d="M8 44h20M30 44h20M18 26h20M40 26h16" opacity="0.4" />
-      <path d="M12 40l4 2M52 40l-4 2M22 22l4 2M46 22l4 2" opacity="0.6" />
-    </svg>
-  ),
-  sourcing: (
-    <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M6 44h52l-3 8H9z" />
-      <rect x="10" y="24" width="44" height="20" rx="1" />
-      <path d="M10 30h44M10 36h44" opacity="0.5" />
-      <path d="M22 12l6 8h8l6-8" opacity="0.7" />
-      <circle cx="14" cy="52" r="3" fill="currentColor" fillOpacity="0.3" />
-      <circle cx="50" cy="52" r="3" fill="currentColor" fillOpacity="0.3" />
-    </svg>
-  ),
-};
-
 const ServiceIcons: Record<string, JSX.Element> = {
   aviculture: (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -624,11 +564,19 @@ export function PortfolioV19() {
                       <path d="m12 5 7 7-7 7" />
                     </svg>
                   </div>
-                  <div className="service-illu" aria-hidden="true">{ServiceIllus[svc.slug]}</div>
+                  <div className="service-photo">
+                    <Image
+                      src={svc.photo.src}
+                      alt={svc.photo.alt}
+                      fill
+                      sizes="(min-width: 900px) 33vw, (min-width: 640px) 50vw, 100vw"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="service-icon">{ServiceIcons[svc.slug]}</div>
                   <div className="service-idx">
                     <span>{svc.index} - {svc.title.split(" ")[0]}</span>
                   </div>
-                  <div className="service-icon">{ServiceIcons[svc.slug]}</div>
                   <h3>{svc.title}</h3>
                   <p>{svc.short}</p>
                   <div className="service-hint">Voir la page →</div>
