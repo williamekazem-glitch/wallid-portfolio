@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   description:
     "Questions fréquentes : coût du devis, zones de livraison, premier contact, paiement, projets. Réponses honnêtes de Kazem Williame Wallid.",
   openGraph: {
+    images: [siteConfig.ogImage],
     title: "FAQ — " + siteConfig.name,
     description: "Les réponses aux vraies questions.",
     type: "website",

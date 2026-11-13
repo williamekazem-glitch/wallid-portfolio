@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   description:
     "Kazem Williame Wallid : BTS FCGE Pigier CI, ex-Manager Samer, fondateur Al Walid Lavage Auto et Poulet d'CI. Entrepreneur polyvalent et autodidacte à la croisée du management, du terrain et des nouvelles technologies.",
   openGraph: {
+    images: [siteConfig.ogImage],
     title: "À propos — " + siteConfig.name,
     description: "Comprendre. Apprendre. Expérimenter. Construire.",
     type: "website",

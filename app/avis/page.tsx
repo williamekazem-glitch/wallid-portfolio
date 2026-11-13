@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   description:
     "Retours honnetes de clients qui m'ont fait confiance sur leurs projets d'aviculture, transport, services techniques, digital ou gestion de stock. Zero faux temoignage.",
   openGraph: {
+    images: [siteConfig.ogImage],
     title: "Avis clients — " + siteConfig.name,
     description: "Vos retours honnetes m'aident a progresser et rassurent les prochains clients.",
     type: "website",

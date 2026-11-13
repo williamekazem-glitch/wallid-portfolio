@@ -384,7 +384,7 @@ export function PortfolioV19() {
                   Six domaines, un seul interlocuteur. De l&apos;aviculture au digital, en passant par le transport et le bâtiment — j&apos;accompagne particuliers et entreprises à Abidjan avec un WhatsApp direct.
                 </p>
                 <div className="hero-ctas hero-in hero-in-3">
-                  <a href={"https://wa.me/" + WA} className="btn btn-wa magnetic">
+                  <a href={buildQuickWhatsAppHref()} className="btn btn-wa magnetic">
                     <WhatsAppIcon size={18} />
                     WhatsApp direct
                   </a>
@@ -712,7 +712,7 @@ export function PortfolioV19() {
                 <h3>Un message WhatsApp et je vous réponds.</h3>
                 <p>Devis, question, projet, le canal direct, sans intermediaire. Reponse dans la journée.</p>
               </div>
-              <a href={"https://wa.me/" + WA} className="contact-hero-btn magnetic">
+              <a href={buildQuickWhatsAppHref()} className="contact-hero-btn magnetic">
                 <WhatsAppIcon size={20} />
                 Écrire sur WhatsApp
               </a>
@@ -808,7 +808,7 @@ export function PortfolioV19() {
 
 
       <div className={"mobile-bar" + (pastHeroFar ? " visible" : "")} role="navigation" aria-label="Actions rapides">
-        <a href={"https://wa.me/" + WA} className="mobile-bar-btn mobile-bar-btn--wa">
+        <a href={buildQuickWhatsAppHref()} className="mobile-bar-btn mobile-bar-btn--wa">
           <WhatsAppIcon size={22} />
           WhatsApp
         </a>

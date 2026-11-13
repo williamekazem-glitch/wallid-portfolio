@@ -66,11 +66,19 @@ export const metadata: Metadata = {
     telephone: false,
   },
   openGraph: {
+    images: [siteConfig.ogImage],
     type: "website",
     locale: "fr_FR",
     title: siteConfig.name + " - " + siteConfig.tagline,
     description: "Six domaines, un contact. Aviculture, transport, technique, digital, gestion de stock, sourcing Chine.",
     siteName: siteConfig.name,
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [siteConfig.ogImage.url],
+  },
+  icons: {
+    apple: "/apple-icon.png",
   },
 };
 

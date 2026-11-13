@@ -6,7 +6,13 @@ import { useKeyboardUser } from "@/lib/hooks/useKeyboardUser";
 import { useCoalescedScroll } from "@/lib/hooks/useCoalescedScroll";
 import { usePrefersReducedMotion } from "@/lib/hooks/usePrefersReducedMotion";
 
-const WA = siteConfig.whatsapp;
+// Pas d'import de lib/data ici : ce composant est chargé sur toutes les pages
+// et lib/data tire les icônes lucide dans le bundle commun.
+const WA_HREF =
+  "https://wa.me/" +
+  siteConfig.whatsapp +
+  "?text=" +
+  encodeURIComponent("Bonjour Wallid, je souhaite échanger sur un projet. Merci !");
 
 const WhatsAppIcon = ({ size = 28 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -84,7 +90,7 @@ export function GlobalFloatingUI() {
       <div className="scroll-progress" aria-hidden="true" style={{ width: scrollPct + "%" }} />
       <div className="cursor-halo" aria-hidden="true" ref={cursorHaloRef} />
       <div className="cursor-dot" aria-hidden="true" ref={cursorDotRef} />
-      <a href={"https://wa.me/" + WA} className="fab" aria-label="Contacter Wallid sur WhatsApp" target="_blank" rel="noopener noreferrer">
+      <a href={WA_HREF} className="fab" aria-label="Contacter Wallid sur WhatsApp" target="_blank" rel="noopener noreferrer">
         <WhatsAppIcon size={28} />
       </a>
     </div>

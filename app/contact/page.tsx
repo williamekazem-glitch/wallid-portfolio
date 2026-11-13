@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   description:
     "Contactez Kazem Williame Wallid : WhatsApp direct, téléphone, email. Réponse dans la journée, 7j/7. Basé à Abidjan, Côte d'Ivoire.",
   openGraph: {
+    images: [siteConfig.ogImage],
     title: "Contact — " + siteConfig.name,
     description: "Trois canaux, une réponse rapide.",
     type: "website",

@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   description:
     "Projets et réalisations de Kazem Williame Wallid : aviculture, transport, chantiers techniques, digital, gestion de stock. Portefolio en construction — zéro faux projet.",
   openGraph: {
+    images: [siteConfig.ogImage],
     title: "Réalisations — " + siteConfig.name,
     description: "Portefolio de projets réels en construction. Zéro fake, que du vrai.",
     type: "website",

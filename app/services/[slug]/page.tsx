@@ -19,6 +19,7 @@ export function generateMetadata({
     title: `${svc.title} — ${siteConfig.name}`,
     description: svc.description,
     openGraph: {
+    images: [siteConfig.ogImage],
       title: `${svc.title} — ${siteConfig.name}`,
       description: svc.description,
       type: "website",
