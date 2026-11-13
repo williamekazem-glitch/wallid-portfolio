@@ -24,6 +24,8 @@
 
   /* WhatsApp */
   --wa-500: #25D366;
+  /* Texte sur vert WhatsApp : contraste 7,7:1 (le blanc ne fait que 2:1, illisible au soleil) */
+  --wa-ink: #052E16;
   --wa-600: #128C7E;
 
   /* Neutres clairs */
@@ -216,7 +218,7 @@ body.pv19-body::before {
 [data-theme="light"] .pv19 .service-hint,
 [data-theme="light"] .pv19 .hero-lede,
 [data-theme="light"] .pv19 .why h2,
-[data-theme="light"] .pv19 .why-item h4,
+[data-theme="light"] .pv19 .why-item h3,
 [data-theme="light"] .pv19 .why-item p,
 [data-theme="light"] .pv19 .process h2,
 [data-theme="light"] .pv19 .process-step h3,
@@ -360,7 +362,13 @@ body.pv19-body::before {
   line-height: 1;
   transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
   box-shadow: 0 4px 20px -6px var(--sun-glow);
-  min-height: 40px;
+  min-height: 44px;
+  white-space: nowrap;
+}
+@media (max-width: 420px) {
+  /* Petits écrans : le bouton tient sur une ligne, sans la flèche */
+  .pv19 .nav-cta { padding: 10px 14px; }
+  .pv19 .nav-cta svg { display: none; }
 }
 .pv19 .nav-cta:hover {
   transform: translateY(-2px);
@@ -452,12 +460,6 @@ body.pv19-body::before {
   top: -10%;
   right: -10%;
   background: radial-gradient(circle at 30% 30%, var(--sun-500), var(--sun-700) 60%, transparent 75%);
-  animation: pv19-float 18s ease-in-out infinite alternate, pv19-chromatic 8s ease-in-out infinite;
-  will-change: filter, transform;
-}
-@keyframes pv19-chromatic {
-  0%, 100% { filter: blur(80px) hue-rotate(0deg); }
-  50% { filter: blur(85px) hue-rotate(15deg); }
 }
 @media (max-width: 720px) {
   .pv19 .blob-1 { animation: pv19-float 18s ease-in-out infinite alternate; filter: blur(60px); }
@@ -675,7 +677,7 @@ body.pv19-body::before {
 .pv19 .btn-ghost:hover { background: rgba(255, 255, 255, 0.12); transform: translateY(-2px); }
 .pv19 .btn-wa {
   background: var(--wa-500);
-  color: #fff;
+  color: var(--wa-ink);
   box-shadow: 0 12px 40px -12px rgba(37, 211, 102, 0.5);
 }
 .pv19 .btn-wa:hover {
@@ -1338,7 +1340,7 @@ body.pv19-body::before {
 }
 .pv19 .why-item:hover { background: var(--ink-800); }
 .pv19 .why-item svg { width: 32px; height: 32px; color: var(--sun-400); }
-.pv19 .why-item h4 {
+.pv19 .why-item h3 {
   font-family: var(--font-display-pv);
   font-weight: 700;
   font-size: 1.15rem;
@@ -1664,7 +1666,7 @@ body.pv19-body::before {
   padding: 18px 26px;
   border-radius: 14px;
   background: var(--wa-500);
-  color: #fff;
+  color: var(--wa-ink);
   font-family: var(--font-display-pv);
   font-weight: 700;
   font-size: 15px;
@@ -1707,7 +1709,7 @@ body.pv19-body::before {
   margin-top: 48px;
   padding: 48px 40px;
   border-radius: 20px;
-  background: linear-gradient(135deg, var(--wa-500), var(--wa-600));
+  background: linear-gradient(135deg, #128C7E, #075E54);
   color: #fff;
   display: grid;
   grid-template-columns: 1fr;
@@ -1950,89 +1952,6 @@ body.pv19-body::before {
 }
 .pv19-body::-webkit-scrollbar-thumb:hover { background: var(--sun-400); }
 
-/* ============ INTRO LOADER ============ */
-.pv19 .intro-loader {
-  position: fixed;
-  inset: 0;
-  z-index: 1500;
-  background: var(--ink-950);
-  display: grid;
-  place-items: center;
-  color: #fff;
-  transition: opacity 0.6s var(--ease), visibility 0s 0.6s;
-}
-.pv19 .intro-loader.done {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-.pv19 .intro-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 32px;
-  text-align: center;
-}
-.pv19 .intro-mono {
-  font-family: var(--font-serif-pv);
-  font-style: italic;
-  font-size: clamp(6rem, 18vw, 12rem);
-  line-height: 0.9;
-  letter-spacing: -0.05em;
-  background: linear-gradient(160deg, #fff 0%, var(--sun-400) 50%, var(--sun-700));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: pv19-intro-in 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  opacity: 0;
-  transform: translateY(20px);
-}
-@keyframes pv19-intro-in {
-  to { opacity: 1; transform: translateY(0); }
-}
-.pv19 .intro-name {
-  font-family: var(--font-display-pv);
-  font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.6);
-  opacity: 0;
-  animation: pv19-intro-in 1.4s 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-.pv19 .intro-counter {
-  display: flex;
-  align-items: baseline;
-  gap: 6px;
-  font-family: var(--font-display-pv);
-  font-weight: 700;
-  font-size: clamp(1rem, 2vw, 1.35rem);
-  letter-spacing: -0.01em;
-  color: var(--sun-400);
-  font-variant-numeric: tabular-nums;
-  margin-top: 12px;
-  opacity: 0;
-  animation: pv19-intro-in 1s 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-.pv19 .intro-counter small { color: rgba(255, 255, 255, 0.4); font-size: 0.6em; }
-.pv19 .intro-progress {
-  width: min(220px, 60vw);
-  height: 2px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 999px;
-  overflow: hidden;
-  margin-top: 8px;
-  opacity: 0;
-  animation: pv19-intro-in 1s 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-.pv19 .intro-progress-bar {
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, var(--sun-500), var(--sun-300));
-  box-shadow: 0 0 12px var(--sun-glow);
-  transition: width 0.2s linear;
-}
-
 /* ============ SCROLL PROGRESS ============ */
 .pv19 .scroll-progress {
   position: fixed;
@@ -2128,9 +2047,9 @@ body.pv19-body::before {
 .pv19 .mobile-bar-btn--wa {
   background: var(--wa-500);
   border-color: var(--wa-500);
-  color: #fff;
+  color: var(--wa-ink);
 }
-.pv19 .mobile-bar-btn--wa svg { color: #fff; }
+.pv19 .mobile-bar-btn--wa svg { color: var(--wa-ink); }
 .pv19 .mobile-bar-btn--call {
   background: rgba(251, 191, 36, 0.14);
   border-color: rgba(251, 191, 36, 0.35);
@@ -2170,7 +2089,7 @@ body.pv19-body::before {
   height: 60px;
   border-radius: 50%;
   background: var(--wa-500);
-  color: #fff;
+  color: var(--wa-ink);
   display: grid;
   place-items: center;
   box-shadow: 0 10px 30px -6px rgba(37, 211, 102, 0.6);
@@ -2259,6 +2178,18 @@ body.pv19-body.keyboard-user .pv19 .cursor-halo,
 body.pv19-body.keyboard-user .pv19 .cursor-dot { display: none !important; }
 
 /* ============ REVEAL ANIM ============ */
+/* Entrée du hero : 100 % CSS, démarre au premier rendu sans attendre le JS.
+   Le titre (élément LCP) reste opaque : seul un léger glissement l'anime. */
+@keyframes pv19-hero-in { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+@keyframes pv19-hero-title { from { transform: translateY(16px); } to { transform: none; } }
+.pv19 .hero-in { animation: pv19-hero-in 0.8s var(--ease) both; }
+.pv19 .hero-in-1 { animation-delay: 0.08s; }
+.pv19 .hero-in-2 { animation-delay: 0.16s; }
+.pv19 .hero-in-3 { animation-delay: 0.24s; }
+.pv19 .hero-in-title { animation: pv19-hero-title 0.8s var(--ease) both; }
+@media (prefers-reduced-motion: reduce) {
+  .pv19 .hero-in, .pv19 .hero-in-title { animation: none; }
+}
 .pv19 .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
 .pv19 .reveal.in { opacity: 1; transform: none; }
 .pv19 .reveal-delay-1 { transition-delay: 0.1s; }
@@ -2280,8 +2211,6 @@ body.pv19-body.keyboard-user .pv19 .cursor-dot { display: none !important; }
   .pv19 .bcard-face--front { visibility: visible; }
   .pv19 .bcard-face--back { visibility: hidden; }
   .pv19 .trajets-inner, .pv19 .skills-inner { animation: none; }
-  .pv19 .intro-loader { transition: none; }
-  .pv19 .intro-mono, .pv19 .intro-name, .pv19 .intro-counter, .pv19 .intro-progress { animation: none; opacity: 1; transform: none; }
   .pv19 .service:hover::after, .pv19 .service.is-open::after { animation: none; }
   .pv19 .reveal { opacity: 1; transform: none; }
 }

@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   description:
     "Mentions légales, politique de confidentialité et informations obligatoires du portfolio de Kazem Williame Wallid.",
   openGraph: {
+    images: [siteConfig.ogImage],
     title: "Mentions légales — " + siteConfig.name,
     description: "Informations légales et politique de confidentialité.",
     type: "website",

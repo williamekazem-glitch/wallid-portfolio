@@ -19,6 +19,14 @@ export const siteConfig = {
     tiktok: "https://www.tiktok.com/@wallidkazem",
   },
 
+  // Image d'aperçu (WhatsApp, Facebook, LinkedIn) — 1200 × 630, dans public/
+  ogImage: {
+    url: "/og.jpg",
+    width: 1200,
+    height: 630,
+    alt: "Kazem Williame Wallid — Un profil polyvalent, des solutions concrètes.",
+  },
+
   // Feature flags — active quand le contenu réel est prêt
   hasCv: false,          // ← passe à true dès que public/cv.pdf est en place
   isAvailable: true,     // ← petit badge vert "Disponible" dans le Hero

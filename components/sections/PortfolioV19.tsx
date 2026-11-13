@@ -86,11 +86,6 @@ export function PortfolioV19() {
   const [scrolled, setScrolled] = useState(false);
   const [pastHero, setPastHero] = useState(false);
   const [pastHeroFar, setPastHeroFar] = useState(false);
-  const [introDone, setIntroDone] = useState(false);
-  const [introPct, setIntroPct] = useState(0);
-  const [scrambleHead, setScrambleHead] = useState("Un profil");
-  const [scrambleTail, setScrambleTail] = useState(", des solutions concrètes.");
-  const [scrollPct, setScrollPct] = useState(0);
   const [copyToast, setCopyToast] = useState(false);
 
   const heroRef = useRef<HTMLElement | null>(null);
@@ -117,49 +112,8 @@ export function PortfolioV19() {
     try { localStorage.setItem("wallid-theme", next); } catch { /* noop */ }
   };
 
-  useEffect(() => {
-    const conn = (navigator as unknown as { connection?: { saveData?: boolean; effectiveType?: string } }).connection;
-    const slow = conn && (conn.saveData || conn.effectiveType === "slow-2g" || conn.effectiveType === "2g");
-    let visited = false;
-    try { visited = localStorage.getItem("wallid-visited") === "true"; } catch { /* noop */ }
-    if (slow || visited || reduceMotion) {
-      setIntroDone(true);
-      setIntroPct(100);
-      try { localStorage.setItem("wallid-visited", "true"); } catch { /* noop */ }
-      return;
-    }
-    const duration = 1600;
-    const start = performance.now();
-    let raf = 0;
-    const tick = () => {
-      const t = Math.min((performance.now() - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - t, 2);
-      setIntroPct(Math.floor(eased * 100));
-      if (t < 1) raf = requestAnimationFrame(tick);
-      else {
-        window.setTimeout(() => setIntroDone(true), 350);
-        try { localStorage.setItem("wallid-visited", "true"); } catch { /* noop */ }
-      }
-    };
-    raf = requestAnimationFrame(tick);
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        cancelAnimationFrame(raf);
-        setIntroDone(true);
-        setIntroPct(100);
-      }
-    };
-    window.addEventListener("keydown", onKey);
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener("keydown", onKey);
-    };
-  }, [reduceMotion]);
-
   useCoalescedScroll(() => {
     const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    setScrollPct(docHeight > 0 ? (scrollTop / docHeight) * 100 : 0);
     if (heroRef.current) {
       const heroBottom = heroRef.current.offsetTop + heroRef.current.offsetHeight;
       setScrolled(scrollTop > heroBottom - 200);
@@ -167,38 +121,6 @@ export function PortfolioV19() {
       setPastHeroFar(scrollTop > heroBottom - 100);
     }
   });
-
-  useEffect(() => {
-    if (reduceMotion) return;
-    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789#*+=/";
-    const rand = () => chars[Math.floor(Math.random() * chars.length)];
-    const scrambleWord = (word: string, ratio: number) => {
-      const reveal = Math.floor(word.length * ratio);
-      let out = "";
-      for (let i = 0; i < word.length; i++) {
-        const ch = word[i];
-        if (i < reveal || !/[A-Za-zA-u00ff0-9]/.test(ch)) out += ch;
-        else out += rand();
-      }
-      return out;
-    };
-    const finalHead = "Un profil";
-    const finalTail = ", des solutions concrètes.";
-    const duration = 900;
-    let raf = 0;
-    let start = 0;
-    let started = false;
-    const tick = (now: number) => {
-      if (!started) { start = now; started = true; }
-      const t = Math.min((now - start) / duration, 1);
-      setScrambleHead(scrambleWord(finalHead, t));
-      setScrambleTail(scrambleWord(finalTail, t));
-      if (t < 1) raf = requestAnimationFrame(tick);
-      else { setScrambleHead(finalHead); setScrambleTail(finalTail); }
-    };
-    const timer = window.setTimeout(() => { raf = requestAnimationFrame(tick); }, 300);
-    return () => { window.clearTimeout(timer); cancelAnimationFrame(raf); };
-  }, [reduceMotion]);
 
   useEffect(() => {
     const titles = document.querySelectorAll<HTMLElement>(".pv19 .section-title");
@@ -410,23 +332,6 @@ export function PortfolioV19() {
 
   return (
     <div className="pv19">
-      {!introDone && (
-        <div className="intro-loader" role="dialog" aria-label="Chargement">
-          <div className="intro-inner">
-            <div className="intro-mono" aria-hidden="true">W</div>
-            <div className="intro-name">Kazem Williame Wallid</div>
-            <div className="intro-counter" aria-live="polite">
-              <span>{String(introPct).padStart(2, "0")}</span>
-              <small>%</small>
-            </div>
-            <div className="intro-progress">
-              <div className="intro-progress-bar" style={{ width: introPct + "%" }} />
-            </div>
-          </div>
-        </div>
-      )}
-
-
       <nav className={"nav" + (scrolled ? " compact" : "")} aria-label="Navigation principale">
         <a href="#" className="brand">
           <span className="brand-dot" aria-hidden="true" />
@@ -470,19 +375,16 @@ export function PortfolioV19() {
           <div className="hero-wrap">
             <div className="hero-main">
               <div className="hero-content">
-                <span className="hero-badge reveal">Disponible pour vos projets</span>
-                <div className="hero-eyebrow reveal reveal-delay-1">Entrepreneur multi-services · Abidjan</div>
-                <h1 className="reveal reveal-delay-1">
-                  <span aria-hidden="true">
-                    {scrambleHead} <span className="accent">polyvalent</span>{scrambleTail}
-                  </span>
-                  <span className="pv19-sr-only">Un profil polyvalent, des solutions concrètes.</span>
+                <span className="hero-badge hero-in">Disponible pour vos projets</span>
+                <div className="hero-eyebrow hero-in hero-in-1">Entrepreneur multi-services · Abidjan</div>
+                <h1 className="hero-in-title">
+                  Un profil <span className="accent">polyvalent</span>, des solutions concrètes.
                 </h1>
-                <p className="hero-lede reveal reveal-delay-2">
+                <p className="hero-lede hero-in hero-in-2">
                   Six domaines, un seul interlocuteur. De l&apos;aviculture au digital, en passant par le transport et le bâtiment — j&apos;accompagne particuliers et entreprises à Abidjan avec un WhatsApp direct.
                 </p>
-                <div className="hero-ctas reveal reveal-delay-3">
-                  <a href={"https://wa.me/" + WA} className="btn btn-wa magnetic">
+                <div className="hero-ctas hero-in hero-in-3">
+                  <a href={buildQuickWhatsAppHref()} className="btn btn-wa magnetic">
                     <WhatsAppIcon size={18} />
                     WhatsApp direct
                   </a>
@@ -495,7 +397,7 @@ export function PortfolioV19() {
                   </a>
                 </div>
               </div>
-              <figure className="hero-photo reveal reveal-delay-2" aria-label="Portrait de Kazem Williame Wallid" ref={(el) => { heroPhotoRef.current = el; }}>
+              <figure className="hero-photo hero-in hero-in-2" aria-label="Portrait de Kazem Williame Wallid" ref={(el) => { heroPhotoRef.current = el; }}>
                 <Image
                   className="hero-photo-img"
                   src="/wallid.jpg"
@@ -672,14 +574,14 @@ export function PortfolioV19() {
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                 </svg>
-                <h4>Un seul contact</h4>
+                <h3>Un seul contact</h3>
                 <p>Vous parlez directement avec moi. Pas de standard, pas de commercial intermédiaire.</p>
               </div>
               <div className="why-item reveal reveal-delay-1">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
                 </svg>
-                <h4>Multi-services</h4>
+                <h3>Multi-services</h3>
                 <p>Cinq domaines couverts, du produit frais au site internet. Un seul devis, un seul suivi.</p>
               </div>
               <div className="why-item reveal reveal-delay-2">
@@ -687,7 +589,7 @@ export function PortfolioV19() {
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                   <circle cx="12" cy="10" r="3" />
                 </svg>
-                <h4>Ancré à Abidjan</h4>
+                <h3>Ancré à Abidjan</h3>
                 <p>Je connais le terrain. Je me déplace, j&apos;organise, je livre — dans toute la Côte d&apos;Ivoire.</p>
               </div>
               <div className="why-item reveal reveal-delay-3">
@@ -695,7 +597,7 @@ export function PortfolioV19() {
                   <circle cx="12" cy="12" r="10" />
                   <polyline points="12 6 12 12 16 14" />
                 </svg>
-                <h4>Devis rapide</h4>
+                <h3>Devis rapide</h3>
                 <p>Vous m&apos;écrivez sur WhatsApp, je vous réponds la journée même. Concret, sans jargon.</p>
               </div>
             </div>
@@ -762,7 +664,7 @@ export function PortfolioV19() {
             </div>
             <div className="reviews-panel reveal reveal-delay-1">
               <div>
-                <div className="reviews-stars" aria-label="Cinq étoiles">
+                <div className="reviews-stars" role="img" aria-label="Cinq étoiles">
                   {Array.from({ length: 5 }).map((_, i) => (
                     <svg key={i} viewBox="0 0 24 24" aria-hidden="true">
                       <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
@@ -810,7 +712,7 @@ export function PortfolioV19() {
                 <h3>Un message WhatsApp et je vous réponds.</h3>
                 <p>Devis, question, projet, le canal direct, sans intermediaire. Reponse dans la journée.</p>
               </div>
-              <a href={"https://wa.me/" + WA} className="contact-hero-btn magnetic">
+              <a href={buildQuickWhatsAppHref()} className="contact-hero-btn magnetic">
                 <WhatsAppIcon size={20} />
                 Écrire sur WhatsApp
               </a>
@@ -906,7 +808,7 @@ export function PortfolioV19() {
 
 
       <div className={"mobile-bar" + (pastHeroFar ? " visible" : "")} role="navigation" aria-label="Actions rapides">
-        <a href={"https://wa.me/" + WA} className="mobile-bar-btn mobile-bar-btn--wa">
+        <a href={buildQuickWhatsAppHref()} className="mobile-bar-btn mobile-bar-btn--wa">
           <WhatsAppIcon size={22} />
           WhatsApp
         </a>
