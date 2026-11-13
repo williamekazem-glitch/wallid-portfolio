@@ -864,6 +864,33 @@ body.pv19-body::before {
 }
 .pv19 .service-illu svg { width: 100%; height: 100%; }
 
+/* Photo réelle en tête de carte service */
+.pv19 .service-photo {
+  position: relative;
+  margin: -22px -22px 0;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--ink-border);
+  z-index: 0;
+}
+.pv19 .service-photo img {
+  object-fit: cover;
+  transition: transform 0.6s var(--ease);
+}
+.pv19 .service-photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 10, 12, 0.15) 0%, rgba(10, 10, 12, 0) 40%, rgba(10, 10, 12, 0.75) 100%);
+  pointer-events: none;
+}
+.pv19 .service:hover .service-photo img { transform: scale(1.05); }
+.pv19 .service-photo + .service-icon { margin-top: -36px; z-index: 2; }
+.pv19 .service-toggle { backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); background: rgba(10, 10, 12, 0.45); }
+@media (prefers-reduced-motion: reduce) {
+  .pv19 .service:hover .service-photo img { transform: none; }
+}
+
 .pv19 .service-icon {
   width: 44px;
   height: 44px;

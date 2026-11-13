@@ -47,11 +47,18 @@ export type ServiceDef = {
   extras?: { label: string; content: string };
   process?: ProcessStepInline[];
   products?: ProductPrice[];
+  /** Photo réelle affichée en tête de carte (Unsplash, licence libre). */
+  photo: { src: string; alt: string; credit: string };
 };
 
 export const services: ServiceDef[] = [
   {
     slug: "aviculture",
+    photo: {
+      src: "https://images.unsplash.com/photo-1556316918-880f9e893822?auto=format&fit=crop&w=900&h=560&q=70",
+      alt: "Poules rousses dans un élevage en plein air",
+      credit: "Ben Moreland / Unsplash",
+    },
     index: "01",
     category: "Aviculture",
     title: "Aviculture",
@@ -87,6 +94,11 @@ export const services: ServiceDef[] = [
   },
   {
     slug: "transport",
+    photo: {
+      src: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=900&h=560&q=70",
+      alt: "Main d'un chauffeur sur le volant d'une voiture",
+      credit: "why kei / Unsplash",
+    },
     index: "02",
     category: "Transport",
     title: "Transport",
@@ -108,6 +120,11 @@ export const services: ServiceDef[] = [
   },
   {
     slug: "technique",
+    photo: {
+      src: "https://images.unsplash.com/photo-1668609268461-4f6a15269ff1?auto=format&fit=crop&w=900&h=560&q=70",
+      alt: "Ouvrier sur un chantier de construction en briques au Sénégal",
+      credit: "E. Diop / Unsplash",
+    },
     index: "03",
     category: "Services techniques",
     title: "Services techniques",
@@ -126,6 +143,11 @@ export const services: ServiceDef[] = [
   },
   {
     slug: "digital",
+    photo: {
+      src: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&h=560&q=70",
+      alt: "Ordinateur portable affichant du code sur un bureau",
+      credit: "Christopher Gower / Unsplash",
+    },
     index: "04",
     category: "Digital",
     title: "Digital",
@@ -143,6 +165,11 @@ export const services: ServiceDef[] = [
   },
   {
     slug: "gestion",
+    photo: {
+      src: "https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=900&h=560&q=70",
+      alt: "Cartons rangés sur des étagères d'entrepôt",
+      credit: "CHUTTERSNAP / Unsplash",
+    },
     index: "05",
     category: "Gestion de stock",
     title: "Gestion de stock",
@@ -161,6 +188,11 @@ export const services: ServiceDef[] = [
   },
   {
     slug: "sourcing",
+    photo: {
+      src: "https://images.unsplash.com/photo-1678182451047-196f22a4143e?auto=format&fit=crop&w=900&h=560&q=70",
+      alt: "Conteneurs empilés au port de Dar es Salaam",
+      credit: "Ali Mkumbwa / Unsplash",
+    },
     index: "06",
     category: "Sourcing Chine",
     title: "Sourcing Chine",
