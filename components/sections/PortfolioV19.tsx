@@ -15,6 +15,8 @@ import {
   buildServiceWhatsAppHref,
   buildReviewWhatsAppHref,
   buildQuickWhatsAppHref,
+  valueSummary,
+  buildSummaryShareHref,
 } from "@/lib/data";
 import { useKeyboardUser } from "@/lib/hooks/useKeyboardUser";
 import { useCoalescedScroll } from "@/lib/hooks/useCoalescedScroll";
@@ -413,6 +415,46 @@ export function PortfolioV19() {
                   <div className="hero-photo-caption-sub">Abidjan · Côte d&apos;Ivoire</div>
                 </div>
               </figure>
+            </div>
+          </div>
+        </section>
+
+        <section className="resume" id="resume" aria-labelledby="resume-title">
+          <div className="wrap">
+            <div className="resume-head reveal">
+              <div className="section-eyebrow">En résumé</div>
+              <h2 className="section-title" id="resume-title">
+                Ce que je vous <span style={{ whiteSpace: "nowrap" }}><span className="serif">apporte</span>,</span> en 30 secondes.
+              </h2>
+              <p className="resume-intro">{valueSummary.intro}</p>
+            </div>
+            <ul className="resume-facts reveal reveal-delay-1" aria-label="En chiffres">
+              {valueSummary.facts.map((f) => (
+                <li key={f.label}>
+                  <span className="resume-fact-value">{f.value}</span>
+                  <span className="resume-fact-label">{f.label}</span>
+                </li>
+              ))}
+            </ul>
+            <ol className="resume-list reveal reveal-delay-2">
+              {valueSummary.points.map((pt) => (
+                <li key={pt.slug}>
+                  <Link href={"/services/" + pt.slug} className="resume-item">
+                    <span className="resume-item-title">{pt.title}</span>
+                    <span className="resume-item-benefit">{pt.benefit}</span>
+                    <span className="resume-item-more" aria-hidden="true"><ArrowRight /></span>
+                  </Link>
+                </li>
+              ))}
+            </ol>
+            <div className="resume-ctas reveal reveal-delay-3">
+              <a href={buildQuickWhatsAppHref()} className="btn btn-wa magnetic">
+                <WhatsAppIcon size={18} />
+                Discuter de mon besoin
+              </a>
+              <a href={buildSummaryShareHref("https://wallid-portfolio.vercel.app")} className="btn resume-share" target="_blank" rel="noopener noreferrer">
+                Partager ce résumé
+              </a>
             </div>
           </div>
         </section>

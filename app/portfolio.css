@@ -2283,3 +2283,109 @@ body.pv19-body.keyboard-user .pv19 .cursor-dot { display: none !important; }
 @media (prefers-reduced-motion: reduce) {
   .pv19 .social-card:hover, .pv19 .social-card:focus-visible { transform: none; }
 }
+
+/* ============ RÉSUMÉ (ce que j'apporte) ============ */
+.pv19 .resume {
+  background: var(--ivory-50);
+  color: var(--deep-900);
+  padding: var(--section) var(--gutter);
+}
+.pv19 .resume .section-eyebrow { color: var(--sun-700); }
+.pv19 .resume .section-title { color: var(--deep-900); }
+.pv19 .resume .section-title .serif { color: var(--sun-700); }
+.pv19 .resume-intro {
+  color: var(--deep-700);
+  font-size: 1.08rem;
+  line-height: 1.55;
+  margin-top: 20px;
+  max-width: 58ch;
+}
+.pv19 .resume-facts {
+  list-style: none;
+  padding: 0;
+  margin: 36px 0 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.pv19 .resume-facts li {
+  background: #fff;
+  border: 1px solid var(--ivory-200);
+  border-radius: 14px;
+  padding: 16px 14px;
+  text-align: center;
+}
+.pv19 .resume-fact-value {
+  display: block;
+  font-family: var(--font-display-pv);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
+  line-height: 1;
+  color: var(--sun-700);
+}
+.pv19 .resume-fact-label {
+  display: block;
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--deep-700);
+}
+.pv19 .resume-list {
+  list-style: none;
+  padding: 0;
+  margin: 28px 0 0;
+  display: grid;
+  gap: 12px;
+}
+@media (min-width: 800px) {
+  .pv19 .resume-list { grid-template-columns: repeat(2, 1fr); }
+}
+.pv19 .resume-item {
+  position: relative;
+  display: block;
+  height: 100%;
+  padding: 18px 48px 18px 18px;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid var(--ivory-200);
+  border-left: 4px solid var(--sun-500);
+  color: var(--deep-900);
+  transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+}
+.pv19 .resume-item:hover,
+.pv19 .resume-item:focus-visible {
+  border-color: var(--sun-500);
+  box-shadow: 0 10px 24px -14px rgba(15, 23, 42, 0.35);
+}
+.pv19 .resume-item-title {
+  display: block;
+  font-family: var(--font-display-pv);
+  font-weight: 700;
+  font-size: 1.02rem;
+}
+.pv19 .resume-item-benefit {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--deep-700);
+}
+.pv19 .resume-item-more {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--sun-700);
+  display: grid;
+}
+.pv19 .resume-ctas {
+  margin-top: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.pv19 .resume-share {
+  background: transparent;
+  color: var(--deep-900);
+  border: 1.5px solid var(--deep-900);
+}
+.pv19 .resume-share:hover { background: var(--deep-900); color: var(--ivory-50); }
