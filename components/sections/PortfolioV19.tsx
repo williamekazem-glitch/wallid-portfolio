@@ -405,7 +405,7 @@ export function PortfolioV19() {
                   </div>
                 </div>
                 <h1 className="hero-in-title">
-                  Un besoin&nbsp;? <span className="accent">Je m&apos;en occupe.</span>
+                  Un besoin&nbsp;?<br /> <span className="accent hero-accent-line">Je m&apos;en occupe.</span>
                 </h1>
                 <p className="hero-lede hero-in hero-in-1">
                   Six domaines, un seul interlocuteur. Touchez ce qui vous intéresse&nbsp;:
@@ -457,7 +457,7 @@ export function PortfolioV19() {
 
         <section className="resume" id="resume" aria-labelledby="resume-title">
           <div className="wrap">
-            <div className="resume-head reveal">
+            <div className="resume-head">
               <div className="section-eyebrow">En résumé</div>
               <h2 className="section-title" id="resume-title">
                 Ce que je vous <span style={{ whiteSpace: "nowrap" }}><span className="serif">apporte</span>,</span> en 30 secondes.

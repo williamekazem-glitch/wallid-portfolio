@@ -2520,3 +2520,32 @@ body.pv19-body.keyboard-user .pv19 .cursor-dot { display: none !important; }
   .pv19 .hero-chip-icon { width: 28px; height: 28px; }
   .pv19 .hero-chip-icon svg { width: 16px; height: 16px; }
 }
+
+/* Titre du hero : « Je m'en occupe. » toujours sur sa propre ligne */
+.pv19 .hero-accent-line { white-space: nowrap; }
+
+/* Transition hero → résumé : la section claire remonte en « feuille »
+   arrondie sur le hero, au lieu d'une coupure nette avec un grand vide. */
+.pv19 .resume {
+  position: relative;
+  z-index: 1;
+  margin-top: -28px;
+  border-radius: 28px 28px 0 0;
+  box-shadow: 0 -12px 40px -12px rgba(0, 0, 0, 0.45);
+}
+.pv19 .resume::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  width: 44px;
+  height: 4px;
+  margin-left: -22px;
+  border-radius: 999px;
+  background: var(--ivory-200);
+}
+@media (max-width: 899px) {
+  .pv19 .hero { padding-bottom: 64px; }
+  .pv19 .resume { padding-top: 44px; }
+  .pv19 .resume .section-title { font-size: clamp(1.7rem, 7.5vw, 2.2rem); }
+}
