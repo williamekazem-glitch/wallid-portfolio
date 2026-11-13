@@ -84,7 +84,7 @@ export const services: ServiceDef[] = [
     },
     products: [
       { name: "Poule pondeuse", price: "3 500", unit: "FCFA / tête" },
-      { name: "Poulet de chair", price: "2 350", unit: "FCFA / tête · en gros dès 500 têtes" },
+      { name: "Poulet de chair", price: "2 350", unit: "FCFA / tête" },
       { name: "Pintade", price: "6 500", unit: "FCFA / tête" },
       { name: "Coquelet", price: "6 500", unit: "FCFA / tête" },
       { name: "Poussin Kuroiler / Goliath", price: "40 000", unit: "FCFA / carton" },
