@@ -408,7 +408,7 @@ export function PortfolioV19() {
                   Un besoin&nbsp;?<br /> <span className="accent hero-accent-line">Je m&apos;en occupe.</span>
                 </h1>
                 <p className="hero-lede hero-in hero-in-1">
-                  Six domaines, un seul interlocuteur. Touchez ce qui vous intéresse&nbsp;:
+                  Touchez votre besoin&nbsp;:
                 </p>
                 <ul className="hero-chips hero-in hero-in-2" aria-label="Mes services">
                   {HERO_CHIPS.map((c) => (
