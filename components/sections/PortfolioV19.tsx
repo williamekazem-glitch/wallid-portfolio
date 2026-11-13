@@ -86,11 +86,6 @@ export function PortfolioV19() {
   const [scrolled, setScrolled] = useState(false);
   const [pastHero, setPastHero] = useState(false);
   const [pastHeroFar, setPastHeroFar] = useState(false);
-  const [introDone, setIntroDone] = useState(false);
-  const [introPct, setIntroPct] = useState(0);
-  const [scrambleHead, setScrambleHead] = useState("Un profil");
-  const [scrambleTail, setScrambleTail] = useState(", des solutions concrètes.");
-  const [scrollPct, setScrollPct] = useState(0);
   const [copyToast, setCopyToast] = useState(false);
 
   const heroRef = useRef<HTMLElement | null>(null);
@@ -117,49 +112,8 @@ export function PortfolioV19() {
     try { localStorage.setItem("wallid-theme", next); } catch { /* noop */ }
   };
 
-  useEffect(() => {
-    const conn = (navigator as unknown as { connection?: { saveData?: boolean; effectiveType?: string } }).connection;
-    const slow = conn && (conn.saveData || conn.effectiveType === "slow-2g" || conn.effectiveType === "2g");
-    let visited = false;
-    try { visited = localStorage.getItem("wallid-visited") === "true"; } catch { /* noop */ }
-    if (slow || visited || reduceMotion) {
-      setIntroDone(true);
-      setIntroPct(100);
-      try { localStorage.setItem("wallid-visited", "true"); } catch { /* noop */ }
-      return;
-    }
-    const duration = 1600;
-    const start = performance.now();
-    let raf = 0;
-    const tick = () => {
-      const t = Math.min((performance.now() - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - t, 2);
-      setIntroPct(Math.floor(eased * 100));
-      if (t < 1) raf = requestAnimationFrame(tick);
-      else {
-        window.setTimeout(() => setIntroDone(true), 350);
-        try { localStorage.setItem("wallid-visited", "true"); } catch { /* noop */ }
-      }
-    };
-    raf = requestAnimationFrame(tick);
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        cancelAnimationFrame(raf);
-        setIntroDone(true);
-        setIntroPct(100);
-      }
-    };
-    window.addEventListener("keydown", onKey);
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener("keydown", onKey);
-    };
-  }, [reduceMotion]);
-
   useCoalescedScroll(() => {
     const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    setScrollPct(docHeight > 0 ? (scrollTop / docHeight) * 100 : 0);
     if (heroRef.current) {
       const heroBottom = heroRef.current.offsetTop + heroRef.current.offsetHeight;
       setScrolled(scrollTop > heroBottom - 200);
@@ -167,38 +121,6 @@ export function PortfolioV19() {
       setPastHeroFar(scrollTop > heroBottom - 100);
     }
   });
-
-  useEffect(() => {
-    if (reduceMotion) return;
-    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789#*+=/";
-    const rand = () => chars[Math.floor(Math.random() * chars.length)];
-    const scrambleWord = (word: string, ratio: number) => {
-      const reveal = Math.floor(word.length * ratio);
-      let out = "";
-      for (let i = 0; i < word.length; i++) {
-        const ch = word[i];
-        if (i < reveal || !/[A-Za-zA-u00ff0-9]/.test(ch)) out += ch;
-        else out += rand();
-      }
-      return out;
-    };
-    const finalHead = "Un profil";
-    const finalTail = ", des solutions concrètes.";
-    const duration = 900;
-    let raf = 0;
-    let start = 0;
-    let started = false;
-    const tick = (now: number) => {
-      if (!started) { start = now; started = true; }
-      const t = Math.min((now - start) / duration, 1);
-      setScrambleHead(scrambleWord(finalHead, t));
-      setScrambleTail(scrambleWord(finalTail, t));
-      if (t < 1) raf = requestAnimationFrame(tick);
-      else { setScrambleHead(finalHead); setScrambleTail(finalTail); }
-    };
-    const timer = window.setTimeout(() => { raf = requestAnimationFrame(tick); }, 300);
-    return () => { window.clearTimeout(timer); cancelAnimationFrame(raf); };
-  }, [reduceMotion]);
 
   useEffect(() => {
     const titles = document.querySelectorAll<HTMLElement>(".pv19 .section-title");
@@ -410,23 +332,6 @@ export function PortfolioV19() {
 
   return (
     <div className="pv19">
-      {!introDone && (
-        <div className="intro-loader" role="dialog" aria-label="Chargement">
-          <div className="intro-inner">
-            <div className="intro-mono" aria-hidden="true">W</div>
-            <div className="intro-name">Kazem Williame Wallid</div>
-            <div className="intro-counter" aria-live="polite">
-              <span>{String(introPct).padStart(2, "0")}</span>
-              <small>%</small>
-            </div>
-            <div className="intro-progress">
-              <div className="intro-progress-bar" style={{ width: introPct + "%" }} />
-            </div>
-          </div>
-        </div>
-      )}
-
-
       <nav className={"nav" + (scrolled ? " compact" : "")} aria-label="Navigation principale">
         <a href="#" className="brand">
           <span className="brand-dot" aria-hidden="true" />
@@ -470,18 +375,15 @@ export function PortfolioV19() {
           <div className="hero-wrap">
             <div className="hero-main">
               <div className="hero-content">
-                <span className="hero-badge reveal">Disponible pour vos projets</span>
-                <div className="hero-eyebrow reveal reveal-delay-1">Entrepreneur multi-services · Abidjan</div>
-                <h1 className="reveal reveal-delay-1">
-                  <span aria-hidden="true">
-                    {scrambleHead} <span className="accent">polyvalent</span>{scrambleTail}
-                  </span>
-                  <span className="pv19-sr-only">Un profil polyvalent, des solutions concrètes.</span>
+                <span className="hero-badge hero-in">Disponible pour vos projets</span>
+                <div className="hero-eyebrow hero-in hero-in-1">Entrepreneur multi-services · Abidjan</div>
+                <h1 className="hero-in-title">
+                  Un profil <span className="accent">polyvalent</span>, des solutions concrètes.
                 </h1>
-                <p className="hero-lede reveal reveal-delay-2">
+                <p className="hero-lede hero-in hero-in-2">
                   Six domaines, un seul interlocuteur. De l&apos;aviculture au digital, en passant par le transport et le bâtiment — j&apos;accompagne particuliers et entreprises à Abidjan avec un WhatsApp direct.
                 </p>
-                <div className="hero-ctas reveal reveal-delay-3">
+                <div className="hero-ctas hero-in hero-in-3">
                   <a href={"https://wa.me/" + WA} className="btn btn-wa magnetic">
                     <WhatsAppIcon size={18} />
                     WhatsApp direct
@@ -495,7 +397,7 @@ export function PortfolioV19() {
                   </a>
                 </div>
               </div>
-              <figure className="hero-photo reveal reveal-delay-2" aria-label="Portrait de Kazem Williame Wallid" ref={(el) => { heroPhotoRef.current = el; }}>
+              <figure className="hero-photo hero-in hero-in-2" aria-label="Portrait de Kazem Williame Wallid" ref={(el) => { heroPhotoRef.current = el; }}>
                 <Image
                   className="hero-photo-img"
                   src="/wallid.jpg"

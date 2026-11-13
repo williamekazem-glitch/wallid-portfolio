@@ -10,6 +10,9 @@ const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "600"],
   display: "swap",
+  // Police du texte courant : pas de préchargement, on laisse la bande
+  // passante (3G) aux polices du titre, qui est l'élément LCP.
+  preload: false,
   variable: "--font-sans",
 });
 
