@@ -1,5 +1,6 @@
 ﻿import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
+import { FooterSocials } from "@/components/ui/SocialLinks";
 import { buildServiceWhatsAppHref, type ServiceDef } from "@/lib/data";
 
 const WA = siteConfig.whatsapp;
@@ -497,6 +498,7 @@ export function ServicePageContent({ service, related }: { service: ServiceDef; 
               Un profil polyvalent, des solutions concrètes.
             </div>
           </div>
+          <FooterSocials />
         </div>
         <div className="footer-copy">© 2026 Kazem Williame Wallid — Abidjan, Côte d&apos;Ivoire.</div>
       </footer>

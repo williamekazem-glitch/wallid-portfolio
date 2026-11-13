@@ -249,6 +249,69 @@ export const services: ServiceDef[] = [
 ];
 
 // ─── Trajets marquee (right → left visual, sens ambré) ─────────────
+// ─── Résumé : ce que j'apporte, en une phrase par domaine ─────────
+// Affiché juste après le hero, et partageable tel quel sur WhatsApp.
+export type ValuePoint = { slug: string; title: string; benefit: string };
+
+export const valueSummary: {
+  intro: string;
+  points: ValuePoint[];
+  facts: { value: string; label: string }[];
+} = {
+  intro:
+    "Vous avez un besoin concret, je m'en occupe de bout en bout : un seul interlocuteur, un devis clair, et je tiens ce que je promets.",
+  points: [
+    {
+      slug: "gestion",
+      title: "Gestion de stock — ma spécialité",
+      benefit: "Inventaires, suivi des entrées et sorties, procédures : vous savez ce que vous avez et vous limitez les pertes.",
+    },
+    {
+      slug: "aviculture",
+      title: "Aviculture",
+      benefit: "Poulets, pintades, œufs et poussins, au détail ou en gros dès 500 têtes, plus la formation pour lancer votre élevage.",
+    },
+    {
+      slug: "transport",
+      title: "Transport",
+      benefit: "Un chauffeur fiable pour vos courses, vos déplacements pro et vos livraisons, à Abidjan et sur les grands axes.",
+    },
+    {
+      slug: "technique",
+      title: "Services techniques",
+      benefit: "Construction, rénovation, plomberie, vidéosurveillance, packaging : je coordonne vos travaux à votre place.",
+    },
+    {
+      slug: "digital",
+      title: "Digital",
+      benefit: "Un site, une application ou des réseaux sociaux qui rendent votre activité visible et joignable en ligne.",
+    },
+    {
+      slug: "sourcing",
+      title: "Sourcing Chine",
+      benefit: "Votre matériel trouvé, négocié et livré à Abidjan : 75 % à la commande, 25 % à la réception.",
+    },
+  ],
+  facts: [
+    { value: "6", label: "domaines couverts" },
+    { value: "1", label: "seul interlocuteur" },
+    { value: "24 h", label: "pour un devis clair" },
+  ],
+};
+
+/** Texte du résumé à partager sur WhatsApp (le destinataire est choisi par l'utilisateur). */
+export function buildSummaryShareHref(siteUrl: string): string {
+  const lines = [
+    "Kazem Williame Wallid — entrepreneur multi-services à Abidjan",
+    "",
+    ...valueSummary.points.map((p) => "• " + p.title + " : " + p.benefit),
+    "",
+    "Contact WhatsApp : " + siteConfig.phone,
+    siteUrl,
+  ];
+  return "https://wa.me/?text=" + encodeURIComponent(lines.join("\n"));
+}
+
 export const trajets: string[] = [
   "Assinie",
   "Grand-Bassam",

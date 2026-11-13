@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 import { siteConfig } from "@/lib/site-config";
+import { FooterSocials, SocialCards } from "@/components/ui/SocialLinks";
 import {
   services,
   trajets,
@@ -14,6 +15,8 @@ import {
   buildServiceWhatsAppHref,
   buildReviewWhatsAppHref,
   buildQuickWhatsAppHref,
+  valueSummary,
+  buildSummaryShareHref,
 } from "@/lib/data";
 import { useKeyboardUser } from "@/lib/hooks/useKeyboardUser";
 import { useCoalescedScroll } from "@/lib/hooks/useCoalescedScroll";
@@ -34,13 +37,20 @@ const ArrowRight = ({ size = 14 }: { size?: number }) => (
   </svg>
 );
 
+// Pastilles du premier écran : libellés courts, orientés besoin du visiteur.
+const HERO_CHIPS: { slug: string; label: string }[] = [
+  { slug: "aviculture", label: "Poulets & œufs" },
+  { slug: "transport", label: "Voyages & déplacements" },
+  { slug: "technique", label: "Travaux & sécurité" },
+  { slug: "gestion", label: "Gestion de stock" },
+  { slug: "digital", label: "Site & réseaux" },
+  { slug: "sourcing", label: "Import Chine" },
+];
+
 const ServiceIcons: Record<string, JSX.Element> = {
   aviculture: (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M20.5 2v6h-6" />
-      <path d="M9 20.5c-4-.5-6.5-3-7-7C1.5 9 4 6 8 5.5" />
-      <path d="M12 8a4 4 0 1 0 0 8" />
-      <path d="M15 5.5V3l3 3" />
+      <path d="M12 22c6.23-.05 7.87-5.57 7.5-10-.36-4.34-3.95-9.96-7.5-10-3.55.04-7.14 5.66-7.5 10-.37 4.43 1.27 9.95 7.5 10z" />
     </svg>
   ),
   transport: (
@@ -70,10 +80,11 @@ const ServiceIcons: Record<string, JSX.Element> = {
   ),
   sourcing: (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M22 7.7v8.6a2 2 0 0 1-1 1.73l-7 4a2 2 0 0 1-2 0l-7-4a2 2 0 0 1-1-1.73V7.7a2 2 0 0 1 1-1.73l7-4a2 2 0 0 1 2 0l7 4a2 2 0 0 1 1 1.73z" />
-      <path d="M12 22V12" />
-      <path d="m3.3 7 8.7 5 8.7-5" />
-      <path d="M7.5 4.27 16.5 9.5" opacity="0.4" />
+      <path d="M12 10.189V14" />
+      <path d="M12 2v3" />
+      <path d="M19 13V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v6" />
+      <path d="M19.38 20A11.6 11.6 0 0 0 21 14l-8.188-3.639a2 2 0 0 0-1.624 0L3 14a11.6 11.6 0 0 0 2.81 7.76" />
+      <path d="M2 21c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1s1.2 1 2.5 1c2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1" />
     </svg>
   ),
 };
@@ -363,7 +374,8 @@ export function PortfolioV19() {
           </svg>
         </button>
         <a href="#contact" className="nav-cta magnetic">
-          Demander un devis
+          <span className="nav-cta-long">Demander un devis</span>
+          <span className="nav-cta-short">Devis</span>
           <ArrowRight />
         </a>
       </nav>
@@ -375,25 +387,52 @@ export function PortfolioV19() {
           <div className="hero-wrap">
             <div className="hero-main">
               <div className="hero-content">
-                <span className="hero-badge hero-in">Disponible pour vos projets</span>
-                <div className="hero-eyebrow hero-in hero-in-1">Entrepreneur multi-services · Abidjan</div>
+                <div className="hero-hello hero-in">
+                  <Image
+                    className="hero-avatar"
+                    src="/wallid-avatar.jpg"
+                    alt=""
+                    width={64}
+                    height={64}
+                    priority
+                  />
+                  <div>
+                    <p className="hero-hello-hi">Salut&nbsp;! Je suis Wallid</p>
+                    <p className="hero-hello-sub">
+                      <span className="hero-hello-dot" aria-hidden="true" />
+                      Disponible · Abidjan
+                    </p>
+                  </div>
+                </div>
                 <h1 className="hero-in-title">
-                  Un profil <span className="accent">polyvalent</span>, des solutions concrètes.
+                  Un besoin&nbsp;? <span className="accent">Je m&apos;en occupe.</span>
                 </h1>
-                <p className="hero-lede hero-in hero-in-2">
-                  Six domaines, un seul interlocuteur. De l&apos;aviculture au digital, en passant par le transport et le bâtiment — j&apos;accompagne particuliers et entreprises à Abidjan avec un WhatsApp direct.
+                <p className="hero-lede hero-in hero-in-1">
+                  Six domaines, un seul interlocuteur. Touchez ce qui vous intéresse&nbsp;:
                 </p>
+                <ul className="hero-chips hero-in hero-in-2" aria-label="Mes services">
+                  {HERO_CHIPS.map((c) => (
+                    <li key={c.slug}>
+                      <Link href={"/services/" + c.slug} className="hero-chip">
+                        <span className="hero-chip-icon">{ServiceIcons[c.slug]}</span>
+                        {c.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
                 <div className="hero-ctas hero-in hero-in-3">
                   <a href={buildQuickWhatsAppHref()} className="btn btn-wa magnetic">
                     <WhatsAppIcon size={18} />
-                    WhatsApp direct
+                    Écrire sur WhatsApp
                   </a>
-                  <a href="#services" className="btn btn-ghost">
-                    Voir mes services
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      <path d="M12 5v14" />
-                      <path d="m19 12-7 7-7-7" />
+                  <a href="/wallid.vcf" download="Wallid-Kazem.vcf" className="btn btn-ghost">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                      <circle cx="9" cy="7" r="4" />
+                      <path d="M19 8v6" />
+                      <path d="M22 11h-6" />
                     </svg>
+                    Enregistrer mon contact
                   </a>
                 </div>
               </div>
@@ -404,14 +443,54 @@ export function PortfolioV19() {
                   alt="Portrait de Kazem Williame Wallid"
                   width={480}
                   height={600}
-                  priority
-                  sizes="(max-width: 900px) 100vw, 480px"
+                  loading="lazy"
+                  sizes="480px"
                 />
                 <div className="hero-photo-caption">
                   <div className="hero-photo-caption-name">Kazem Williame Wallid</div>
                   <div className="hero-photo-caption-sub">Abidjan · Côte d&apos;Ivoire</div>
                 </div>
               </figure>
+            </div>
+          </div>
+        </section>
+
+        <section className="resume" id="resume" aria-labelledby="resume-title">
+          <div className="wrap">
+            <div className="resume-head reveal">
+              <div className="section-eyebrow">En résumé</div>
+              <h2 className="section-title" id="resume-title">
+                Ce que je vous <span style={{ whiteSpace: "nowrap" }}><span className="serif">apporte</span>,</span> en 30 secondes.
+              </h2>
+              <p className="resume-intro">{valueSummary.intro}</p>
+            </div>
+            <ul className="resume-facts reveal reveal-delay-1" aria-label="En chiffres">
+              {valueSummary.facts.map((f) => (
+                <li key={f.label}>
+                  <span className="resume-fact-value">{f.value}</span>
+                  <span className="resume-fact-label">{f.label}</span>
+                </li>
+              ))}
+            </ul>
+            <ol className="resume-list reveal reveal-delay-2">
+              {valueSummary.points.map((pt) => (
+                <li key={pt.slug}>
+                  <Link href={"/services/" + pt.slug} className="resume-item">
+                    <span className="resume-item-title">{pt.title}</span>
+                    <span className="resume-item-benefit">{pt.benefit}</span>
+                    <span className="resume-item-more" aria-hidden="true"><ArrowRight /></span>
+                  </Link>
+                </li>
+              ))}
+            </ol>
+            <div className="resume-ctas reveal reveal-delay-3">
+              <a href={buildQuickWhatsAppHref()} className="btn btn-wa magnetic">
+                <WhatsAppIcon size={18} />
+                Discuter de mon besoin
+              </a>
+              <a href={buildSummaryShareHref("https://wallid-portfolio.vercel.app")} className="btn resume-share" target="_blank" rel="noopener noreferrer">
+                Partager ce résumé
+              </a>
             </div>
           </div>
         </section>
@@ -742,6 +821,10 @@ export function PortfolioV19() {
                 </div>
               </a>
             </div>
+            <div className="contact-follow reveal reveal-delay-3">
+              <div className="contact-alt-label">Suivez mon actualité</div>
+              <SocialCards />
+            </div>
           </div>
         </section>
 
@@ -772,23 +855,7 @@ export function PortfolioV19() {
             <div className="footer-role">Entrepreneur multi-services · Abidjan, Côte d&apos;Ivoire</div>
             <div className="footer-tag">Un profil polyvalent, des solutions concrètes.</div>
           </div>
-          <div className="footer-socials">
-            <a href={siteConfig.social.linkedin} className="footer-social" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-              </svg>
-            </a>
-            <a href={siteConfig.social.facebook} className="footer-social" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-              </svg>
-            </a>
-            <a href={siteConfig.social.tiktok} className="footer-social" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
-              </svg>
-            </a>
-          </div>
+          <FooterSocials />
         </div>
         <div className="footer-copy">© 2026 Kazem Williame Wallid — Abidjan, Côte d&apos;Ivoire.</div>
       </footer>

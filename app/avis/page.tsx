@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import { reviews, buildReviewWhatsAppHref } from "@/lib/data";
 import { siteConfig } from "@/lib/site-config";
+import { FooterSocials } from "@/components/ui/SocialLinks";
 
 export const metadata: Metadata = {
   title: "Avis clients — " + siteConfig.name,
@@ -267,6 +268,7 @@ export default function AvisPage() {
             <div className="footer-role">Entrepreneur multi-services · Abidjan, Côte d&apos;Ivoire</div>
             <div className="footer-tag">Un profil polyvalent, des solutions concrètes.</div>
           </div>
+          <FooterSocials />
         </div>
         <div className="footer-copy">© 2026 Kazem Williame Wallid — Abidjan, Côte d&apos;Ivoire.</div>
       </footer>

@@ -2,6 +2,7 @@
 import type { ReactNode } from "react";
 import { siteConfig } from "@/lib/site-config";
 import { buildQuickWhatsAppHref } from "@/lib/data";
+import { SOCIALS, SocialIcon } from "@/components/ui/SocialLinks";
 
 const WhatsAppIcon = ({ size = 16 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -108,6 +109,24 @@ export function PageShell({ children, cta = "Écrivez-moi" }: { children: ReactN
               </ul>
             </div>
           ))}
+          <div>
+            <div style={{
+              fontFamily: "var(--font-display-pv)", fontWeight: 700,
+              fontSize: 11, letterSpacing: "0.24em", textTransform: "uppercase",
+              color: "var(--sun-400)", marginBottom: 16,
+            }}>Réseaux</div>
+            <ul style={{ listStyle: "none", padding: 0, display: "grid", gap: 10 }}>
+              {SOCIALS.map((so) => (
+                <li key={so.key}>
+                  <a href={so.href} target="_blank" rel="noopener noreferrer"
+                    style={{ color: "rgba(248,250,252,0.7)", fontSize: 14, display: "inline-flex", alignItems: "center", gap: 10, minHeight: 24 }}>
+                    <SocialIcon name={so.key} size={16} />
+                    {so.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
         <div className="footer-copy" style={{
           display: "flex", justifyContent: "space-between",
