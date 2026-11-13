@@ -83,13 +83,13 @@ export const services: ServiceDef[] = [
       content: "Détail dès 1 tête · Gros à partir de 500 têtes toutes les 2 semaines",
     },
     products: [
-      { name: "Poule pondeuse", price: "4 500", unit: "FCFA / tête" },
-      { name: "Poulet de chair", price: "3 000", unit: "FCFA / tête" },
+      { name: "Poule pondeuse", price: "3 500", unit: "FCFA / tête" },
+      { name: "Poulet de chair", price: "2 350", unit: "FCFA / tête · en gros dès 500 têtes" },
       { name: "Pintade", price: "6 500", unit: "FCFA / tête" },
       { name: "Coquelet", price: "6 500", unit: "FCFA / tête" },
       { name: "Poussin Kuroiler / Goliath", price: "40 000", unit: "FCFA / carton" },
-      { name: "Œuf de table", price: "2 700", unit: "FCFA / plaquette" },
-      { name: "Œuf à couver", price: "8 500", unit: "FCFA / plaquette" },
+      { name: "Œuf de table", price: "2 300", unit: "FCFA / plaquette" },
+      { name: "Œuf à couver", price: "10 000", unit: "FCFA / plaquette" },
     ],
   },
   {
