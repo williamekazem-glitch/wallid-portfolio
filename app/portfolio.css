@@ -24,6 +24,8 @@
 
   /* WhatsApp */
   --wa-500: #25D366;
+  /* Texte sur vert WhatsApp : contraste 7,7:1 (le blanc ne fait que 2:1, illisible au soleil) */
+  --wa-ink: #052E16;
   --wa-600: #128C7E;
 
   /* Neutres clairs */
@@ -216,7 +218,7 @@ body.pv19-body::before {
 [data-theme="light"] .pv19 .service-hint,
 [data-theme="light"] .pv19 .hero-lede,
 [data-theme="light"] .pv19 .why h2,
-[data-theme="light"] .pv19 .why-item h4,
+[data-theme="light"] .pv19 .why-item h3,
 [data-theme="light"] .pv19 .why-item p,
 [data-theme="light"] .pv19 .process h2,
 [data-theme="light"] .pv19 .process-step h3,
@@ -360,7 +362,13 @@ body.pv19-body::before {
   line-height: 1;
   transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
   box-shadow: 0 4px 20px -6px var(--sun-glow);
-  min-height: 40px;
+  min-height: 44px;
+  white-space: nowrap;
+}
+@media (max-width: 420px) {
+  /* Petits écrans : le bouton tient sur une ligne, sans la flèche */
+  .pv19 .nav-cta { padding: 10px 14px; }
+  .pv19 .nav-cta svg { display: none; }
 }
 .pv19 .nav-cta:hover {
   transform: translateY(-2px);
@@ -669,7 +677,7 @@ body.pv19-body::before {
 .pv19 .btn-ghost:hover { background: rgba(255, 255, 255, 0.12); transform: translateY(-2px); }
 .pv19 .btn-wa {
   background: var(--wa-500);
-  color: #fff;
+  color: var(--wa-ink);
   box-shadow: 0 12px 40px -12px rgba(37, 211, 102, 0.5);
 }
 .pv19 .btn-wa:hover {
@@ -1332,7 +1340,7 @@ body.pv19-body::before {
 }
 .pv19 .why-item:hover { background: var(--ink-800); }
 .pv19 .why-item svg { width: 32px; height: 32px; color: var(--sun-400); }
-.pv19 .why-item h4 {
+.pv19 .why-item h3 {
   font-family: var(--font-display-pv);
   font-weight: 700;
   font-size: 1.15rem;
@@ -1658,7 +1666,7 @@ body.pv19-body::before {
   padding: 18px 26px;
   border-radius: 14px;
   background: var(--wa-500);
-  color: #fff;
+  color: var(--wa-ink);
   font-family: var(--font-display-pv);
   font-weight: 700;
   font-size: 15px;
@@ -1701,7 +1709,7 @@ body.pv19-body::before {
   margin-top: 48px;
   padding: 48px 40px;
   border-radius: 20px;
-  background: linear-gradient(135deg, var(--wa-500), var(--wa-600));
+  background: linear-gradient(135deg, #128C7E, #075E54);
   color: #fff;
   display: grid;
   grid-template-columns: 1fr;
@@ -2039,9 +2047,9 @@ body.pv19-body::before {
 .pv19 .mobile-bar-btn--wa {
   background: var(--wa-500);
   border-color: var(--wa-500);
-  color: #fff;
+  color: var(--wa-ink);
 }
-.pv19 .mobile-bar-btn--wa svg { color: #fff; }
+.pv19 .mobile-bar-btn--wa svg { color: var(--wa-ink); }
 .pv19 .mobile-bar-btn--call {
   background: rgba(251, 191, 36, 0.14);
   border-color: rgba(251, 191, 36, 0.35);
@@ -2081,7 +2089,7 @@ body.pv19-body::before {
   height: 60px;
   border-radius: 50%;
   background: var(--wa-500);
-  color: #fff;
+  color: var(--wa-ink);
   display: grid;
   place-items: center;
   box-shadow: 0 10px 30px -6px rgba(37, 211, 102, 0.6);

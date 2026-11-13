@@ -574,14 +574,14 @@ export function PortfolioV19() {
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                 </svg>
-                <h4>Un seul contact</h4>
+                <h3>Un seul contact</h3>
                 <p>Vous parlez directement avec moi. Pas de standard, pas de commercial intermédiaire.</p>
               </div>
               <div className="why-item reveal reveal-delay-1">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
                 </svg>
-                <h4>Multi-services</h4>
+                <h3>Multi-services</h3>
                 <p>Cinq domaines couverts, du produit frais au site internet. Un seul devis, un seul suivi.</p>
               </div>
               <div className="why-item reveal reveal-delay-2">
@@ -589,7 +589,7 @@ export function PortfolioV19() {
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                   <circle cx="12" cy="10" r="3" />
                 </svg>
-                <h4>Ancré à Abidjan</h4>
+                <h3>Ancré à Abidjan</h3>
                 <p>Je connais le terrain. Je me déplace, j&apos;organise, je livre — dans toute la Côte d&apos;Ivoire.</p>
               </div>
               <div className="why-item reveal reveal-delay-3">
@@ -597,7 +597,7 @@ export function PortfolioV19() {
                   <circle cx="12" cy="12" r="10" />
                   <polyline points="12 6 12 12 16 14" />
                 </svg>
-                <h4>Devis rapide</h4>
+                <h3>Devis rapide</h3>
                 <p>Vous m&apos;écrivez sur WhatsApp, je vous réponds la journée même. Concret, sans jargon.</p>
               </div>
             </div>
@@ -664,7 +664,7 @@ export function PortfolioV19() {
             </div>
             <div className="reviews-panel reveal reveal-delay-1">
               <div>
-                <div className="reviews-stars" aria-label="Cinq étoiles">
+                <div className="reviews-stars" role="img" aria-label="Cinq étoiles">
                   {Array.from({ length: 5 }).map((_, i) => (
                     <svg key={i} viewBox="0 0 24 24" aria-hidden="true">
                       <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
