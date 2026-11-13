@@ -2389,3 +2389,124 @@ body.pv19-body.keyboard-user .pv19 .cursor-dot { display: none !important; }
   border: 1.5px solid var(--deep-900);
 }
 .pv19 .resume-share:hover { background: var(--deep-900); color: var(--ivory-50); }
+
+/* ============ PREMIER ÉCRAN (scan du QR code) ============ */
+/* Continuité avec la carte de visite : « Salut ! Je suis Wallid » + photo ronde. */
+.pv19 .hero-hello {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.pv19 .hero-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid var(--sun-500);
+  box-shadow: 0 0 0 4px rgba(251, 191, 36, 0.15);
+}
+.pv19 .hero-hello-hi {
+  font-family: var(--font-display-pv);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #fff;
+  line-height: 1.2;
+}
+.pv19 .hero-hello-sub {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+  font-size: 14px;
+  color: #A7F3D0;
+}
+.pv19 .hero-hello-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--wa-500);
+  box-shadow: 0 0 10px var(--wa-500);
+  animation: pv19-pulse 2s ease-in-out infinite;
+}
+.pv19 .hero-chips {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  max-width: 560px;
+}
+@media (min-width: 560px) {
+  .pv19 .hero-chips { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+.pv19 .hero-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-family: var(--font-display-pv);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.2;
+  transition: background 0.2s var(--ease), border-color 0.2s var(--ease), transform 0.1s var(--ease);
+}
+.pv19 .hero-chip:hover,
+.pv19 .hero-chip:focus-visible {
+  background: rgba(251, 191, 36, 0.12);
+  border-color: var(--sun-500);
+}
+.pv19 .hero-chip:active { transform: scale(0.97); }
+.pv19 .hero-chip-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  background: rgba(251, 191, 36, 0.14);
+  color: var(--sun-400);
+}
+.pv19 .hero-chip-icon svg { width: 18px; height: 18px; }
+
+/* Mobile : le premier écran tient en un coup d'œil (photo ronde en haut,
+   la grande photo est réservée aux écrans larges). */
+@media (max-width: 899px) {
+  .pv19 .hero { padding-top: 96px; padding-bottom: 48px; }
+  .pv19 .hero h1 { font-size: clamp(2.1rem, 9.5vw, 3rem); margin-bottom: 14px; }
+  .pv19 .hero-lede { margin-bottom: 16px; font-size: 1rem; }
+  .pv19 .hero-ctas { margin-bottom: 0; }
+  .pv19 .hero-ctas .btn { flex: 1 1 220px; justify-content: center; }
+  .pv19 .hero-main { margin-bottom: 0; }
+  .pv19 .hero-photo { display: none; }
+}
+
+/* Thème clair */
+[data-theme="light"] .pv19 .hero-hello-hi { color: var(--deep-900); }
+[data-theme="light"] .pv19 .hero-hello-sub { color: #047857; }
+[data-theme="light"] .pv19 .hero-chip {
+  background: #fff;
+  border-color: var(--ivory-200);
+  color: var(--deep-900);
+}
+[data-theme="light"] .pv19 .hero-chip-icon { color: var(--sun-700); }
+
+/* Bouton du haut : libellé court sur petits écrans */
+.pv19 .nav-cta-short { display: none; }
+@media (max-width: 400px) {
+  .pv19 .nav-cta-long { display: none; }
+  .pv19 .nav-cta-short { display: inline; }
+}
+
+/* Un seul bouton WhatsApp à la fois : sur mobile, la barre d'actions du bas
+   remplace la bulle flottante. */
+@media (max-width: 720px) {
+  body:has(.mobile-bar) .pv19 .fab { display: none; }
+}

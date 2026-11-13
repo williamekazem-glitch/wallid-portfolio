@@ -57,6 +57,14 @@ const nextConfig = {
         source: "/:path*",
         headers: securityHeaders,
       },
+      {
+        // Fiche contact : ouvre « Ajouter aux contacts » sur le téléphone
+        source: "/wallid.vcf",
+        headers: [
+          { key: "Content-Type", value: "text/vcard; charset=utf-8" },
+          { key: "Content-Disposition", value: 'attachment; filename="Wallid-Kazem.vcf"' },
+        ],
+      },
     ];
   },
 };

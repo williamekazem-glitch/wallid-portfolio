@@ -37,13 +37,20 @@ const ArrowRight = ({ size = 14 }: { size?: number }) => (
   </svg>
 );
 
+// Pastilles du premier écran : libellés courts, orientés besoin du visiteur.
+const HERO_CHIPS: { slug: string; label: string }[] = [
+  { slug: "aviculture", label: "Poulets & œufs" },
+  { slug: "transport", label: "Transport" },
+  { slug: "technique", label: "Travaux & sécurité" },
+  { slug: "gestion", label: "Gestion de stock" },
+  { slug: "digital", label: "Site & réseaux" },
+  { slug: "sourcing", label: "Import Chine" },
+];
+
 const ServiceIcons: Record<string, JSX.Element> = {
   aviculture: (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M20.5 2v6h-6" />
-      <path d="M9 20.5c-4-.5-6.5-3-7-7C1.5 9 4 6 8 5.5" />
-      <path d="M12 8a4 4 0 1 0 0 8" />
-      <path d="M15 5.5V3l3 3" />
+      <path d="M12 22c6.23-.05 7.87-5.57 7.5-10-.36-4.34-3.95-9.96-7.5-10-3.55.04-7.14 5.66-7.5 10-.37 4.43 1.27 9.95 7.5 10z" />
     </svg>
   ),
   transport: (
@@ -73,10 +80,11 @@ const ServiceIcons: Record<string, JSX.Element> = {
   ),
   sourcing: (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M22 7.7v8.6a2 2 0 0 1-1 1.73l-7 4a2 2 0 0 1-2 0l-7-4a2 2 0 0 1-1-1.73V7.7a2 2 0 0 1 1-1.73l7-4a2 2 0 0 1 2 0l7 4a2 2 0 0 1 1 1.73z" />
-      <path d="M12 22V12" />
-      <path d="m3.3 7 8.7 5 8.7-5" />
-      <path d="M7.5 4.27 16.5 9.5" opacity="0.4" />
+      <path d="M12 10.189V14" />
+      <path d="M12 2v3" />
+      <path d="M19 13V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v6" />
+      <path d="M19.38 20A11.6 11.6 0 0 0 21 14l-8.188-3.639a2 2 0 0 0-1.624 0L3 14a11.6 11.6 0 0 0 2.81 7.76" />
+      <path d="M2 21c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1s1.2 1 2.5 1c2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1" />
     </svg>
   ),
 };
@@ -366,7 +374,8 @@ export function PortfolioV19() {
           </svg>
         </button>
         <a href="#contact" className="nav-cta magnetic">
-          Demander un devis
+          <span className="nav-cta-long">Demander un devis</span>
+          <span className="nav-cta-short">Devis</span>
           <ArrowRight />
         </a>
       </nav>
@@ -378,25 +387,52 @@ export function PortfolioV19() {
           <div className="hero-wrap">
             <div className="hero-main">
               <div className="hero-content">
-                <span className="hero-badge hero-in">Disponible pour vos projets</span>
-                <div className="hero-eyebrow hero-in hero-in-1">Entrepreneur multi-services · Abidjan</div>
+                <div className="hero-hello hero-in">
+                  <Image
+                    className="hero-avatar"
+                    src="/wallid-avatar.jpg"
+                    alt=""
+                    width={64}
+                    height={64}
+                    priority
+                  />
+                  <div>
+                    <p className="hero-hello-hi">Salut&nbsp;! Je suis Wallid</p>
+                    <p className="hero-hello-sub">
+                      <span className="hero-hello-dot" aria-hidden="true" />
+                      Disponible · Abidjan
+                    </p>
+                  </div>
+                </div>
                 <h1 className="hero-in-title">
-                  Un profil <span className="accent">polyvalent</span>, des solutions concrètes.
+                  Un besoin&nbsp;? <span className="accent">Je m&apos;en occupe.</span>
                 </h1>
-                <p className="hero-lede hero-in hero-in-2">
-                  Six domaines, un seul interlocuteur. De l&apos;aviculture au digital, en passant par le transport et le bâtiment — j&apos;accompagne particuliers et entreprises à Abidjan avec un WhatsApp direct.
+                <p className="hero-lede hero-in hero-in-1">
+                  Six domaines, un seul interlocuteur. Touchez ce qui vous intéresse&nbsp;:
                 </p>
+                <ul className="hero-chips hero-in hero-in-2" aria-label="Mes services">
+                  {HERO_CHIPS.map((c) => (
+                    <li key={c.slug}>
+                      <Link href={"/services/" + c.slug} className="hero-chip">
+                        <span className="hero-chip-icon">{ServiceIcons[c.slug]}</span>
+                        {c.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
                 <div className="hero-ctas hero-in hero-in-3">
                   <a href={buildQuickWhatsAppHref()} className="btn btn-wa magnetic">
                     <WhatsAppIcon size={18} />
-                    WhatsApp direct
+                    Écrire sur WhatsApp
                   </a>
-                  <a href="#services" className="btn btn-ghost">
-                    Voir mes services
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      <path d="M12 5v14" />
-                      <path d="m19 12-7 7-7-7" />
+                  <a href="/wallid.vcf" download="Wallid-Kazem.vcf" className="btn btn-ghost">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                      <circle cx="9" cy="7" r="4" />
+                      <path d="M19 8v6" />
+                      <path d="M22 11h-6" />
                     </svg>
+                    Enregistrer mon contact
                   </a>
                 </div>
               </div>
@@ -407,8 +443,8 @@ export function PortfolioV19() {
                   alt="Portrait de Kazem Williame Wallid"
                   width={480}
                   height={600}
-                  priority
-                  sizes="(max-width: 900px) 100vw, 480px"
+                  loading="lazy"
+                  sizes="480px"
                 />
                 <div className="hero-photo-caption">
                   <div className="hero-photo-caption-name">Kazem Williame Wallid</div>
