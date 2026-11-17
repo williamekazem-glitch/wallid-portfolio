@@ -87,7 +87,7 @@ export default function RealisationsPage() {
             <p style={{
               marginTop: 28, fontSize: 15, color: "rgba(248,250,252,0.7)",
             }}>
-              En attendant, écrivez-moi sur WhatsApp — je peux vous envoyer directement des exemples de mes réalisations correspondant à votre besoin.
+              En attendant, écrivez-moi sur WhatsApp — je peux vous envoyer directement des exemples de nos réalisations correspondant à votre besoin.
             </p>
           </div>
         </div>
@@ -97,7 +97,7 @@ export default function RealisationsPage() {
         <div className="wrap">
           <div className="section-eyebrow">Types de projets réalisables</div>
           <h2 className="section-title" style={{ marginBottom: 48 }}>
-            Ce que je peux <span className="serif">livrer</span>.
+            Ce que nous pouvons <span className="serif">livrer</span>.
           </h2>
           <div style={{
             display: "grid", gap: 14,

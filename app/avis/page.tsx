@@ -83,14 +83,14 @@ export default function AvisPage() {
               Ce que <span style={{
                 fontFamily: "var(--font-serif-pv)", fontStyle: "italic",
                 fontWeight: 400, color: "var(--sun-400)",
-              }}>disent</span> mes clients.
+              }}>disent</span> nos clients.
             </h1>
             <p style={{
               fontSize: "clamp(1.05rem, 1.8vw, 1.25rem)",
               color: "rgba(248,250,252,0.72)", maxWidth: "60ch",
               marginBottom: 40, lineHeight: 1.5,
             }}>
-              Retours honnêtes de particuliers et d&apos;entreprises qui m&apos;ont fait confiance sur un projet — aviculture, transport, chantier, digital ou gestion de stock. Aucun faux témoignage, aucune exagération. Que du vrai.
+              Retours honnêtes de particuliers et d&apos;entreprises qui nous ont fait confiance sur un projet — aviculture, transport, chantier, digital ou gestion de stock. Aucun faux témoignage, aucune exagération. Que du vrai.
             </p>
             <a href={waHref} target="_blank" rel="noopener noreferrer" className="btn btn-wa magnetic"
               style={{ minHeight: 56, fontSize: 16 }}>
@@ -136,7 +136,7 @@ export default function AvisPage() {
               </div>
             ) : (
               <>
-                <div className="section-eyebrow">Ils m&apos;ont fait confiance</div>
+                <div className="section-eyebrow">Ils nous ont fait confiance</div>
                 <h2 className="section-title" style={{ marginBottom: 48 }}>
                   {reviews.length} retour{reviews.length > 1 ? "s" : ""} <span className="serif">vérifié{reviews.length > 1 ? "s" : ""}</span>.
                 </h2>
@@ -201,7 +201,7 @@ export default function AvisPage() {
             <ol style={{ listStyle: "none", padding: 0, display: "grid", gap: 20 }}>
               {[
                 { n: "01", t: "Cliquez sur WhatsApp", d: "Le bouton vert « Laisser un avis sur WhatsApp » ouvre une conversation avec un message pré-rempli." },
-                { n: "02", t: "Racontez brièvement", d: "Ce que j'ai fait pour vous, si le délai/prix était tenu, et ce que ça vous a apporté. Format libre — 2 à 5 phrases suffisent." },
+                { n: "02", t: "Racontez brièvement", d: "Ce que nous avons fait pour vous, si le délai/prix était tenu, et ce que ça vous a apporté. Format libre — 2 à 5 phrases suffisent." },
                 { n: "03", t: "Précisez ce que je peux publier", d: "Votre prénom + initiale (« Fatou K. » plutôt que nom complet si vous préférez), profession/contexte, service concerné. Rien ne sera publié sans votre accord explicite." },
               ].map((step) => (
                 <li key={step.n} style={{
@@ -246,7 +246,7 @@ export default function AvisPage() {
         <section className="final" aria-labelledby="final-title">
           <div className="wrap">
             <h2 id="final-title">Votre avis <span className="serif">compte</span>.</h2>
-            <p>Chaque retour honnête m&apos;aide à progresser et rassure les prochains clients. Ça prend deux minutes.</p>
+            <p>Chaque retour honnête nous aide à progresser et rassure les prochains clients. Ça prend deux minutes.</p>
             <div className="final-ctas">
               <a href={waHref} target="_blank" rel="noopener noreferrer" className="btn btn-wa magnetic">
                 <WhatsAppIcon size={18} />

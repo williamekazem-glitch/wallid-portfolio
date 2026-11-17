@@ -351,7 +351,7 @@ export function PortfolioV19() {
         <div className="nav-links">
           <a href="#services">Services</a>
           <a href="/a-propos">À propos</a>
-          <a href="#pourquoi">Pourquoi moi</a>
+          <a href="#pourquoi">Pourquoi nous</a>
           <a href="/avis">Avis</a>
           <a href="/contact">Contact</a>
         </div>
@@ -405,10 +405,10 @@ export function PortfolioV19() {
                   </div>
                 </div>
                 <h1 className="hero-in-title">
-                  Un besoin&nbsp;?<br /> <span className="accent hero-accent-line">Je m&apos;en occupe.</span>
+                  Un besoin&nbsp;?<br /> <span className="accent hero-accent-line">On s&apos;en occupe.</span>
                 </h1>
                 <p className="hero-lede hero-in hero-in-1">
-                  Touchez votre besoin&nbsp;:
+                  Mon équipe et moi, à votre service. Touchez votre besoin&nbsp;:
                 </p>
                 <ul className="hero-chips hero-in hero-in-2" aria-label="Mes services">
                   {HERO_CHIPS.map((c) => (
@@ -460,7 +460,7 @@ export function PortfolioV19() {
             <div className="resume-head">
               <div className="section-eyebrow">En résumé</div>
               <h2 className="section-title" id="resume-title">
-                Ce que je vous <span style={{ whiteSpace: "nowrap" }}><span className="serif">apporte</span>,</span> en 30 secondes.
+                Ce que nous vous <span style={{ whiteSpace: "nowrap" }}><span className="serif">apportons</span>,</span> en 30 secondes.
               </h2>
               <p className="resume-intro">{valueSummary.intro}</p>
             </div>
@@ -520,13 +520,13 @@ export function PortfolioV19() {
           <div className="wrap">
             <div className="services-head reveal">
               <div>
-                <div className="section-eyebrow">Ce que je fais</div>
+                <div className="section-eyebrow">Ce que nous faisons</div>
                 <h2 className="section-title" id="services-title">
                   Six domaines,<br />
-                  <span className="serif">un seul</span> interlocuteur.
+                  <span className="serif">une</span> équipe.
                 </h2>
                 <p className="section-lede">
-                  Chaque domaine est une compétence réelle, exercée avec un point de contact unique : moi, sur WhatsApp.
+                  Chaque mission est confiée à des gens du métier. Vous, vous gardez un seul contact : moi, sur WhatsApp.
                 </p>
               </div>
               <div className="services-count" aria-hidden="true">06</div>
@@ -576,10 +576,10 @@ export function PortfolioV19() {
                   Entrepreneur multi-services, <span className="serif">basé</span> à Abidjan.
                 </h2>
                 <p className="about-body">
-                  Je m&apos;appelle Kazem Williame Wallid. J&apos;ai construit mon activité autour d&apos;une idée simple : offrir à mes clients, particuliers comme entreprises, un point de contact unique pour des besoins concrets et variés.
+                  Je m&apos;appelle Kazem Williame Wallid. J&apos;ai construit mon activité autour d&apos;une idée simple : offrir à nos clients, particuliers comme entreprises, un point de contact unique pour des besoins concrets et variés — et derrière ce contact, une équipe qui exécute.
                 </p>
                 <p className="about-body">
-                  Ma spécialité professionnelle est la <strong>gestion de stock</strong> — pour commerces, restaurants, entrepôts, partout où il y a de la marchandise à suivre. À côté, j&apos;exploite quatre autres domaines que je maîtrise : aviculture, transport, services techniques et digital. Peu importe la demande, je m&apos;engage sur ce que je peux tenir, et je le tiens.
+                  Ma spécialité professionnelle est la <strong>gestion de stock</strong> — pour commerces, restaurants, entrepôts, partout où il y a de la marchandise à suivre. Avec mon équipe, nous couvrons aussi l&apos;aviculture, le transport, les services techniques, le digital et l&apos;import depuis la Chine. Chacun intervient sur ce qu&apos;il fait de mieux ; je coordonne, je contrôle la qualité et je reste votre interlocuteur du début à la fin. Nous nous engageons sur ce que nous pouvons tenir, et nous le tenons.
                 </p>
                 <blockquote className="about-quote">Un profil polyvalent, des solutions concrètes.</blockquote>
                 <div style={{ marginTop: 32 }}>
@@ -643,9 +643,9 @@ export function PortfolioV19() {
         <section className="why" id="pourquoi" aria-labelledby="why-title">
           <div className="wrap">
             <div className="reveal">
-              <div className="section-eyebrow">Pourquoi moi</div>
+              <div className="section-eyebrow">Pourquoi nous</div>
               <h2 className="section-title" id="why-title">
-                Un interlocuteur direct, <span className="serif">pas</span> un standard.
+                Un contact direct, <span className="serif">une</span> équipe qui exécute.
               </h2>
             </div>
             <div className="why-grid">
@@ -653,15 +653,15 @@ export function PortfolioV19() {
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                 </svg>
-                <h3>Un seul contact</h3>
-                <p>Vous parlez directement avec moi. Pas de standard, pas de commercial intermédiaire.</p>
+                <h3>Un contact direct</h3>
+                <p>Vous parlez directement avec moi, sans standard ni commercial. Je mobilise ensuite la bonne personne de l&apos;équipe.</p>
               </div>
               <div className="why-item reveal reveal-delay-1">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
                 </svg>
-                <h3>Multi-services</h3>
-                <p>Cinq domaines couverts, du produit frais au site internet. Un seul devis, un seul suivi.</p>
+                <h3>Une équipe par métier</h3>
+                <p>Six domaines couverts, chacun par des gens du métier, du produit frais au site internet. Un seul devis, un seul suivi.</p>
               </div>
               <div className="why-item reveal reveal-delay-2">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -669,7 +669,7 @@ export function PortfolioV19() {
                   <circle cx="12" cy="10" r="3" />
                 </svg>
                 <h3>Ancré à Abidjan</h3>
-                <p>Je connais le terrain. Je me déplace, j&apos;organise, je livre — dans toute la Côte d&apos;Ivoire.</p>
+                <p>Nous connaissons le terrain. Nous nous déplaçons, organisons et livrons — dans toute la Côte d&apos;Ivoire.</p>
               </div>
               <div className="why-item reveal reveal-delay-3">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -677,7 +677,7 @@ export function PortfolioV19() {
                   <polyline points="12 6 12 12 16 14" />
                 </svg>
                 <h3>Devis rapide</h3>
-                <p>Vous m&apos;écrivez sur WhatsApp, je vous réponds la journée même. Concret, sans jargon.</p>
+                <p>Vous m&apos;écrivez sur WhatsApp, vous avez une réponse la journée même. Concret, sans jargon.</p>
               </div>
             </div>
           </div>
@@ -686,7 +686,7 @@ export function PortfolioV19() {
         <section className="process" aria-labelledby="process-title">
           <div className="wrap">
             <div className="reveal">
-              <div className="section-eyebrow">Comment je travaille</div>
+              <div className="section-eyebrow">Comment nous travaillons</div>
               <h2 className="section-title" id="process-title">
                 Trois étapes, <span className="serif">un</span> engagement clair.
               </h2>
@@ -703,9 +703,9 @@ export function PortfolioV19() {
                   </div>
                   <h3>{step.title}</h3>
                   <p>
-                    {i === 0 && "Un message WhatsApp avec ce dont vous avez besoin : produit, service, chantier, projet. Je vous lis dans la journée."}
-                    {i === 1 && "Je vous envoie un devis structuré : prix, délais, ce qui est inclus. Zéro surprise en cours de route."}
-                    {i === 2 && "Je livre ce qui a été convenu, quand ça a été convenu. Suivi WhatsApp jusqu'à la fin."}
+                    {i === 0 && "Un message WhatsApp avec ce dont vous avez besoin : produit, service, chantier, projet. On vous lit dans la journée."}
+                    {i === 1 && "Vous recevez un devis structuré : prix, délais, ce qui est inclus. Zéro surprise en cours de route."}
+                    {i === 2 && "L'équipe livre ce qui a été convenu, quand ça a été convenu. Je vous suis sur WhatsApp jusqu'à la fin."}
                   </p>
                   <div className="lead-time">{step.detail}</div>
                 </article>
@@ -738,7 +738,7 @@ export function PortfolioV19() {
             <div className="reveal">
               <div className="section-eyebrow">Avis</div>
               <h2 className="section-title" id="reviews-title">
-                Ce que <span className="serif">disent</span> mes clients.
+                Ce que <span className="serif">disent</span> nos clients.
               </h2>
             </div>
             <div className="reviews-panel reveal reveal-delay-1">
@@ -751,10 +751,10 @@ export function PortfolioV19() {
                   ))}
                 </div>
                 <h3>
-                  Vous m&apos;avez déjà fait confiance ? <span className="serif">Partagez</span> votre expérience.
+                  Vous nous avez déjà fait confiance ? <span className="serif">Partagez</span> votre expérience.
                 </h3>
                 <p>
-                  Vos avis honnêtes m&apos;aident à progresser et rassurent les prochains clients. Envoyez-moi votre témoignage sur WhatsApp, je le publierai ici avec votre accord.
+                  Vos avis honnêtes nous aident à progresser et rassurent les prochains clients. Envoyez-moi votre témoignage sur WhatsApp, je le publierai ici avec votre accord.
                 </p>
               </div>
               <a href={buildReviewWhatsAppHref()} className="reviews-btn magnetic" target="_blank" rel="noopener noreferrer">
@@ -789,7 +789,7 @@ export function PortfolioV19() {
               <div>
                 <div className="contact-hero-eyebrow">Le plus rapide</div>
                 <h3>Un message WhatsApp et je vous réponds.</h3>
-                <p>Devis, question, projet, le canal direct, sans intermediaire. Reponse dans la journée.</p>
+                <p>Devis, question, projet : vous m&apos;écrivez directement, je mobilise la bonne personne de l&apos;équipe. Réponse dans la journée.</p>
               </div>
               <a href={buildQuickWhatsAppHref()} className="contact-hero-btn magnetic">
                 <WhatsAppIcon size={20} />
