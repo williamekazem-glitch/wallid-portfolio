@@ -198,7 +198,7 @@ export const services: ServiceDef[] = [
     title: "Sourcing Chine",
     short: "Import de matériel depuis la Chine, clé en main",
     description:
-      "Je trouve le bon fournisseur en Chine, je négocie pour vous, je gère l'expédition par bateau ou avion, et vous récupérez votre commande à Abidjan. Vous payez 75% à la commande, 25% à la réception. Pour particuliers et commerçants.",
+      "Nous trouvons le bon fournisseur en Chine, nous négocions pour vous, nous gérons l'expédition par bateau ou avion, et vous récupérez votre commande à Abidjan. Vous payez 75% à la commande, 25% à la réception. Pour particuliers et commerçants.",
     icon: Container,
     highlights: [
       "Recherche du bon fournisseur en Chine",
@@ -221,13 +221,13 @@ export const services: ServiceDef[] = [
       },
       {
         step: "02",
-        title: "Je cherche et je négocie",
-        body: "Je contacte plusieurs fournisseurs en Chine, je compare les offres, je négocie prix et conditions pour vous.",
+        title: "On cherche et on négocie",
+        body: "Nous contactons plusieurs fournisseurs en Chine, comparons les offres et négocions prix et conditions pour vous.",
       },
       {
         step: "03",
-        title: "Je vous envoie une cotation",
-        body: "Cotation transparente et détaillée : prix du matériel + coût transport (bateau ou avion selon délai) + ma commission. Aucun frais caché.",
+        title: "Vous recevez une cotation",
+        body: "Cotation transparente et détaillée : prix du matériel + coût transport (bateau ou avion selon délai) + notre commission. Aucun frais caché.",
       },
       {
         step: "04",
@@ -236,8 +236,8 @@ export const services: ServiceDef[] = [
       },
       {
         step: "05",
-        title: "Je paie et j'expédie",
-        body: "Je règle le fournisseur en votre nom. Expédition par bateau (plus économique, délai plus long) ou avion (plus rapide, délai court). Suivi tout au long.",
+        title: "On paie et on expédie",
+        body: "Nous réglons le fournisseur en votre nom. Expédition par bateau (plus économique, délai plus long) ou avion (plus rapide, délai court). Suivi tout au long.",
       },
       {
         step: "06",
@@ -259,7 +259,7 @@ export const valueSummary: {
   facts: { value: string; label: string }[];
 } = {
   intro:
-    "Vous avez un besoin concret, je m'en occupe de bout en bout : un seul interlocuteur, un devis clair, et je tiens ce que je promets.",
+    "Vous avez un besoin concret, mon équipe et moi nous en occupons de bout en bout : un contact direct, des gens du métier pour chaque mission, un devis clair et des engagements tenus.",
   points: [
     {
       slug: "gestion",
@@ -279,7 +279,7 @@ export const valueSummary: {
     {
       slug: "technique",
       title: "Services techniques",
-      benefit: "Construction, rénovation, plomberie, vidéosurveillance, packaging : je coordonne vos travaux à votre place.",
+      benefit: "Construction, rénovation, plomberie, vidéosurveillance, packaging : nos artisans et techniciens réalisent vos travaux, je coordonne et je contrôle.",
     },
     {
       slug: "digital",
@@ -294,7 +294,7 @@ export const valueSummary: {
   ],
   facts: [
     { value: "6", label: "domaines couverts" },
-    { value: "1", label: "seul interlocuteur" },
+    { value: "1", label: "contact, toute une équipe" },
     { value: "24 h", label: "pour un devis clair" },
   ],
 };
@@ -302,7 +302,7 @@ export const valueSummary: {
 /** Texte du résumé à partager sur WhatsApp (le destinataire est choisi par l'utilisateur). */
 export function buildSummaryShareHref(siteUrl: string): string {
   const lines = [
-    "Kazem Williame Wallid — entrepreneur multi-services à Abidjan",
+    "Kazem Williame Wallid & son équipe — multi-services à Abidjan",
     "",
     ...valueSummary.points.map((p) => "• " + p.title + " : " + p.benefit),
     "",
@@ -348,7 +348,7 @@ export const processSteps: ProcessStep[] = [
   { index: "03", title: "Livraison", detail: "Engagement tenu" },
 ];
 
-// ─── Pourquoi moi — 4 arguments ───────────────────────────────────
+// ─── Pourquoi nous — 4 arguments ───────────────────────────────────
 export type WhyMeArg = {
   title: string;
   body: string;
@@ -356,16 +356,16 @@ export type WhyMeArg = {
 
 export const whyMe: WhyMeArg[] = [
   {
-    title: "Un seul contact",
-    body: "Pour cinq domaines. Un interlocuteur unique qui coordonne tout — moins de friction, plus de résultat.",
+    title: "Un contact direct",
+    body: "Pour six domaines. Un interlocuteur unique qui coordonne toute l'équipe — moins de friction, plus de résultat.",
   },
   {
-    title: "Multi-services",
-    body: "Aviculture, transport, technique, digital, gestion de stock. Une seule main pour vos besoins variés.",
+    title: "Une équipe par métier",
+    body: "Aviculture, transport, technique, digital, gestion de stock, import Chine. Des gens du métier pour chaque besoin.",
   },
   {
     title: "Ancré à Abidjan",
-    body: "Je connais le terrain, les prestataires, les zones. Je livre à Abidjan et sur les grands axes.",
+    body: "Nous connaissons le terrain, les prestataires, les zones. Nous livrons à Abidjan et sur les grands axes.",
   },
   {
     title: "Devis rapide",
@@ -388,7 +388,7 @@ export const faq: FaqItem[] = [
   {
     question: "Vous livrez où en Côte d'Ivoire ?",
     answer:
-      "Basé à Abidjan, j'interviens toute la ville et les grands axes. Trajets réguliers Assinie · Grand-Bassam · Yamoussoukro · Bouaké. Pour d'autres zones, on discute.",
+      "Basés à Abidjan, nous intervenons dans toute la ville et les grands axes. Trajets réguliers Assinie · Grand-Bassam · Yamoussoukro · Bouaké. Pour d'autres zones, on discute.",
   },
   {
     question: "Comment se passe le premier contact ?",
@@ -398,7 +398,12 @@ export const faq: FaqItem[] = [
   {
     question: "Est-ce que je peux vous faire confiance sur plusieurs domaines à la fois ?",
     answer:
-      "Oui — c'est justement mon métier depuis des années. Ma spécialité pro reste la gestion de stock. Sur les autres domaines, je coordonne avec les bons artisans/prestataires quand c'est nécessaire, en gardant la main sur la qualité et le délai.",
+      "Oui — c'est justement notre façon de travailler. Ma spécialité reste la gestion de stock ; sur chaque domaine, la mission est confiée à un membre de l'équipe ou à un partenaire du métier, et je garde la main sur la qualité et le délai.",
+  },
+  {
+    question: "Vous travaillez seul ?",
+    answer:
+      "Non. Je suis votre contact direct, et je travaille avec une équipe et des partenaires de confiance pour chaque métier. Vous gardez un seul interlocuteur ; derrière, chacun fait ce qu'il fait de mieux.",
   },
   {
     question: "Comment se déroule le paiement ?",

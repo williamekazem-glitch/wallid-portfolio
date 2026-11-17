@@ -45,7 +45,7 @@ const TIMELINE = [
   {
     period: "Aujourd'hui",
     role: "Poulet d'CI + Digital + Multi-services",
-    body: "Développement de Poulet d'CI (élevage et commercialisation de volailles) en parallèle de l'exploration IA/no-code pour créer sites, apps et outils numériques. Tout ça sous une seule enseigne : cinq domaines, un contact.",
+    body: "Développement de Poulet d'CI (élevage et commercialisation de volailles) en parallèle de l'exploration IA/no-code pour créer sites, apps et outils numériques. Tout ça sous une seule enseigne, avec une équipe à mes côtés : six domaines, un seul contact.",
     tag: "Nouveau",
   },
 ];
@@ -69,6 +69,21 @@ const SKILLS = [
 ];
 
 const METHOD = ["Comprendre.", "Apprendre.", "Expérimenter.", "Construire."];
+
+const TEAM_WAY = [
+  {
+    title: "Un seul contact : moi",
+    body: "Vous expliquez votre besoin une fois, à une seule personne. Je reste votre interlocuteur du devis à la livraison.",
+  },
+  {
+    title: "Des gens du métier",
+    body: "Chaque mission est confiée à un membre de l'équipe ou à un partenaire qui maîtrise le sujet : élevage, conduite, chantier, digital, import.",
+  },
+  {
+    title: "Un contrôle avant livraison",
+    body: "Je vérifie le délai et la qualité avant que le travail vous soit livré. Ce qui a été promis est tenu.",
+  },
+];
 
 export default function AProposPage() {
   return (
@@ -244,8 +259,38 @@ export default function AProposPage() {
             fontSize: "1.1rem", maxWidth: "60ch", marginInline: "auto",
             lineHeight: 1.6,
           }}>
-            Qu&apos;il s&apos;agisse de gérer une activité, de lancer un nouveau projet, de résoudre un problème technique ou de créer un outil numérique — je pars du besoin réel et je cherche la solution la plus efficace pour le résoudre.
+            Qu&apos;il s&apos;agisse de gérer une activité, de lancer un nouveau projet, de résoudre un problème technique ou de créer un outil numérique — je pars du besoin réel, puis je mobilise l&apos;équipe et les compétences qu&apos;il faut pour le résoudre efficacement.
           </p>
+        </div>
+      </section>
+
+      <section style={{ padding: "var(--section) var(--gutter)", background: "var(--ink-950)" }} aria-labelledby="equipe-title">
+        <div className="wrap">
+          <div className="section-eyebrow">L&apos;équipe</div>
+          <h2 className="section-title" id="equipe-title" style={{ marginBottom: 20 }}>
+            Un visage, <span className="serif">une équipe</span> derrière.
+          </h2>
+          <p className="hero-lede" style={{ marginBottom: 40 }}>
+            Je ne travaille pas seul. Pour chaque mission, je m&apos;appuie sur une équipe et des partenaires de confiance, chacun dans son métier. C&apos;est ce qui nous permet de tenir les délais et la qualité sur six domaines à la fois.
+          </p>
+          <ul style={{
+            listStyle: "none", padding: 0, display: "grid", gap: 16,
+            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+          }}>
+            {TEAM_WAY.map((item) => (
+              <li key={item.title} style={{
+                padding: "24px 22px", borderRadius: "var(--radius)",
+                background: "linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015))",
+                border: "1px solid var(--ink-border)",
+              }}>
+                <h3 style={{
+                  fontFamily: "var(--font-display-pv)", fontWeight: 700,
+                  fontSize: "1.1rem", marginBottom: 8, color: "var(--sun-400)",
+                }}>{item.title}</h3>
+                <p style={{ color: "rgba(248,250,252,0.75)", fontSize: 15, lineHeight: 1.6 }}>{item.body}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
@@ -253,7 +298,7 @@ export default function AProposPage() {
         <div className="wrap">
           <div className="section-eyebrow">Aujourd&apos;hui — deux projets à suivre</div>
           <h2 className="section-title" style={{ marginBottom: 48 }}>
-            Ce sur quoi <span className="serif">je bosse</span> en ce moment.
+            Ce sur quoi <span className="serif">nous travaillons</span> en ce moment.
           </h2>
           <div style={{
             display: "grid", gap: 20,

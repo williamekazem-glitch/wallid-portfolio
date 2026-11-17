@@ -11,7 +11,7 @@ export default function NotFound() {
           Page introuvable.
         </h1>
         <p className="mt-4 text-lg text-muted">
-          Ce lien ne mène nulle part — mais mes services, eux, sont bien là.
+          Ce lien ne mène nulle part — mais nos services, eux, sont bien là.
         </p>
         <div className="mt-8">
           <ButtonLink href="/" size="lg">

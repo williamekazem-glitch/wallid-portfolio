@@ -84,7 +84,7 @@ export default function ContactPage() {
             color: "rgba(248,250,252,0.72)", maxWidth: "60ch",
             marginBottom: 40, lineHeight: 1.5,
           }}>
-            WhatsApp reste le canal le plus rapide (réponse dans la journée). Téléphone et email sont aussi disponibles selon ce qui vous arrange. Aucun standard, aucun intermédiaire — vous parlez directement avec moi.
+            WhatsApp reste le canal le plus rapide (réponse dans la journée). Téléphone et email sont aussi disponibles selon ce qui vous arrange. Aucun standard : vous parlez directement avec moi, et je mobilise la bonne personne de l&apos;équipe.
           </p>
         </div>
       </section>
