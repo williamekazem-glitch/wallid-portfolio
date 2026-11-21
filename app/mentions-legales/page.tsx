@@ -48,7 +48,8 @@ const SECTIONS = [
   {
     title: "4. Données personnelles",
     body: [
-      "**Aucune donnée personnelle n'est collectée automatiquement sur ce site.** Aucun formulaire d'inscription, aucun compte utilisateur, aucun tracker publicitaire ne sont utilisés.",
+      "**Aucune donnée personnelle n'est collectée automatiquement sur ce site.** Aucun compte utilisateur, aucun tracker publicitaire ne sont utilisés. Le formulaire de devis n'envoie rien au site : il prépare simplement un message que vous choisissez ou non d'envoyer sur WhatsApp.",
+      "**Statistiques de fréquentation.** Le site utilise Vercel Web Analytics et Vercel Speed Insights, fournis par l'hébergeur. Ces outils comptent les pages vues et mesurent la vitesse d'affichage de façon anonyme et agrégée : sans cookie, sans identifiant personnel, sans suivi d'un site à l'autre. Ils servent uniquement à savoir combien de personnes visitent le site, quelles pages les intéressent et si le site est assez rapide.",
       "Les seules données que vous partagez avec l'éditeur sont celles que vous fournissez volontairement lors d'un contact via WhatsApp, téléphone ou email (nom, coordonnées, nature de votre demande).",
       "Ces données sont utilisées uniquement pour répondre à votre demande et effectuer la prestation si elle est acceptée. Elles ne sont **jamais partagées** avec un tiers, ne sont **jamais utilisées** à des fins commerciales autres que la relation directe avec vous, et sont supprimées sur simple demande à " + siteConfig.email + ".",
       "Vous disposez d'un droit d'accès, de rectification, d'opposition et de suppression conformément à la loi ivoirienne n°2013-450 relative à la protection des données à caractère personnel et, si vous êtes résident de l'Union européenne, au Règlement (UE) 2016/679 (RGPD).",
@@ -57,7 +58,8 @@ const SECTIONS = [
   {
     title: "5. Cookies",
     body: [
-      "**Ce site n'utilise aucun cookie de suivi, ni cookie publicitaire, ni cookie d'analyse tierce.** Seul un stockage local minimal (localStorage du navigateur) est utilisé pour mémoriser votre préférence de thème (clair/sombre) et savoir si vous avez déjà visité le site pour skipper l'animation d'introduction. Ces données restent exclusivement dans votre navigateur, ne sont jamais transmises à un serveur, et vous pouvez les effacer à tout moment via les paramètres de votre navigateur.",
+      "**Ce site n'utilise aucun cookie** : ni cookie de suivi, ni cookie publicitaire, ni cookie d'analyse. Les statistiques de fréquentation décrites ci-dessus fonctionnent sans cookie.",
+      "Un stockage local minimal (localStorage du navigateur) mémorise votre préférence de thème (clair/sombre) et, si vous avez répondu « Plus tard » à la proposition d'installer l'appli, la date de cette réponse. Pour que le site s'ouvre même avec une connexion faible, votre navigateur garde aussi une copie des pages déjà visitées (service worker). Ces données restent dans votre navigateur, ne sont jamais transmises à un serveur, et vous pouvez les effacer à tout moment via les paramètres de votre navigateur.",
     ],
   },
   {

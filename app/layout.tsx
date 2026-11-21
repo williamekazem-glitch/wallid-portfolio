@@ -6,6 +6,8 @@ import { ThemeInit } from "@/components/layout/ThemeInit";
 import { GlobalFloatingUI } from "@/components/sections/GlobalFloatingUI";
 import { ServiceWorkerRegister } from "@/components/layout/ServiceWorkerRegister";
 import { InstallPrompt } from "@/components/layout/InstallPrompt";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { siteConfig } from "@/lib/site-config";
 
 const inter = Inter({
@@ -114,6 +116,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <GlobalFloatingUI />
         <ServiceWorkerRegister />
         <InstallPrompt />
+        {/* Statistiques anonymes sans cookies (Vercel) : visites et vitesse réelle */}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
