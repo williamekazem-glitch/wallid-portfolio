@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type JSX } from "react";
 
 import { siteConfig } from "@/lib/site-config";
 import { FooterSocials, SocialCards } from "@/components/ui/SocialLinks";
