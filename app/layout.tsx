@@ -5,6 +5,7 @@ import "./portfolio.css";
 import { ThemeInit } from "@/components/layout/ThemeInit";
 import { GlobalFloatingUI } from "@/components/sections/GlobalFloatingUI";
 import { ServiceWorkerRegister } from "@/components/layout/ServiceWorkerRegister";
+import { InstallPrompt } from "@/components/layout/InstallPrompt";
 import { siteConfig } from "@/lib/site-config";
 
 const inter = Inter({
@@ -112,6 +113,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
         <GlobalFloatingUI />
         <ServiceWorkerRegister />
+        <InstallPrompt />
       </body>
     </html>
   );
