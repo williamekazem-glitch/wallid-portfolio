@@ -381,7 +381,7 @@ export function PortfolioV19() {
       </nav>
 
       <main id="main" tabIndex={-1}>
-        <section className="hero" aria-label="Présentation" ref={(el) => { heroRef.current = el; }}>
+        <section className="hero" id="top" aria-label="Présentation" ref={(el) => { heroRef.current = el; }}>
           <div className="hero-bg" aria-hidden="true" />
           <div className="blob blob-1" aria-hidden="true" />
           <div className="hero-wrap">
@@ -874,6 +874,8 @@ export function PortfolioV19() {
       </button>
 
 
+      <TabBar />
+
       <div className={"mobile-bar" + (pastHeroFar ? " visible" : "")} role="navigation" aria-label="Actions rapides">
         <a href={buildQuickWhatsAppHref()} className="mobile-bar-btn mobile-bar-btn--wa">
           <WhatsAppIcon size={22} />
@@ -912,3 +914,41 @@ export function PortfolioV19() {
 
 
 
+
+// ─── MAQUETTE : barre d'onglets façon appli (mobile) ─────────────────
+const TABS: { href: string; label: string; icon: React.ReactNode }[] = [
+  { href: "#top", label: "Accueil", icon: <path d="m3 10 9-7 9 7v10a2 2 0 0 1-2 2h-4v-7H9v7H5a2 2 0 0 1-2-2z" /> },
+  { href: "#services", label: "Services", icon: <><rect x="3" y="3" width="7" height="7" rx="1.5" /><rect x="14" y="3" width="7" height="7" rx="1.5" /><rect x="3" y="14" width="7" height="7" rx="1.5" /><rect x="14" y="14" width="7" height="7" rx="1.5" /></> },
+  { href: "/devis", label: "Devis", icon: <><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><path d="M14 2v6h6" /><path d="M9 13h6M9 17h4" /></> },
+  { href: "#contact", label: "Contact", icon: <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /> },
+];
+
+function TabBar() {
+  const [active, setActive] = useState("#top");
+  useEffect(() => {
+    const ids = ["top", "services", "contact"];
+    const els = ids.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) if (e.isIntersecting) setActive("#" + e.target.id);
+      },
+      { rootMargin: "-45% 0px -50% 0px" }
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+  return (
+    <nav className="tabbar" aria-label="Navigation principale (mobile)">
+      {TABS.map((t) => (
+        <a key={t.href} href={t.href} className={"tabbar-item" + (active === t.href ? " is-active" : "")} aria-current={active === t.href ? "true" : undefined}>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{t.icon}</svg>
+          {t.label}
+        </a>
+      ))}
+      <a href={buildQuickWhatsAppHref()} className="tabbar-item tabbar-item--wa">
+        <WhatsAppIcon size={22} />
+        WhatsApp
+      </a>
+    </nav>
+  );
+}

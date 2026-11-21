@@ -2730,3 +2730,55 @@ body.install-open .pv19 .fab { display: none; }
 .pv19 .devis-alt a { color: var(--sun-400); font-weight: 600; white-space: nowrap; }
 [data-theme="light"] .pv19 .devis-alt a,
 [data-theme="light"] .pv19 .devis-title .serif { color: var(--sun-700); }
+
+/* ============ MAQUETTE « APPLI » (mobile) ============ */
+.pv19 .tabbar { display: none; }
+@media (max-width: 720px) {
+  html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+  /* Barre d'onglets fixe en bas */
+  .pv19 .tabbar {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    padding: 6px 6px calc(6px + env(safe-area-inset-bottom, 0px));
+    background: rgba(11, 11, 16, 0.94);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid var(--ink-border);
+  }
+  .pv19 .tabbar-item {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+    min-height: 54px; border-radius: 12px;
+    color: rgba(248, 250, 252, 0.6);
+    font-family: var(--font-display-pv); font-weight: 600; font-size: 11px;
+  }
+  .pv19 .tabbar-item svg { width: 22px; height: 22px; }
+  .pv19 .tabbar-item.is-active { color: var(--sun-400); background: rgba(251, 191, 36, 0.1); }
+  .pv19 .tabbar-item--wa { color: var(--wa-500); }
+  [data-theme="light"] .pv19 .tabbar { background: rgba(251, 247, 240, 0.95); }
+  [data-theme="light"] .pv19 .tabbar-item { color: var(--deep-700); }
+  [data-theme="light"] .pv19 .tabbar-item.is-active { color: var(--sun-700); }
+  /* L'ancienne barre d'actions et la bulle WhatsApp font doublon */
+  .pv19 .mobile-bar { display: none !important; }
+  body:has(.tabbar) .pv19 .fab { display: none; }
+  body:has(.tabbar) .pv19 .install-banner { bottom: calc(78px + env(safe-area-inset-bottom, 0px)); }
+  body:has(.tabbar) .pv19 footer { padding-bottom: 96px; }
+
+  /* Carrousels de côté : résumé, services, pourquoi nous, étapes */
+  .pv19 .resume-list, .pv19 .services-grid, .pv19 .why-grid, .pv19 .process-grid {
+    display: flex !important; grid-template-columns: none !important;
+    overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px;
+    margin-left: calc(-1 * var(--gutter)); margin-right: calc(-1 * var(--gutter));
+    padding: 4px var(--gutter) 14px; scroll-padding-left: var(--gutter);
+    scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  }
+  .pv19 .resume-list::-webkit-scrollbar, .pv19 .services-grid::-webkit-scrollbar,
+  .pv19 .why-grid::-webkit-scrollbar, .pv19 .process-grid::-webkit-scrollbar { display: none; }
+  .pv19 .resume-list > li, .pv19 .services-grid > *, .pv19 .why-grid > *, .pv19 .process-grid > * {
+    flex: 0 0 84%; scroll-snap-align: start; min-width: 0;
+  }
+  .pv19 .why-grid { background: none; border-radius: 0; }
+  .pv19 .why-item { border-radius: var(--radius); border: 1px solid var(--ink-border); }
+  /* Indice « glissez » sous chaque carrousel */
+  .pv19 .resume-list::after, .pv19 .services-grid::after, .pv19 .why-grid::after, .pv19 .process-grid::after {
+    content: ""; flex: 0 0 1px;
+  }
+}
