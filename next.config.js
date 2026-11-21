@@ -58,6 +58,14 @@ const nextConfig = {
         headers: securityHeaders,
       },
       {
+        // Service worker : toujours revérifié, pour que les mises à jour arrivent vite
+        source: "/sw.js",
+        headers: [
+          { key: "Cache-Control", value: "no-cache, no-store, must-revalidate" },
+          { key: "Content-Type", value: "application/javascript; charset=utf-8" },
+        ],
+      },
+      {
         // Fiche contact : ouvre « Ajouter aux contacts » sur le téléphone
         source: "/wallid.vcf",
         headers: [

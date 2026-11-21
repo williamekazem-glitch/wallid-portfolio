@@ -4,6 +4,7 @@ import "./globals.css";
 import "./portfolio.css";
 import { ThemeInit } from "@/components/layout/ThemeInit";
 import { GlobalFloatingUI } from "@/components/sections/GlobalFloatingUI";
+import { ServiceWorkerRegister } from "@/components/layout/ServiceWorkerRegister";
 import { siteConfig } from "@/lib/site-config";
 
 const inter = Inter({
@@ -110,6 +111,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </a>
         {children}
         <GlobalFloatingUI />
+        <ServiceWorkerRegister />
       </body>
     </html>
   );
