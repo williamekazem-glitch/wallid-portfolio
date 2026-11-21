@@ -29,6 +29,7 @@ const FOOTER_SECTIONS: { title: string; links: { href: string; label: string; ex
       { href: "/services/technique", label: "Services techniques" },
       { href: "/services/digital", label: "Digital" },
       { href: "/services/gestion", label: "Gestion de stock" },
+      { href: "/services/sourcing", label: "Sourcing Chine" },
     ],
   },
   {

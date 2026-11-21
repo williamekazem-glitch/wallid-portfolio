@@ -117,6 +117,12 @@ export function ServicePageContent({ service, related }: { service: ServiceDef; 
                     Appeler {siteConfig.phone}
                   </a>
                 </div>
+                <a href={"/devis?service=" + service.slug} style={{
+                  display: "inline-block", marginTop: 16, color: "var(--sun-400)",
+                  fontSize: 15, fontWeight: 600, textDecoration: "underline", textUnderlineOffset: 4,
+                }}>
+                  Ou remplir le formulaire de devis (1 minute) →
+                </a>
               </div>
 
               <aside

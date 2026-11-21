@@ -6,8 +6,10 @@ export default function manifest(): MetadataRoute.Manifest {
     name: siteConfig.name + " — Portfolio",
     short_name: "Wallid",
     description:
-      "Entrepreneur multi-services à Abidjan. Six domaines, un contact. Aviculture, transport, services techniques, digital, gestion de stock, sourcing Chine.",
+      "Entrepreneur multi-services à Abidjan, avec son équipe. Six domaines, un seul contact. Aviculture, transport, services techniques, digital, gestion de stock, sourcing Chine.",
+    id: "/",
     start_url: "/",
+    scope: "/",
     display: "standalone",
     orientation: "portrait",
     background_color: "#0B0B10",
@@ -21,12 +23,6 @@ export default function manifest(): MetadataRoute.Manifest {
       { src: "/apple-icon.png", sizes: "180x180", type: "image/png" },
     ],
     shortcuts: [
-      {
-        name: "WhatsApp direct",
-        short_name: "WhatsApp",
-        description: "Écrire directement à Wallid sur WhatsApp",
-        url: "https://wa.me/" + siteConfig.whatsapp,
-      },
       {
         name: "Contact",
         short_name: "Contact",

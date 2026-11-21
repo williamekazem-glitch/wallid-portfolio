@@ -8,18 +8,18 @@ export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
 }
 
-export function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}): Metadata {
-  const svc = services.find((s) => s.slug === params.slug);
+// Next.js 15 : params est une Promise.
+type Params = Promise<{ slug: string }>;
+
+export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+  const { slug } = await params;
+  const svc = services.find((s) => s.slug === slug);
   if (!svc) return { title: "Service introuvable" };
   return {
     title: `${svc.title} — ${siteConfig.name}`,
     description: svc.description,
     openGraph: {
-    images: [siteConfig.ogImage],
+      images: [siteConfig.ogImage],
       title: `${svc.title} — ${siteConfig.name}`,
       description: svc.description,
       type: "website",
@@ -28,13 +28,10 @@ export function generateMetadata({
   };
 }
 
-export default function ServiceRoute({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const service = services.find((s) => s.slug === params.slug);
+export default async function ServiceRoute({ params }: { params: Params }) {
+  const { slug } = await params;
+  const service = services.find((s) => s.slug === slug);
   if (!service) notFound();
-  const related = services.filter((s) => s.slug !== params.slug);
+  const related = services.filter((s) => s.slug !== slug);
   return <ServicePageContent service={service} related={related} />;
 }

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type JSX } from "react";
 
 import { siteConfig } from "@/lib/site-config";
 import { FooterSocials, SocialCards } from "@/components/ui/SocialLinks";
@@ -373,7 +373,7 @@ export function PortfolioV19() {
             <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
           </svg>
         </button>
-        <a href="#contact" className="nav-cta magnetic">
+        <a href="/devis" className="nav-cta magnetic">
           <span className="nav-cta-long">Demander un devis</span>
           <span className="nav-cta-short">Devis</span>
           <ArrowRight />

@@ -1,61 +1,39 @@
-﻿import Link from "next/link";
+import type { Metadata } from "next";
+import { PageShell } from "@/components/sections/PageShell";
+import { DevisForm } from "@/components/sections/DevisForm";
 import { siteConfig } from "@/lib/site-config";
 
-export const metadata = {
-  title: "Demander un devis",
-  description: "Écrivez-moi directement sur WhatsApp pour obtenir un devis rapide.",
+export const metadata: Metadata = {
+  title: "Demander un devis — " + siteConfig.name,
+  description:
+    "Décrivez votre besoin en 1 minute : la demande s'ouvre dans WhatsApp, déjà rédigée. Devis gratuit, réponse dans la journée.",
+  openGraph: {
+    images: [siteConfig.ogImage],
+    title: "Demander un devis — " + siteConfig.name,
+    description: "Votre demande rédigée pour vous, envoyée sur WhatsApp. Devis gratuit sous 24 h.",
+    type: "website",
+    locale: "fr_FR",
+  },
 };
 
-// Placeholder page — le formulaire structuré est prévu en v2.
-// V1 canalise tout via WhatsApp direct (cf. cahier des charges).
 export default function DevisPage() {
-  const waHref = `https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(
-    "Bonjour Wallid, je souhaite un devis pour :"
-  )}`;
   return (
-    <div className="pv19">
-      <main
-        id="main"
-        style={{
-          minHeight: "100vh",
-          display: "grid",
-          placeItems: "center",
-          padding: "80px 24px",
-          background: "var(--ink-900)",
-          color: "#fff",
-          textAlign: "center",
-        }}
-      >
-        <div style={{ maxWidth: 520 }}>
-          <div className="section-eyebrow" style={{ justifyContent: "center", marginBottom: 20 }}>
-            Demander un devis
-          </div>
-          <h1
-            style={{
-              fontFamily: "var(--font-display-pv)",
-              fontWeight: 700,
-              fontSize: "clamp(2rem, 5vw, 3rem)",
-              letterSpacing: "-0.03em",
-              lineHeight: 1.05,
-              marginBottom: 20,
-            }}
-          >
-            Le plus rapide, <span style={{ fontFamily: "var(--font-serif-pv)", fontStyle: "italic", color: "var(--sun-400)" }}>c&apos;est</span> WhatsApp.
+    <PageShell cta="WhatsApp direct">
+      <section className="devis">
+        <div className="wrap devis-wrap">
+          <div className="section-eyebrow">Demander un devis</div>
+          <h1 className="devis-title">
+            Votre demande en <span className="serif">1 minute</span>.
           </h1>
-          <p style={{ color: "rgba(255,255,255,0.7)", marginBottom: 32 }}>
-            Décrivez-moi votre besoin en quelques mots — je vous réponds sous 4h avec un devis clair
-            sous 24h. Gratuit, sans engagement.
+          <p className="devis-lede">
+            Répondez à quelques questions : votre demande s&apos;ouvre dans WhatsApp, déjà rédigée. Réponse dans la journée, devis clair sous 24 h.
           </p>
-          <a href={waHref} className="btn btn-wa" style={{ minHeight: 56 }}>
-            Écrire sur WhatsApp
-          </a>
-          <div style={{ marginTop: 24 }}>
-            <Link href="/" style={{ color: "var(--sun-400)", fontSize: 14 }}>
-              ← Retour à l&apos;accueil
-            </Link>
-          </div>
+          <DevisForm />
+          <p className="devis-alt">
+            Vous préférez appeler ? <a href={"tel:+" + siteConfig.whatsapp}>{siteConfig.phone}</a>
+          </p>
         </div>
-      </main>
-    </div>
+      </section>
+    </PageShell>
   );
 }

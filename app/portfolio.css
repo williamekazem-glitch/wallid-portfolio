@@ -2613,3 +2613,120 @@ body.pv19-body.keyboard-user .pv19 .cursor-dot { display: none !important; }
   .pv19 .hero-chip-icon { width: 28px; height: 28px; }
   .pv19 .hero-chip-icon svg { width: 16px; height: 16px; }
 }
+
+/* ============ PROPOSITION D'INSTALLATION (PWA) ============ */
+.pv19 .install-banner {
+  position: fixed;
+  left: 12px;
+  right: 12px;
+  bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+  z-index: 70;
+  max-width: 440px;
+  margin: 0 auto;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 14px;
+  border-radius: 18px;
+  background: rgba(15, 16, 24, 0.97);
+  border: 1px solid rgba(251, 191, 36, 0.35);
+  box-shadow: 0 18px 40px -12px rgba(0, 0, 0, 0.6);
+  color: #F8FAFC;
+  animation: pv19-install-in 0.35s var(--ease) both;
+}
+/* Au-dessus de la barre d'actions mobile quand elle est affichée */
+body:has(.mobile-bar.visible) .pv19 .install-banner { bottom: calc(88px + env(safe-area-inset-bottom, 0px)); }
+/* La bulle WhatsApp s'efface pendant que la bannière est ouverte */
+body.install-open .pv19 .fab { display: none; }
+@keyframes pv19-install-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pv19 .install-banner { animation: none; }
+}
+.pv19 .install-icon { width: 48px; height: 48px; border-radius: 12px; flex-shrink: 0; }
+.pv19 .install-text { flex: 1; min-width: 0; }
+.pv19 .install-title { font-family: var(--font-display-pv); font-weight: 700; font-size: 16px; }
+.pv19 .install-desc { margin-top: 3px; font-size: 14px; line-height: 1.45; color: rgba(248, 250, 252, 0.78); }
+.pv19 .install-share { display: inline-block; width: 18px; height: 18px; vertical-align: -3px; color: var(--sun-400); }
+.pv19 .install-actions { display: flex; gap: 8px; margin-top: 12px; }
+.pv19 .install-btn {
+  min-height: 44px;
+  padding: 0 16px;
+  border-radius: 12px;
+  font-family: var(--font-display-pv);
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #F8FAFC;
+}
+.pv19 .install-btn--primary { background: var(--sun-500); border-color: var(--sun-500); color: #0B0B10; }
+
+/* ============ PAGE DEVIS ============ */
+.pv19 .devis { padding: clamp(2.5rem, 6vw, 4.5rem) var(--gutter) var(--section); background: var(--ink-900); }
+.pv19 .devis-wrap { max-width: 680px; }
+.pv19 .devis-title {
+  font-family: var(--font-display-pv);
+  font-weight: 700;
+  font-size: clamp(2.1rem, 6vw, 3.2rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin: 6px 0 14px;
+}
+.pv19 .devis-title .serif { font-family: var(--font-serif-pv); font-style: italic; font-weight: 400; color: var(--sun-400); }
+.pv19 .devis-lede { font-size: 1.05rem; line-height: 1.55; opacity: 0.8; margin-bottom: 28px; }
+.pv19 .devis-form { display: grid; gap: 22px; }
+.pv19 .devis-field { display: grid; gap: 8px; border: 0; padding: 0; margin: 0; min-width: 0; }
+.pv19 .devis-label { font-family: var(--font-display-pv); font-weight: 700; font-size: 15px; padding: 0; }
+.pv19 .devis-label span[aria-hidden] { color: var(--sun-400); }
+.pv19 .devis-opt { font-weight: 400; opacity: 0.6; font-size: 13px; }
+.pv19 .devis-row { display: grid; gap: 22px; grid-template-columns: 1fr; }
+@media (min-width: 560px) { .pv19 .devis-row { grid-template-columns: 1fr 1fr; } }
+.pv19 .devis-choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; outline: none; }
+@media (min-width: 560px) { .pv19 .devis-choices { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.pv19 .devis-choice {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 52px;
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: var(--ink-800);
+  border: 1.5px solid var(--ink-border);
+  font-family: var(--font-display-pv);
+  font-weight: 600;
+  font-size: 14.5px;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: border-color 0.2s var(--ease), background 0.2s var(--ease);
+}
+.pv19 .devis-choice input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.pv19 .devis-choice.is-on { border-color: var(--sun-500); background: rgba(251, 191, 36, 0.12); }
+.pv19 .devis-choice:has(input:focus-visible) { outline: 2px solid var(--sun-400); outline-offset: 2px; }
+.pv19 .devis-input {
+  width: 100%;
+  min-height: 50px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: var(--ink-800);
+  border: 1.5px solid var(--ink-border);
+  color: inherit;
+  font: inherit;
+  font-size: 16px; /* ≥ 16 px : pas de zoom automatique sur iPhone */
+}
+.pv19 textarea.devis-input { resize: vertical; min-height: 110px; line-height: 1.5; }
+.pv19 .devis-input::placeholder { color: inherit; opacity: 0.45; }
+.pv19 .devis-input:focus { outline: none; border-color: var(--sun-500); box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.2); }
+.pv19 .devis-input[aria-invalid="true"] { border-color: #F87171; }
+.pv19 .devis-error { color: #F87171; font-size: 14px; }
+[data-theme="light"] .pv19 .devis-error { color: #B91C1C; }
+[data-theme="light"] .pv19 .devis-input[aria-invalid="true"] { border-color: #B91C1C; }
+.pv19 .devis-submit { justify-content: center; min-height: 58px; font-size: 16px; width: 100%; }
+.pv19 .devis-note { font-size: 13.5px; line-height: 1.5; opacity: 0.65; text-align: center; margin-top: -8px; }
+.pv19 .devis-alt { margin-top: 28px; text-align: center; font-size: 15px; opacity: 0.85; }
+.pv19 .devis-alt a { color: var(--sun-400); font-weight: 600; white-space: nowrap; }
+[data-theme="light"] .pv19 .devis-alt a,
+[data-theme="light"] .pv19 .devis-title .serif { color: var(--sun-700); }
