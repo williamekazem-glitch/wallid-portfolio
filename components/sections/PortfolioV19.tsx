@@ -96,8 +96,6 @@ export function PortfolioV19() {
   const [theme, setTheme] = useState<"dark" | "light">("dark");
   const [scrolled, setScrolled] = useState(false);
   const [pastHero, setPastHero] = useState(false);
-  const [pastHeroFar, setPastHeroFar] = useState(false);
-  const [copyToast, setCopyToast] = useState(false);
 
   const heroRef = useRef<HTMLElement | null>(null);
   const heroPhotoRef = useRef<HTMLElement | null>(null);
@@ -129,7 +127,6 @@ export function PortfolioV19() {
       const heroBottom = heroRef.current.offsetTop + heroRef.current.offsetHeight;
       setScrolled(scrollTop > heroBottom - 200);
       setPastHero(scrollTop > heroBottom - 80);
-      setPastHeroFar(scrollTop > heroBottom - 100);
     }
   });
 
@@ -273,7 +270,7 @@ export function PortfolioV19() {
       const labelMap: Array<[string, string]> = [
         [".bv-qr, .bcard-qr", "Scan"],
         [".hero-photo", "Regard"],
-        ['a[href*="wa.me"], .btn-wa, .contact-hero-btn, .mobile-bar-btn--wa, .reviews-btn', "Écrire"],
+        ['a[href*="wa.me"], .btn-wa, .contact-hero-btn, .tabbar-item--wa, .reviews-btn', "Écrire"],
         ['a[href^="tel:"]', "Appeler"],
         [".service, .faq-item summary", "Voir"],
         [".faq-item .faq-answer", "Lire"],
@@ -327,15 +324,6 @@ export function PortfolioV19() {
     };
   }, [reduceMotion]);
 
-  const copyEmail = async () => {
-    try {
-      await navigator.clipboard.writeText(siteConfig.email);
-      setCopyToast(true);
-      window.setTimeout(() => setCopyToast(false), 1800);
-    } catch {
-      window.location.href = "mailto:" + siteConfig.email;
-    }
-  };
 
 
   const trajetsSeq = [...trajets, ...trajets];
@@ -872,83 +860,6 @@ export function PortfolioV19() {
           <path d="m18 15-6-6-6 6" />
         </svg>
       </button>
-
-
-      <TabBar />
-
-      <div className={"mobile-bar" + (pastHeroFar ? " visible" : "")} role="navigation" aria-label="Actions rapides">
-        <a href={buildQuickWhatsAppHref()} className="mobile-bar-btn mobile-bar-btn--wa">
-          <WhatsAppIcon size={22} />
-          WhatsApp
-        </a>
-        <a href={"tel:+" + WA} className="mobile-bar-btn mobile-bar-btn--call">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-          </svg>
-          Appeler
-        </a>
-        <button type="button" className="mobile-bar-btn mobile-bar-btn--mail" onClick={copyEmail} aria-label="Copier mon email">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <rect x="2" y="4" width="20" height="16" rx="2" />
-            <path d="m22 7-10 6L2 7" />
-          </svg>
-          Copier email
-        </button>
-      </div>
-      <div className={"copy-toast" + (copyToast ? " show" : "")} role="status" aria-live="polite">
-        Email copié ✓
-      </div>
-
-
     </div>
-  );
-}
-
-
-
-
-
-
-
-
-
-
-
-
-// ─── MAQUETTE : barre d'onglets façon appli (mobile) ─────────────────
-const TABS: { href: string; label: string; icon: React.ReactNode }[] = [
-  { href: "#top", label: "Accueil", icon: <path d="m3 10 9-7 9 7v10a2 2 0 0 1-2 2h-4v-7H9v7H5a2 2 0 0 1-2-2z" /> },
-  { href: "#services", label: "Services", icon: <><rect x="3" y="3" width="7" height="7" rx="1.5" /><rect x="14" y="3" width="7" height="7" rx="1.5" /><rect x="3" y="14" width="7" height="7" rx="1.5" /><rect x="14" y="14" width="7" height="7" rx="1.5" /></> },
-  { href: "/devis", label: "Devis", icon: <><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><path d="M14 2v6h6" /><path d="M9 13h6M9 17h4" /></> },
-  { href: "#contact", label: "Contact", icon: <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /> },
-];
-
-function TabBar() {
-  const [active, setActive] = useState("#top");
-  useEffect(() => {
-    const ids = ["top", "services", "contact"];
-    const els = ids.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const e of entries) if (e.isIntersecting) setActive("#" + e.target.id);
-      },
-      { rootMargin: "-45% 0px -50% 0px" }
-    );
-    els.forEach((el) => io.observe(el));
-    return () => io.disconnect();
-  }, []);
-  return (
-    <nav className="tabbar" aria-label="Navigation principale (mobile)">
-      {TABS.map((t) => (
-        <a key={t.href} href={t.href} className={"tabbar-item" + (active === t.href ? " is-active" : "")} aria-current={active === t.href ? "true" : undefined}>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{t.icon}</svg>
-          {t.label}
-        </a>
-      ))}
-      <a href={buildQuickWhatsAppHref()} className="tabbar-item tabbar-item--wa">
-        <WhatsAppIcon size={22} />
-        WhatsApp
-      </a>
-    </nav>
   );
 }
