@@ -96,8 +96,6 @@ export function PortfolioV19() {
   const [theme, setTheme] = useState<"dark" | "light">("dark");
   const [scrolled, setScrolled] = useState(false);
   const [pastHero, setPastHero] = useState(false);
-  const [pastHeroFar, setPastHeroFar] = useState(false);
-  const [copyToast, setCopyToast] = useState(false);
 
   const heroRef = useRef<HTMLElement | null>(null);
   const heroPhotoRef = useRef<HTMLElement | null>(null);
@@ -129,7 +127,6 @@ export function PortfolioV19() {
       const heroBottom = heroRef.current.offsetTop + heroRef.current.offsetHeight;
       setScrolled(scrollTop > heroBottom - 200);
       setPastHero(scrollTop > heroBottom - 80);
-      setPastHeroFar(scrollTop > heroBottom - 100);
     }
   });
 
@@ -273,7 +270,7 @@ export function PortfolioV19() {
       const labelMap: Array<[string, string]> = [
         [".bv-qr, .bcard-qr", "Scan"],
         [".hero-photo", "Regard"],
-        ['a[href*="wa.me"], .btn-wa, .contact-hero-btn, .mobile-bar-btn--wa, .reviews-btn', "Écrire"],
+        ['a[href*="wa.me"], .btn-wa, .contact-hero-btn, .tabbar-item--wa, .reviews-btn', "Écrire"],
         ['a[href^="tel:"]', "Appeler"],
         [".service, .faq-item summary", "Voir"],
         [".faq-item .faq-answer", "Lire"],
@@ -327,15 +324,6 @@ export function PortfolioV19() {
     };
   }, [reduceMotion]);
 
-  const copyEmail = async () => {
-    try {
-      await navigator.clipboard.writeText(siteConfig.email);
-      setCopyToast(true);
-      window.setTimeout(() => setCopyToast(false), 1800);
-    } catch {
-      window.location.href = "mailto:" + siteConfig.email;
-    }
-  };
 
 
   const trajetsSeq = [...trajets, ...trajets];
@@ -381,7 +369,7 @@ export function PortfolioV19() {
       </nav>
 
       <main id="main" tabIndex={-1}>
-        <section className="hero" aria-label="Présentation" ref={(el) => { heroRef.current = el; }}>
+        <section className="hero" id="top" aria-label="Présentation" ref={(el) => { heroRef.current = el; }}>
           <div className="hero-bg" aria-hidden="true" />
           <div className="blob blob-1" aria-hidden="true" />
           <div className="hero-wrap">
@@ -872,43 +860,6 @@ export function PortfolioV19() {
           <path d="m18 15-6-6-6 6" />
         </svg>
       </button>
-
-
-      <div className={"mobile-bar" + (pastHeroFar ? " visible" : "")} role="navigation" aria-label="Actions rapides">
-        <a href={buildQuickWhatsAppHref()} className="mobile-bar-btn mobile-bar-btn--wa">
-          <WhatsAppIcon size={22} />
-          WhatsApp
-        </a>
-        <a href={"tel:+" + WA} className="mobile-bar-btn mobile-bar-btn--call">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-          </svg>
-          Appeler
-        </a>
-        <button type="button" className="mobile-bar-btn mobile-bar-btn--mail" onClick={copyEmail} aria-label="Copier mon email">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <rect x="2" y="4" width="20" height="16" rx="2" />
-            <path d="m22 7-10 6L2 7" />
-          </svg>
-          Copier email
-        </button>
-      </div>
-      <div className={"copy-toast" + (copyToast ? " show" : "")} role="status" aria-live="polite">
-        Email copié ✓
-      </div>
-
-
     </div>
   );
 }
-
-
-
-
-
-
-
-
-
-
-

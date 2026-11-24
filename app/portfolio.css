@@ -2003,82 +2003,6 @@ body.pv19-body::before {
 }
 .pv19 .mini-brand svg { width: 12px; height: 12px; color: var(--sun-400); }
 
-/* ============ MOBILE BAR ============ */
-.pv19 .mobile-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 60;
-  display: none;
-  padding: 10px 12px calc(10px + env(safe-area-inset-bottom, 0));
-  background: rgba(6, 14, 36, 0.92);
-  backdrop-filter: blur(16px);
-  border-top: 1px solid var(--ink-border);
-  gap: 8px;
-  transform: translateY(100%);
-  transition: transform 0.4s var(--ease);
-}
-.pv19 .mobile-bar.visible { transform: translateY(0); }
-@media (max-width: 720px) { .pv19 .mobile-bar { display: flex; } }
-.pv19 .mobile-bar-btn {
-  flex: 1;
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 3px;
-  padding: 10px 6px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--ink-border);
-  color: #fff;
-  font-family: var(--font-display-pv);
-  font-weight: 600;
-  font-size: 11px;
-  letter-spacing: 0.02em;
-  min-height: 56px;
-  transition: background 0.2s var(--ease), transform 0.1s var(--ease);
-  text-decoration: none;
-  cursor: pointer;
-}
-.pv19 .mobile-bar-btn:active { transform: scale(0.97); }
-.pv19 .mobile-bar-btn svg { width: 22px; height: 22px; }
-.pv19 .mobile-bar-btn--wa {
-  background: var(--wa-500);
-  border-color: var(--wa-500);
-  color: var(--wa-ink);
-}
-.pv19 .mobile-bar-btn--wa svg { color: var(--wa-ink); }
-.pv19 .mobile-bar-btn--call {
-  background: rgba(251, 191, 36, 0.14);
-  border-color: rgba(251, 191, 36, 0.35);
-}
-.pv19 .mobile-bar-btn--call svg { color: var(--sun-400); }
-.pv19 .mobile-bar-btn--mail svg { color: rgba(255, 255, 255, 0.75); }
-.pv19 .copy-toast {
-  position: fixed;
-  bottom: 90px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 10px 18px;
-  border-radius: 999px;
-  background: rgba(11, 27, 58, 0.95);
-  border: 1px solid var(--sun-500);
-  color: var(--sun-300);
-  font-family: var(--font-display-pv);
-  font-weight: 600;
-  font-size: 13px;
-  z-index: 200;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
-}
-.pv19 .copy-toast.show {
-  opacity: 1;
-  transform: translateX(-50%) translateY(-8px);
-}
-
 /* ============ FAB ============ */
 .pv19 .fab {
   position: fixed;
@@ -2505,11 +2429,6 @@ body.pv19-body.keyboard-user .pv19 .cursor-dot { display: none !important; }
   .pv19 .nav-cta-short { display: inline; }
 }
 
-/* Un seul bouton WhatsApp à la fois : sur mobile, la barre d'actions du bas
-   remplace la bulle flottante. */
-@media (max-width: 720px) {
-  body:has(.mobile-bar) .pv19 .fab { display: none; }
-}
 .pv19 .hero-chip { overflow-wrap: anywhere; }
 
 /* Titre du hero : « Je m'en occupe. » toujours sur sa propre ligne */
@@ -2593,9 +2512,9 @@ body.pv19-body.keyboard-user .pv19 .cursor-dot { display: none !important; }
   .pv19 .hero-ctas { gap: 12px; }
   .pv19 .hero-ctas .btn { min-height: 54px; font-size: 16px; }
 }
-/* Écrans peu hauts : tuiles en ligne (icône à gauche), plus compactes,
+/* Écrans peu hauts (< 900 px, barre d’onglets comprise) : tuiles en ligne (icône à gauche), plus compactes,
    pour garder le bouton WhatsApp visible sans défiler. */
-@media (max-width: 899px) and (max-height: 819px) {
+@media (max-width: 899px) and (max-height: 899px) {
   .pv19 .hero-chips { grid-auto-rows: minmax(58px, 1fr); gap: 10px; }
   .pv19 .hero-chip {
     flex-direction: row;
@@ -2608,7 +2527,7 @@ body.pv19-body.keyboard-user .pv19 .cursor-dot { display: none !important; }
   .pv19 .hero-chip-icon { width: 32px; height: 32px; }
   .pv19 .hero-chip-icon svg { width: 18px; height: 18px; }
 }
-@media (max-width: 374px) and (max-height: 819px) {
+@media (max-width: 374px) and (max-height: 899px) {
   .pv19 .hero-chip { padding: 10px; font-size: 14px; }
   .pv19 .hero-chip-icon { width: 28px; height: 28px; }
   .pv19 .hero-chip-icon svg { width: 16px; height: 16px; }
@@ -2634,8 +2553,6 @@ body.pv19-body.keyboard-user .pv19 .cursor-dot { display: none !important; }
   color: #F8FAFC;
   animation: pv19-install-in 0.35s var(--ease) both;
 }
-/* Au-dessus de la barre d'actions mobile quand elle est affichée */
-body:has(.mobile-bar.visible) .pv19 .install-banner { bottom: calc(88px + env(safe-area-inset-bottom, 0px)); }
 /* La bulle WhatsApp s'efface pendant que la bannière est ouverte */
 body.install-open .pv19 .fab { display: none; }
 @keyframes pv19-install-in {
@@ -2730,3 +2647,67 @@ body.install-open .pv19 .fab { display: none; }
 .pv19 .devis-alt a { color: var(--sun-400); font-weight: 600; white-space: nowrap; }
 [data-theme="light"] .pv19 .devis-alt a,
 [data-theme="light"] .pv19 .devis-title .serif { color: var(--sun-700); }
+
+/* ============ NAVIGATION « APPLI » (mobile) : onglets + carrousels ============ */
+.pv19 .tabbar { display: none; }
+@media (max-width: 720px) {
+  html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+  /* Barre d'onglets fixe en bas */
+  .pv19 .tabbar {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    padding: 6px 6px calc(6px + env(safe-area-inset-bottom, 0px));
+    background: rgba(11, 11, 16, 0.94);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid var(--ink-border);
+  }
+  .pv19 .tabbar-item {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+    min-height: 54px; border-radius: 12px;
+    color: rgba(248, 250, 252, 0.6);
+    font-family: var(--font-display-pv); font-weight: 600; font-size: 11px;
+  }
+  .pv19 .tabbar-item svg { width: 22px; height: 22px; }
+  .pv19 .tabbar-item.is-active { color: var(--sun-400); background: rgba(251, 191, 36, 0.1); }
+  .pv19 .tabbar-item--wa { color: var(--wa-500); }
+  [data-theme="light"] .pv19 .tabbar { background: rgba(251, 247, 240, 0.95); }
+  [data-theme="light"] .pv19 .tabbar-item { color: var(--deep-700); }
+  [data-theme="light"] .pv19 .tabbar-item.is-active { color: var(--sun-700); }
+  /* La bulle WhatsApp fait doublon avec l'onglet WhatsApp */
+  body:has(.tabbar) .pv19 .fab { display: none; }
+  body:has(.tabbar) .pv19 .install-banner { bottom: calc(78px + env(safe-area-inset-bottom, 0px)); }
+  body:has(.tabbar) .pv19 footer { padding-bottom: 96px; }
+  /* Premier écran : les boutons restent au-dessus de la barre d'onglets */
+  body:has(.tabbar) .pv19 .hero { padding-bottom: calc(44px + 66px + env(safe-area-inset-bottom, 0px)); }
+
+  /* Carrousels de côté : résumé, services, pourquoi nous, étapes */
+  .pv19 .resume-list, .pv19 .services-grid, .pv19 .why-grid, .pv19 .process-grid {
+    display: flex !important; grid-template-columns: none !important;
+    overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px;
+    margin-left: calc(-1 * var(--gutter)); margin-right: calc(-1 * var(--gutter));
+    padding: 4px var(--gutter) 14px; scroll-padding-left: var(--gutter);
+    scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  }
+  .pv19 .resume-list::-webkit-scrollbar, .pv19 .services-grid::-webkit-scrollbar,
+  .pv19 .why-grid::-webkit-scrollbar, .pv19 .process-grid::-webkit-scrollbar { display: none; }
+  .pv19 .resume-list > li, .pv19 .services-grid > *, .pv19 .why-grid > *, .pv19 .process-grid > * {
+    flex: 0 0 84%; scroll-snap-align: start; min-width: 0;
+  }
+  .pv19 .why-grid { background: none; border-radius: 0; }
+  .pv19 .why-item { border-radius: var(--radius); border: 1px solid var(--ink-border); }
+  /* Indice « glissez » sous chaque carrousel */
+  .pv19 .resume-list::after, .pv19 .services-grid::after, .pv19 .why-grid::after, .pv19 .process-grid::after {
+    content: ""; flex: 0 0 1px;
+  }
+}
+
+/* Thème clair : barre du haut compacte claire (le texte foncé restait sur fond marine) */
+[data-theme="light"] .pv19 .nav.compact {
+  background: rgba(251, 247, 240, 0.92);
+  border-color: rgba(180, 83, 9, 0.25);
+  box-shadow: 0 10px 30px -14px rgba(26, 20, 8, 0.35);
+}
+/* Thème clair : onglet WhatsApp en vert foncé lisible sur fond clair */
+@media (max-width: 720px) {
+  [data-theme="light"] .pv19 .tabbar-item--wa { color: #047857; }
+}
