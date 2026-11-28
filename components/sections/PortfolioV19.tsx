@@ -38,14 +38,14 @@ const ArrowRight = ({ size = 14 }: { size?: number }) => (
 );
 
 // Pastilles du premier écran : libellés courts, orientés besoin du visiteur.
-// Chaque service a sa couleur (rgb) et une courte accroche, pour être reconnu d'un coup d'œil.
-const HERO_CHIPS: { slug: string; label: string; sub: string; rgb: string }[] = [
-  { slug: "aviculture", label: "Poulets & œufs", sub: "Détail & gros", rgb: "245, 158, 11" },
-  { slug: "transport", label: "Voyages & déplacements", sub: "Assinie, Bassam…", rgb: "59, 130, 246" },
-  { slug: "technique", label: "Travaux & sécurité", sub: "Chantier, caméras", rgb: "244, 63, 94" },
-  { slug: "gestion", label: "Gestion de stock", sub: "Ma spécialité", rgb: "168, 85, 247" },
-  { slug: "digital", label: "Site & réseaux", sub: "Sites, apps, pages", rgb: "6, 182, 212" },
-  { slug: "sourcing", label: "Import Chine", sub: "Clé en main", rgb: "16, 185, 129" },
+// Chaque service a sa couleur (dégradé c1 → c2, texte blanc lisible) et une courte accroche.
+const HERO_CHIPS: { slug: string; label: string; sub: string; c1: string; c2: string }[] = [
+  { slug: "aviculture", label: "Poulets & œufs", sub: "Détail & gros", c1: "#C2410C", c2: "#7C2D12" },
+  { slug: "transport", label: "Voyages & déplacements", sub: "Assinie, Bassam…", c1: "#2563EB", c2: "#1E3A8A" },
+  { slug: "technique", label: "Travaux & sécurité", sub: "Chantier, caméras", c1: "#E11D48", c2: "#881337" },
+  { slug: "gestion", label: "Gestion de stock", sub: "Ma spécialité", c1: "#7C3AED", c2: "#4C1D95" },
+  { slug: "digital", label: "Site & réseaux", sub: "Sites, apps, pages", c1: "#0E7490", c2: "#164E63" },
+  { slug: "sourcing", label: "Import Chine", sub: "Clé en main", c1: "#047857", c2: "#064E3B" },
 ];
 
 const ServiceIcons: Record<string, JSX.Element> = {
@@ -402,7 +402,9 @@ export function PortfolioV19() {
                 <ul className="hero-chips hero-in hero-in-2" aria-label="Mes services">
                   {HERO_CHIPS.map((c) => (
                     <li key={c.slug}>
-                      <Link href={"/services/" + c.slug} className="hero-chip" style={{ "--rgb": c.rgb } as React.CSSProperties}>
+                      <Link href={"/services/" + c.slug} className="hero-chip" style={{ "--c1": c.c1, "--c2": c.c2 } as React.CSSProperties}>
+                        <span className="hero-chip-mark" aria-hidden="true">{ServiceIcons[c.slug]}</span>
+                        <span className="hero-chip-go" aria-hidden="true">↗</span>
                         <span className="hero-chip-icon">{ServiceIcons[c.slug]}</span>
                         <span className="hero-chip-text">
                           <span className="hero-chip-label">{c.label}</span>

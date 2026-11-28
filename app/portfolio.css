@@ -2713,39 +2713,79 @@ body.install-open .pv19 .fab { display: none; }
 }
 
 /* ============ TUILES DE SERVICES COLORÉES (premier écran) ============ */
-/* --rgb est fourni par chaque tuile (couleur du service). */
+/* Couleurs pleines (--c1 → --c2 fournies par chaque tuile), texte blanc,
+   grande icône en filigrane, reflet et flèche. */
 .pv19 .hero-chip {
-  --rgb: 245, 158, 11;
-  background: linear-gradient(150deg, rgba(var(--rgb), 0.30), rgba(var(--rgb), 0.08) 70%);
-  border-color: rgba(var(--rgb), 0.45);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  --c1: #C2410C;
+  --c2: #7C2D12;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  color: #fff;
+  background:
+    radial-gradient(120% 90% at 0% 0%, rgba(255, 255, 255, 0.22), transparent 55%),
+    linear-gradient(145deg, var(--c1), var(--c2));
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 10px 24px -14px var(--c1), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  transition: transform 0.15s var(--ease), box-shadow 0.2s var(--ease), filter 0.2s var(--ease);
 }
 .pv19 .hero-chip:hover,
 .pv19 .hero-chip:focus-visible {
-  background: linear-gradient(150deg, rgba(var(--rgb), 0.42), rgba(var(--rgb), 0.14) 70%);
-  border-color: rgb(var(--rgb));
+  background:
+    radial-gradient(120% 90% at 0% 0%, rgba(255, 255, 255, 0.28), transparent 55%),
+    linear-gradient(145deg, var(--c1), var(--c2));
+  border-color: rgba(255, 255, 255, 0.35);
+  filter: saturate(1.1);
+}
+.pv19 .hero-chip:active { transform: scale(0.96); }
+.pv19 .hero-chip-mark {
+  position: absolute;
+  right: -14px;
+  bottom: -16px;
+  width: 78px;
+  height: 78px;
+  z-index: -1;
+  color: #fff;
+  opacity: 0.16;
+  transform: rotate(-14deg);
+  pointer-events: none;
+}
+.pv19 .hero-chip-mark svg { width: 100%; height: 100%; }
+.pv19 .hero-chip-go {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  font-size: 13px;
+  line-height: 1;
+  opacity: 0.7;
 }
 .pv19 .hero-chip-icon {
-  background: rgb(var(--rgb));
+  background: rgba(255, 255, 255, 0.2);
   color: #fff;
-  box-shadow: 0 6px 16px -6px rgba(var(--rgb), 0.8);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.25);
 }
 .pv19 .hero-chip-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-.pv19 .hero-chip-label { display: block; }
+.pv19 .hero-chip-label { display: block; color: #fff; padding-right: 6px; }
 .pv19 .hero-chip-sub {
   display: block;
   font-family: var(--font-body, inherit);
   font-weight: 500;
   font-size: 12.5px;
   letter-spacing: 0;
-  color: rgba(248, 250, 252, 0.72);
+  color: rgba(255, 255, 255, 0.82);
 }
-[data-theme="light"] .pv19 .hero-chip {
-  background: linear-gradient(150deg, rgba(var(--rgb), 0.18), rgba(var(--rgb), 0.05) 70%), #fff;
-  border-color: rgba(var(--rgb), 0.40);
+/* Thème clair : mêmes couleurs pleines, ombre plus douce */
+[data-theme="light"] .pv19 .hero-chip,
+[data-theme="light"] .pv19 .hero-chip:hover {
+  color: #fff;
+  background:
+    radial-gradient(120% 90% at 0% 0%, rgba(255, 255, 255, 0.22), transparent 55%),
+    linear-gradient(145deg, var(--c1), var(--c2));
+  border-color: transparent;
+  box-shadow: 0 10px 22px -12px var(--c1);
 }
 [data-theme="light"] .pv19 .hero-chip-icon { color: #fff; }
-[data-theme="light"] .pv19 .hero-chip-sub { color: var(--deep-700); }
+[data-theme="light"] .pv19 .hero-chip-sub { color: rgba(255, 255, 255, 0.85); }
 /* Arrivée en cascade des tuiles (transform/opacity uniquement) */
 .pv19 .hero-chips li { animation: pv19-chip-in 0.5s var(--ease) both; }
 .pv19 .hero-chips li:nth-child(1) { animation-delay: 0.20s; }
@@ -2782,4 +2822,8 @@ body.install-open .pv19 .fab { display: none; }
 /* Écrans peu hauts : on retire l'accroche pour garder les boutons visibles */
 @media (max-width: 899px) and (max-height: 799px) {
   .pv19 .hero-chip-sub { display: none; }
+}
+@media (max-width: 400px) {
+  .pv19 .hero-chip-label { padding-right: 0; }
+  .pv19 .hero-chip-go { top: 6px; right: 8px; font-size: 11px; }
 }
