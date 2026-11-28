@@ -27,6 +27,10 @@ export const siteConfig = {
     alt: "Kazem Williame Wallid — Un profil polyvalent, des solutions concrètes.",
   },
 
+  // Message vocal de l'animation d'accueil (fichier dans public/, ex. "/intro-wallid.mp3").
+  // null = pas de son : le bouton « Écouter » n'apparaît pas.
+  introAudio: null as string | null,
+
   // Feature flags — active quand le contenu réel est prêt
   hasCv: false,          // ← passe à true dès que public/cv.pdf est en place
   isAvailable: true,     // ← petit badge vert "Disponible" dans le Hero

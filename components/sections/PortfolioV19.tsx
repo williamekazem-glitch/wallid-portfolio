@@ -6,6 +6,7 @@ import { useEffect, useRef, useState, type JSX } from "react";
 
 import { siteConfig } from "@/lib/site-config";
 import { FooterSocials, SocialCards } from "@/components/ui/SocialLinks";
+import { IntroSplash } from "@/components/sections/IntroSplash";
 import {
   services,
   trajets,
@@ -369,6 +370,7 @@ export function PortfolioV19() {
         </a>
       </nav>
 
+      <IntroSplash />
       <main id="main" tabIndex={-1}>
         <section className="hero" id="top" aria-label="Présentation" ref={(el) => { heroRef.current = el; }}>
           <div className="hero-bg" aria-hidden="true" />
