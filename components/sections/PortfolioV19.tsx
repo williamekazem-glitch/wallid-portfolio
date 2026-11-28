@@ -38,13 +38,14 @@ const ArrowRight = ({ size = 14 }: { size?: number }) => (
 );
 
 // Pastilles du premier écran : libellés courts, orientés besoin du visiteur.
-const HERO_CHIPS: { slug: string; label: string }[] = [
-  { slug: "aviculture", label: "Poulets & œufs" },
-  { slug: "transport", label: "Voyages & déplacements" },
-  { slug: "technique", label: "Travaux & sécurité" },
-  { slug: "gestion", label: "Gestion de stock" },
-  { slug: "digital", label: "Site & réseaux" },
-  { slug: "sourcing", label: "Import Chine" },
+// Chaque service a sa couleur (rgb) et une courte accroche, pour être reconnu d'un coup d'œil.
+const HERO_CHIPS: { slug: string; label: string; sub: string; rgb: string }[] = [
+  { slug: "aviculture", label: "Poulets & œufs", sub: "Détail & gros", rgb: "245, 158, 11" },
+  { slug: "transport", label: "Voyages & déplacements", sub: "Assinie, Bassam…", rgb: "59, 130, 246" },
+  { slug: "technique", label: "Travaux & sécurité", sub: "Chantier, caméras", rgb: "244, 63, 94" },
+  { slug: "gestion", label: "Gestion de stock", sub: "Ma spécialité", rgb: "168, 85, 247" },
+  { slug: "digital", label: "Site & réseaux", sub: "Sites, apps, pages", rgb: "6, 182, 212" },
+  { slug: "sourcing", label: "Import Chine", sub: "Clé en main", rgb: "16, 185, 129" },
 ];
 
 const ServiceIcons: Record<string, JSX.Element> = {
@@ -401,9 +402,12 @@ export function PortfolioV19() {
                 <ul className="hero-chips hero-in hero-in-2" aria-label="Mes services">
                   {HERO_CHIPS.map((c) => (
                     <li key={c.slug}>
-                      <Link href={"/services/" + c.slug} className="hero-chip">
+                      <Link href={"/services/" + c.slug} className="hero-chip" style={{ "--rgb": c.rgb } as React.CSSProperties}>
                         <span className="hero-chip-icon">{ServiceIcons[c.slug]}</span>
-                        {c.label}
+                        <span className="hero-chip-text">
+                          <span className="hero-chip-label">{c.label}</span>
+                          <span className="hero-chip-sub">{c.sub}</span>
+                        </span>
                       </Link>
                     </li>
                   ))}
